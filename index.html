@@ -1,1918 +1,2746 @@
 
-<!DOCTYPE html>  <html lang="en">  
-<head>  
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  
-<meta name="theme-color" content="#173d30">  
-<meta name="description" content="Forma Doppia by JNHJ Furnishings Co.">  
-<title>Forma Doppia | JNHJ Furnishings Co.</title>  <style>  
-:root {  
-  --green:#173d30;  
-  --green2:#285744;  
-  --cream:#f7f4ec;  
-  --gold:#c59b55;  
-  --dark:#202820;  
-  --muted:#69746c;  
-  --white:#fff;  
-  --border:#e7e5dc;  
-}  
-*{box-sizing:border-box}  
-html{scroll-behavior:smooth}  
-body{  
-  margin:0;  
-  font-family:Arial,sans-serif;  
-  color:var(--dark);  
-  background:white;  
-  line-height:1.6;  
-}  
-body.locked{overflow:hidden}  
-button,input,select,textarea{font:inherit}  
-button{cursor:pointer}  
-a{text-decoration:none;color:inherit}  
-.container{width:min(1160px,92%);margin:auto}  
-.hidden{display:none!important}  
-  
-/* OPENING CLICKWRAP */  
-#agreementScreen{  
-  position:fixed;  
-  inset:0;  
-  z-index:99999;  
-  background:linear-gradient(135deg,#102b22,#285744);  
-  display:flex;  
-  justify-content:center;  
-  align-items:center;  
-  padding:18px;  
-  overflow-y:auto;  
-}  
-.agreement-card{  
-  width:min(530px,100%);  
-  background:white;  
-  border-radius:12px;  
-  padding:30px;  
-  box-shadow:0 20px 60px #0004;  
-}  
-.agreement-logo{  
-  width:85px;  
-  height:85px;  
-  object-fit:contain;  
-  display:block;  
-  margin:0 auto 10px;  
-}  
-.agreement-card h1{  
-  text-align:center;  
-  color:var(--green);  
-  font-family:Georgia,serif;  
-  font-size:30px;  
-  margin:5px 0;  
-}  
-.agreement-subtitle{  
-  text-align:center;  
-  color:var(--muted);  
-  font-size:12px;  
-  letter-spacing:2px;  
-  margin-bottom:22px;  
-}  
-.agreement-card h2{  
-  font-family:Georgia,serif;  
-  color:var(--green);  
-  font-size:23px;  
-}  
-.agreement-description{  
-  font-size:13px;  
-  color:var(--muted);  
-}  
-.agreement-links{  
-  background:var(--cream);  
-  border-radius:7px;  
-  padding:14px;  
-  margin:17px 0;  
-}  
-.agreement-links a{  
-  color:var(--green);  
-  text-decoration:underline;  
-  font-weight:bold;  
-}  
-.agreement-check{  
-  display:flex;  
-  align-items:flex-start;  
-  gap:10px;  
-  font-size:13px;  
-  margin:13px 0;  
-}  
-.agreement-check input{  
-  margin-top:5px;  
-  accent-color:var(--green);  
-}  
-#enterStore{  
-  width:100%;  
-  border:0;  
-  border-radius:5px;  
-  padding:14px;  
-  margin-top:12px;  
-  background:var(--green);  
-  color:white;  
-  font-weight:bold;  
-}  
-#enterStore:disabled{  
-  opacity:.4;  
-  cursor:not-allowed;  
-}  
-.agreement-note{  
-  text-align:center;  
-  font-size:11px;  
-  color:var(--muted);  
-}  
-  
-/* HEADER */  
-.topbar{  
-  background:var(--green);  
-  color:white;  
-  text-align:center;  
-  padding:8px;  
-  font-size:11px;  
-  letter-spacing:2px;  
-}  
-.header{  
-  position:sticky;  
-  top:0;  
-  z-index:100;  
-  background:white;  
-  border-bottom:1px solid var(--border);  
-}  
-.nav{  
-  min-height:75px;  
-  display:flex;  
-  justify-content:space-between;  
-  align-items:center;  
-  gap:15px;  
-}  
-.brand{  
-  display:flex;  
-  align-items:center;  
-  gap:10px;  
-  font-weight:bold;  
-  color:var(--green);  
-  letter-spacing:2px;  
-}  
-.brand img{  
-  width:45px;  
-  height:45px;  
-  object-fit:contain;  
-}  
-.navlinks{  
-  display:flex;  
-  gap:17px;  
-  font-size:12px;  
-}  
-.navlinks a:hover{color:var(--gold)}  
-.nav-actions{  
-  display:flex;  
-  align-items:center;  
-  gap:7px;  
-}  
-.btn{  
-  border:0;  
-  border-radius:4px;  
-  padding:11px 16px;  
-  background:var(--green);  
-  color:white;  
-  font-size:12px;  
-  font-weight:bold;  
-}  
-.btn:hover{background:var(--green2)}  
-.btn-outline{  
-  background:white;  
-  color:var(--green);  
-  border:1px solid var(--green);  
-}  
-.btn:disabled{opacity:.4;cursor:not-allowed}  
-  
-/* HERO */  
-.hero{  
-  min-height:490px;  
-  background:  
-    linear-gradient(90deg,#102b22df,#102b2230),  
-    url('cover.png') center/cover no-repeat;  
-  display:flex;  
-  align-items:center;  
-  color:white;  
-}  
-.hero-content{  
-  max-width:600px;  
-  padding:75px 0;  
-}  
-.eyebrow{  
-  color:var(--gold);  
-  font-size:11px;  
-  font-weight:bold;  
-  letter-spacing:3px;  
-}  
-.hero h1{  
-  font:normal clamp(43px,7vw,76px) Georgia,serif;  
-  line-height:1.05;  
-  margin:15px 0;  
-}  
-.hero p{max-width:500px;color:#f1eee7}  
-.hero-buttons{  
-  display:flex;  
-  flex-wrap:wrap;  
-  gap:10px;  
-  margin-top:25px;  
-}  
-.btn-light{background:white;color:var(--green)}  
-  
-/* GENERAL SECTIONS */  
-.section{padding:65px 0}  
-.cream{background:var(--cream)}  
-.section-heading{  
-  text-align:center;  
-  max-width:680px;  
-  margin:0 auto 30px;  
-}  
-.section-heading h2{  
-  font:normal clamp(29px,4vw,43px) Georgia,serif;  
-  color:var(--green);  
-  margin:8px 0;  
-}  
-.section-heading p{  
-  color:var(--muted);  
-  font-size:14px;  
-}  
-  
-/* SEARCH */  
-.search-row{  
-  display:flex;  
-  gap:10px;  
-  max-width:750px;  
-  margin:0 auto 20px;  
-}  
-.search-row input,.search-row select{  
-  padding:13px;  
-  border:1px solid var(--border);  
-  border-radius:4px;  
-  min-width:0;  
-}  
-.search-row input{flex:1}  
-.filters{  
-  display:flex;  
-  justify-content:center;  
-  flex-wrap:wrap;  
-  gap:8px;  
-  margin-bottom:28px;  
-}  
-.filter-btn{  
-  background:white;  
-  color:var(--green);  
-  border:1px solid var(--border);  
-  padding:8px 14px;  
-  border-radius:25px;  
-  font-size:12px;  
-}  
-.filter-btn.active{  
-  background:var(--green);  
-  color:white;  
-}  
-  
-/* PRODUCT GRID */  
-.product-grid{  
-  display:grid;  
-  grid-template-columns:repeat(3,1fr);  
-  gap:22px;  
-}  
-.product-card{  
-  border:1px solid var(--border);  
-  border-radius:6px;  
-  overflow:hidden;  
-  display:flex;  
-  flex-direction:column;  
-  background:white;  
-  box-shadow:0 8px 25px #173d3010;  
-}  
-.product-image{  
-  width:100%;  
-  aspect-ratio:1/1;  
-  background:var(--cream);  
-}  
-.product-image img{  
-  width:100%;  
-  height:100%;  
-  object-fit:cover;  
-}  
-.product-info{padding:16px;display:flex;flex:1;flex-direction:column}  
-.product-info h3{  
-  font:normal 22px Georgia,serif;  
-  color:var(--green);  
-  margin:0 0 5px;  
-}  
-.product-info p{font-size:12px;color:var(--muted)}  
-.product-price{  
-  font-size:20px;  
-  font-weight:bold;  
-  color:var(--green);  
-  margin:8px 0 13px;  
-}  
-.product-buttons{display:flex;gap:8px;margin-top:auto}  
-.product-buttons button{flex:1}  
-  
-/* FOOTER AND DETAILS */  
-footer{  
-  background:#102b22;  
-  color:white;  
-  padding:40px 0 20px;  
-}  
-footer p,footer a{font-size:13px;color:#d0d8d1}  
-.footer-grid{  
-  display:grid;  
-  grid-template-columns:repeat(3,1fr);  
-  gap:25px;  
-}  
-footer h3{font:normal 22px Georgia,serif}  
-.copyright{  
-  text-align:center;  
-  border-top:1px solid #ffffff30;  
-  padding-top:15px;  
-  margin-top:25px;  
-  font-size:11px;  
-}  
-@media(max-width:850px){  
-  .navlinks{display:none}  
-  .product-grid{grid-template-columns:repeat(2,1fr)}  
-}  
-@media(max-width:560px){  
-  .nav{min-height:65px}  
-  .brand{font-size:11px}  
-  .brand img{width:36px;height:36px}  
-  .nav-actions{gap:4px}  
-  .nav-actions .btn{padding:9px;font-size:10px}  
-  .hero{min-height:420px}  
-  .hero h1{font-size:48px}  
-  .product-grid{gap:10px}  
-  .product-info{padding:10px}  
-  .product-info h3{font-size:17px}  
-  .product-buttons{flex-direction:column}  
-  .section{padding:48px 0}  
-  .footer-grid{grid-template-columns:1fr}  
-  .search-row{flex-direction:column}  
-}  
-</style>  </head>  
-<body class="locked">  <!-- OPENING CLICKWRAP AGREEMENT -->  <div id="agreementScreen">  
-  <div class="agreement-card">  
-    <img src="logo.png" class="agreement-logo" alt="Forma Doppia Logo">  
-    <h1>Forma Doppia</h1>  
-    <div class="agreement-subtitle">JNHJ FURNISHINGS CO.</div>  <h2>Welcome to our store!</h2>  
-<p class="agreement-description">  
-  Before entering our online store, please read and accept  
-  our Terms of Service and Privacy Policy.  
-</p>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#263d2d">
 
-<div class="agreement-links">  
-  <p><a href="#policies" target="_blank">Read Terms of Service</a></p>  
-  <p><a href="#policies" target="_blank">Read Privacy Policy</a></p>  
-</div>  
+  <title>Forma Doppia | Step Up Your Comfort</title>
 
-<label class="agreement-check">  
-  <input type="checkbox" id="acceptTerms">  
-  <span>I have read and agree to the Terms of Service.</span>  
-</label>  
+  <meta name="description" content="Discover Forma Doppia multifunctional furniture by JNHJ Furnishings Co.">
 
-<label class="agreement-check">  
-  <input type="checkbox" id="acceptPrivacy">  
-  <span>I have read and agree to the Privacy Policy.</span>  
-</label>  
+  <link rel="icon" href="images/logo.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
 
-<button id="enterStore" disabled>  
-  I AGREE – ENTER WEBSITE  
-</button>  
+<body>
 
-<p class="agreement-note">  
-  Both agreements must be accepted before entering.  
-</p>
-
-  </div>  
-</div>  <div id="websiteContent" class="hidden">  <div class="topbar">  
-  FUNCTIONAL DESIGN • EVERYDAY COMFORT • MODERN STYLE  
-</div>  <header class="header">  
-  <div class="container nav">  
-    <a href="#home" class="brand">  
-      <img src="logo.png" alt="Logo">  
-      FORMA DOPPIA  
-    </a>  <nav class="navlinks">  
-  <a href="#home">Home</a>  
-  <a href="#shop">Shop</a>  
-  <a href="#about">About</a>  
-  <a href="#faq">FAQs</a>  
-  <a href="#policies">Policies</a>  
-  <a href="#logistics">Delivery</a>  
-</nav>  
-
-<div class="nav-actions">  
-  <button class="btn" id="cartButton">  
-    Cart (<span id="cartCount">0</span>)  
-  </button>  
-  <button class="btn btn-outline" id="authButton">  
-    Sign Up / Login  
-  </button>  
-  <button class="btn hidden" id="accountButton">  
-    My Account  
-  </button>  
-  <button class="btn hidden" id="logoutButton">  
-    Log Out  
-  </button>  
+<!-- LOADING SCREEN -->
+<div id="loadingScreen" class="loading-screen">
+  <img src="images/logo.png" alt="Forma Doppia">
+  <h2>FORMA DOPPIA</h2>
+  <p>STEP UP YOUR COMFORT</p>
+  <div class="loader"></div>
 </div>
 
-  </div>  
-</header>  <section class="hero" id="home">  
-  <div class="container">  
-    <div class="hero-content">  
-      <div class="eyebrow">JNHJ FURNISHINGS CO.</div>  
-      <h1>Form meets function.</h1>  
-      <p>  
-        Discover Forma Doppia, a versatile furniture solution  
-        that brings style, comfort, and practicality into  
-        everyday living spaces.  
-      </p>  
-      <div class="hero-buttons">  
-        <a href="#shop" class="btn btn-light">SHOP NOW</a>  
-        <a href="#about" class="btn btn-outline" style="background:transparent;color:white;border-color:white">  
-          OUR STORY  
-        </a>  
-      </div>  
-    </div>  
-  </div>  
-</section>  
-</div>  
-'''  
-<!-- PRODUCT SEARCH AND CATALOG -->  
-<section class="section" id="shop">  
-<div class="container">  
-  <div class="section-heading">  
-    <div class="eyebrow">THE COLLECTION</div>  
-    <h2>Find Your Forma Doppia</h2>  
-    <p>Choose your preferred finish and bring functionality and style into your space.</p>  
-  </div>    <div class="search-row">  
-    <input id="searchInput" type="search" placeholder="Search products and variants...">  
-    <select id="sortSelect">  
-      <option value="featured">Featured</option>  
-      <option value="low">Price: Low to High</option>  
-      <option value="high">Price: High to Low</option>  
-      <option value="az">Name: A to Z</option>  
-    </select>  
-  </div>    <div class="filters">  
-    <button class="filter-btn active" data-filter="all">All Products</button>  
-    <button class="filter-btn" data-filter="wood">Wood Finishes</button>  
-    <button class="filter-btn" data-filter="color">Color Finishes</button>  
-    <button class="filter-btn" data-filter="cushion">With Cushion</button>  
-  </div>    <div class="product-grid" id="productGrid"></div>  
-  <p id="noProducts" class="hidden" style="text-align:center">No matching products found.</p>  
-</div>  
-</section>  <!-- ABOUT -->  <section class="section cream" id="about">  
-<div class="container">  
-  <div class="section-heading">  
-    <div class="eyebrow">OUR STORY</div>  
-    <h2>About Forma Doppia</h2>  
-  </div>    <div class="about-copy">  
-    <p>  
-      The name “Forma Doppia” is inspired by the Italian words  
-      “forma,” meaning “form” and “doppia,” meaning “double.”  
-      The name reflects the product’s unique design, combining  
-      functionality and modern aesthetics.  
-    </p>  
-    <p>  
-      Forma Doppia was created with the idea of bringing style,  
-      comfort, and practicality into everyday living spaces.  
-      Inspired by contemporary furniture design and minimalist  
-      interiors, the product aims to provide a versatile and  
-      elegant furniture solution that complements different lifestyles.  
-    </p>  
-    <p>  
-      Through its distinctive design, Forma Doppia transforms  
-      ordinary spaces into stylish, comfortable, and functional environments.  
-    </p>  
-  </div>  
-</div>  
-</section>  <!-- FREQUENTLY ASKED QUESTIONS -->  <section class="section" id="faq">  
-<div class="container">  
-  <div class="section-heading">  
-    <div class="eyebrow">CUSTOMER SUPPORT</div>  
-    <h2>Frequently Asked Questions</h2>  
-  </div>    <details class="faq-item">  
-    <summary>How can I purchase Forma Doppia?</summary>  
-    <p>  
-      You can purchase Forma Doppia by contacting JNHJ Furnishings Co.  
-      through our official page or website. Simply provide your  
-      preferred product, quantity, and complete delivery details.  
-      Our team will assist you with the ordering process, confirm  
-      your order, and provide the necessary payment information.  
-    </p>  
-  </details>    <details class="faq-item">  
-    <summary>Can I cancel my order?</summary>  
-    <p>  
-      Orders may be canceled before they are confirmed or processed.  
-      Once the order has been finalized, prepared for delivery, or  
-      shipped, cancellation may no longer be possible. For cancellation  
-      requests, please contact our customer service team as soon as possible.  
-    </p>  
-  </details>    <details class="faq-item">  
-    <summary>What payment methods do you accept?</summary>  
-    <p>  
-      JNHJ Furnishings Co. accepts convenient payment methods such as  
-      GCash and bank transfers. Other payment options may be available  
-      depending on the transaction. Payment details and instructions  
-      will be provided upon order confirmation.  
-    </p>  
-  </details>    <details class="faq-item">  
-    <summary>Can Forma Doppia be delivered to my preferred address?</summary>  
-    <p>  
-      Yes, Forma Doppia can be delivered to your preferred address,  
-      including your home or office, subject to our delivery coverage.  
-      Please ensure that your delivery information is complete and  
-      accurate to avoid delays. Delivery fees and estimated arrival  
-      times will be confirmed during the ordering process.  
-    </p>  
-  </details>  
-</div>  
-</section>  <!-- TERMS AND POLICIES -->  <section class="section cream" id="policies">  
-<div class="container">    <div class="section-heading">  
-    <div class="eyebrow">CUSTOMER INFORMATION</div>  
-    <h2>Terms of Service & Policies</h2>  
-    <p>Click each section below to learn more about our policies.</p>  
-  </div>    <div class="faq-list policy-accordion">  <details class="faq-item">  
-  <summary>Customer Care</summary>  
-  <div class="faq-answer">  
-    <p>  
-      At JNHJ Furnishings Co., we are committed to providing excellent  
-      customer care and ensuring customer satisfaction. We believe in  
-      building trust through quality products, reliable service, and  
-      transparent communication. Our customer care policy is designed  
-      to assist customers with their inquiries, concerns, and  
-      product-related needs regarding Forma Doppia.  
-    </p>  
-  </div>  
-</details>  
 
-<details class="faq-item">  
-  <summary>Shipping and Delivery Policy</summary>  
-  <div class="faq-answer">  
-    <p>  
-      Delivery lead times may vary depending on your geographical  
-      location within the Philippines. Delivery schedules are subject  
-      to product availability, destination, and courier services.  
-      Customers will be provided with delivery information once their  
-      orders have been confirmed. Delays caused by severe weather  
-      conditions, public holidays, transportation issues, or  
-      third-party courier services may occur.  
-    </p>  
-  </div>  
-</details>  
+<!-- OPENING CLICKWRAP AGREEMENT -->
+<div id="agreementScreen" class="agreement-screen">
 
-<details class="faq-item">  
-  <summary>Privacy & Safety</summary>  
-  <div class="faq-answer">  
-    <p>  
-      At JNHJ Furnishings Co., we prioritize the privacy and safety  
-      of our customers. Information such as your name, contact number,  
-      delivery address, and payment details will be used for order  
-      processing, payment verification, and delivery purposes.  
-      We take appropriate measures to protect your information and  
-      ensure secure transactions.  
-    </p>  
-  </div>  
-</details>  
+  <div class="agreement-card">
 
-<details class="faq-item">  
-  <summary>Wholesale Inquiries</summary>  
-  <div class="faq-answer">  
-    <p>  
-      We welcome wholesale inquiries and potential business  
-      partnerships from retailers, furniture stores, and other  
-      interested businesses. We can provide information about  
-      Forma Doppia, including product specifications, pricing,  
-      and wholesale opportunities. Please contact JNHJ Furnishings  
-      Co. through our official communication channels.  
-    </p>  
-  </div>  
-</details>  
+    <img src="images/logo.png" alt="Forma Doppia Logo">
 
-<details class="faq-item">  
-  <summary>Shipping Policy</summary>  
-  <div class="faq-answer">  
-    <p>  
-      At JNHJ Furnishings Co., we are committed to providing reliable  
-      and efficient shipping services. We ensure that Forma Doppia  
-      is properly packaged to maintain its quality and condition  
-      during transportation. Our shipping time typically takes  
-      2 to 3 days, depending on the customer's location and courier  
-      availability. Shipping schedules and applicable costs will  
-      be confirmed during order processing.  
-    </p>  
-  </div>  
-</details>  
+    <p class="eyebrow">WELCOME TO</p>
 
-<details class="faq-item">  
-  <summary>Return & Exchange Policy</summary>  
-  <div class="faq-answer">  
-    <p>  
-      Returns and exchanges are accepted within seven (7) days from  
-      delivery for defective, damaged, or incorrect items. Customers  
-      must provide a clear video showing the defect or damage as proof.  
-      Please contact us with your order details and wait for  
-      confirmation before returning the item. Refunds or replacements  
-      are subject to verification and product availability.  
-    </p>  
-  </div>  
-</details>
+    <h1>FORMA <span>DOPPIA</span></h1>
 
-  </div>  
-</div>  
-</section>  <!-- LOGISTICS - LAST MAIN SECTION -->  <section class="section" id="logistics">  
-<div class="container">  
-  <div class="section-heading">  
-    <div class="eyebrow">OUR DELIVERY PARTNERS</div>  
-    <h2>Logistics & Delivery</h2>  
-    <p>  
-      We work with delivery partners to help bring Forma Doppia  
-      safely to your preferred address.  
-    </p>  
-  </div>  <div class="logistics">  
-  <figure>  
-    <img src="images/flash.jpg" alt="Flash Express">  
-    <figcaption>Flash Express</figcaption>  
-  </figure>    <figure>  
-    <img src="images/ninja.jpg" alt="Ninja Van">  
-    <figcaption>Ninja Van</figcaption>  
-  </figure>    <figure>  
-    <img src="images/lbc.jpg" alt="LBC">  
-    <figcaption>LBC</figcaption>  
-  </figure>    <figure>  
-    <img src="images/j%26t.jpg" alt="J&T Express">  
-    <figcaption>J&T Express</figcaption>  
-  </figure>  
-</div>  
-</div>  
-</section>  <style>  
-.about-copy{  
-  max-width:850px;  
-  margin:auto;  
-  font-size:15px;  
-  color:#59645c;  
-}  
-.faq-item{  
-  max-width:850px;  
-  margin:auto;  
-  padding:18px 5px;  
-  border-bottom:1px solid #ddd;  
-}  
-.faq-item summary{  
-  color:var(--green);  
-  font-weight:bold;  
-  cursor:pointer;  
-}  
-.faq-item p{font-size:14px;color:var(--muted)}  
-.policy-grid{  
-  display:grid;  
-  grid-template-columns:repeat(2,1fr);  
-  gap:18px;  
-}  
-.policy-card{  
-  background:white;  
-  padding:22px;  
-  border:1px solid var(--border);  
-  border-radius:5px;  
-}  
-.policy-card h3{  
-  color:var(--green);  
-  font:normal 22px Georgia,serif;  
-}  
-.policy-card p{font-size:13px;color:var(--muted)}  
-.logistics{  
-  display:grid;  
-  grid-template-columns:repeat(4,1fr);  
-  gap:18px;  
-}  
-.logistics figure{  
-  margin:0;  
-  padding:17px;  
-  text-align:center;  
-  border:1px solid var(--border);  
-}  
-.logistics img{  
-  width:100%;  
-  height:75px;  
-  object-fit:contain;  
-}  
-.logistics figcaption{  
-  color:var(--green);  
-  font-weight:bold;  
-  font-size:12px;  
-  margin-top:8px;  
-}  
-@media(max-width:560px){  
-  .policy-grid{grid-template-columns:1fr}  
-  .logistics{grid-template-columns:repeat(2,1fr)}  
-}  
-.modal{  
-  position:fixed;  
-  inset:0;  
-  background:#0009;  
-  z-index:1000;  
-  display:none;  
-  align-items:center;  
-  justify-content:center;  
-  padding:15px;  
-}  
-.modal.show{display:flex}  
-.modal-panel{  
-  background:white;  
-  border-radius:8px;  
-  width:min(560px,100%);  
-  max-height:90vh;  
-  overflow-y:auto;  
-  padding:25px;  
-  position:relative;  
-}  
-.modal-panel h2{  
-  font:normal 29px Georgia,serif;  
-  color:var(--green);  
-}  
-.close-modal{  
-  position:absolute;  
-  right:15px;  
-  top:10px;  
-  border:0;  
-  background:transparent;  
-  font-size:25px;  
-}  
-.field{margin:13px 0}  
-.field label{  
-  display:block;  
-  font-size:12px;  
-  font-weight:bold;  
-  color:var(--green);  
-  margin-bottom:5px;  
-}  
-.field input,.field textarea,.field select{  
-  width:100%;  
-  padding:11px;  
-  border:1px solid var(--border);  
-  border-radius:4px;  
-}  
-.field textarea{min-height:85px}  
-.check-panel{  
-  background:var(--cream);  
-  padding:13px;  
-  margin:15px 0;  
-  font-size:13px;  
-}  
-.check-panel label{  
-  display:flex;  
-  align-items:flex-start;  
-  gap:8px;  
-  margin:9px 0;  
-}  
-.form-message{font-size:12px;color:var(--muted)}  
-.cart-line{  
-  display:grid;  
-  grid-template-columns:65px 1fr auto;  
-  gap:12px;  
-  padding:12px 0;  
-  border-bottom:1px solid var(--border);  
-  align-items:center;  
-}  
-.cart-line img{  
-  width:65px;  
-  height:65px;  
-  object-fit:cover;  
-  background:var(--cream);  
-}  
-.cart-line small{display:block;color:var(--muted)}  
-.cart-controls{  
-  display:flex;  
-  align-items:center;  
-  gap:7px;  
-  margin-top:6px;  
-}  
-.cart-controls button{  
-  background:white;  
-  border:1px solid var(--border);  
-  padding:3px 9px;  
-}  
-.cart-total{  
-  display:flex;  
-  justify-content:space-between;  
-  padding:12px 0;  
-  font-weight:bold;  
-  color:var(--green);  
-  font-size:19px;  
-}  
-.payment-qr{  
-  display:grid;  
-  grid-template-columns:1fr 1fr;  
-  gap:12px;  
-}  
-.payment-qr img{  
-  width:100%;  
-  height:175px;  
-  object-fit:contain;  
-  border:1px solid var(--border);  
-  padding:8px;  
-}  
-.status-box{  
-  background:#edf5ee;  
-  padding:12px;  
-  margin:12px 0;  
-  font-size:13px;  
-}  
-</style>  <!-- FOOTER -->  <footer>  
-<div class="container">  
-  <div class="footer-grid">  
-    <div>  
-      <h3>FORMA DOPPIA</h3>  
-      <p>JNHJ Furnishings Co.</p>  
-      <p>Style, comfort, and practicality for everyday living.</p>  
-    </div>  
-    <div>  
-      <h3>Contact Us</h3>  
-      <p>  
-        Gmail:<br>  
-        <a href="mailto:jnhjfurnishingscompany@gmail.com">  
-          jnhjfurnishingscompany@gmail.com  
-        </a>  
-      </p>  
-      <p>  
-        Contact Number:<br>  
-        <a href="tel:09108222830">09108222830</a>  
-      </p>  
-    </div>  
-    <div>  
-      <h3>Follow Us</h3>  
-      <p><a target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=61574262187679">Facebook</a></p>  
-      <p><a target="_blank" rel="noopener" href="https://www.instagram.com/jnhjfurnishingsco?srtk=enp4M3E5Y2hwNXZ2">Instagram</a></p>  
-      <p><a target="_blank" rel="noopener" href="https://www.tiktok.com/@jnhj.furnishings?_r=1&_t=ZS-9B0LygzVF6v">TikTok</a></p>  
-    </div>  
-  </div>  
-  <div class="copyright">  
-    © <span id="currentYear"></span> JNHJ Furnishings Co. All Rights Reserved.  
-  </div>  
-</div>  
-</footer>  <!-- SIGN UP / LOGIN -->  <div class="modal" id="authModal">  
-<div class="modal-panel">  
-  <button class="close-modal" data-close="authModal">×</button>  
-  <h2 id="authTitle">Create Account</h2>    <div class="field">  
-    <label>Email Address</label>  
-    <input id="authEmail" type="email" autocomplete="email" required>  
-  </div>  
-  <div class="field">  
-    <label>Password</label>  
-    <input id="authPassword" type="password" minlength="6" autocomplete="current-password" required>  
-  </div>    <div id="signupAgreement" class="check-panel">  
-    <strong>Account Agreement</strong>  
-    <label>  
-      <input type="checkbox" id="signupTerms">  
-      I agree to the Terms of Service.  
-    </label>  
-    <label>  
-      <input type="checkbox" id="signupPrivacy">  
-      I agree to the Privacy Policy.  
-    </label>  
-  </div>    <button class="btn" id="authSubmit" style="width:100%">  
-    Create Account  
-  </button>  
-  <p class="form-message" id="authMessage"></p>  
-  <p class="form-message">  
-    <span id="switchText">Already have an account?</span>  
-    <a href="#" id="switchAuth" style="color:var(--green);text-decoration:underline">Log In</a>  
-  </p>  
-</div>  
-</div>  
-  <p class="form-message">  
-    <span id="switchText">Already have an account?</span>  
-    <a href="#" id="switchAuth" style="color:var(--green);text-decoration:underline">Log In</a>  
-  </p>  
-</div>  
-</div>  <!-- SHOPPING CART -->  <div class="modal" id="cartModal">  
-<div class="modal-panel">  
-  <button class="close-modal" data-close="cartModal">×</button>  
-  <h2>Shopping Cart</h2>  
-  <div id="cartItems"></div>  
-  <div class="cart-total">  
-    <span>Total</span>  
-    <span id="cartTotal">₱0.00</span>  
-  </div>  
-  <p class="form-message">Delivery fees will be confirmed during order processing.</p>  
-  <button class="btn" id="checkoutButton" style="width:100%">  
-    Proceed to Checkout  
-  </button>  
-</div>  
-</div>  <!-- CHECKOUT -->  <div class="modal" id="checkoutModal">  
-<div class="modal-panel">  
-  <button class="close-modal" data-close="checkoutModal">×</button>  
-  <h2>Checkout</h2>  
-  <p class="form-message">Please provide your complete delivery details.</p>    <div class="field">  
-    <label>Full Name</label>  
-    <input id="customerName" required>  
-  </div>  
-  <div class="field">  
-    <label>Contact Number</label>  
-    <input id="customerPhone" type="tel" required>  
-  </div>  
-  <div class="field">  
-    <label>Email Address</label>  
-    <input id="customerEmail" type="email" required>  
-  </div>  
-  <div class="field">  
-    <label>Complete Delivery Address</label>  
-    <textarea id="customerAddress" required placeholder="House number, street, barangay, city, province, postal code"></textarea>  
-  </div>    <div class="field">  
-    <label>Preferred Logistics Partner</label>  
-    <select id="courierSelect">  
-      <option>Flash Express</option>  
-      <option>Ninja Van</option>  
-      <option>LBC</option>  
-      <option>J&T Express</option>  
-      <option>To be confirmed</option>  
-    </select>  
-  </div>    <div class="field">  
-    <label>Payment Method</label>  
-    <select id="paymentSelect">  
-      <option>GCash</option>  
-      <option>Maya</option>  
-      <option>Bank Transfer</option>  
-    </select>  
-  </div>    <div class="payment-qr">  
-    <div>  
-      <img src="gcash.png" alt="GCash QR Code">  
-      <small>GCash QR</small>  
-    </div>  
-    <div>  
-      <img src="maya.jpg" alt="Maya QR Code">  
-      <small>Maya QR</small>  
-    </div>  
-  </div>    <div class="field">  
-    <label>Payment Reference Number</label>  
-    <input id="paymentReference" placeholder="Enter after payment">  
-  </div>    <div class="check-panel">  
-    <label>  
-      <input type="checkbox" id="orderAgreement">  
-      I confirm my order details and agree to the ordering, shipping,  
-      and return policies.  
-    </label>  
-  </div>    <button class="btn" id="placeOrder" style="width:100%">  
-    Place Order Request  
-  </button>  
-  <p class="form-message" id="checkoutMessage"></p>  
-  <p class="form-message">  
-    Payment is subject to manual verification by JNHJ Furnishings Co.  
-  </p>  
-</div>  
-</div>  <!-- CUSTOMER ACCOUNT -->  <div class="modal" id="accountModal">  
-<div class="modal-panel">  
-  <button class="close-modal" data-close="accountModal">×</button>  
-  <h2>My Account</h2>  
-  <p id="accountEmail"></p>  
-  <h3>My Orders</h3>  
-  <div id="myOrders">Loading orders...</div>  
-</div>  
-</div>  <!-- PRODUCT DETAILS -->  <div class="modal" id="productModal">  
-<div class="modal-panel">  
-  <button class="close-modal" data-close="productModal">×</button>  
-  <div id="productDetails"></div>  
-</div>  
-</div>  
-'''  
-<script type="module">  
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";  import {
-getAuth,
-createUserWithEmailAndPassword,
-signInWithEmailAndPassword,
-signOut,
-onAuthStateChanged
+    <p class="agreement-description">
+      Before entering our store, please review and accept
+      our Terms and Conditions and Privacy Policy.
+    </p>
+
+    <div class="agreement-checkboxes">
+
+      <label>
+        <input type="checkbox" id="acceptTerms">
+        <span>
+          I have read and agree to the
+          <a href="terms.html" target="_blank">Terms and Conditions</a>.
+        </span>
+      </label>
+
+      <label>
+        <input type="checkbox" id="acceptPrivacy">
+        <span>
+          I acknowledge the
+          <a href="privacy.html" target="_blank">Privacy Policy</a>.
+        </span>
+      </label>
+
+    </div>
+
+    <button id="enterStore" disabled>
+      AGREE & ENTER STORE
+    </button>
+
+    <p class="agreement-note">
+      Both checkboxes are required to enter the website.
+    </p>
+
+  </div>
+
+</div>
+
+
+<!-- WEBSITE HEADER -->
+<header class="main-header">
+
+  <div class="header-container">
+
+    <a href="index.html" class="brand">
+
+      <img src="images/logo.png" alt="Forma Doppia">
+
+      <div>
+        <h2>FORMA DOPPIA</h2>
+        <small>STEP UP YOUR COMFORT</small>
+      </div>
+
+    </a>
+
+
+    <button class="menu-toggle" id="menuToggle"
+      aria-label="Toggle navigation">
+      ☰
+    </button>
+
+
+    <nav class="navigation" id="navigation">
+
+      <a href="index.html" class="active">Home</a>
+
+      <a href="products.html">Products</a>
+
+      <a href="about.html">About Us</a>
+
+      <a href="how-to-order.html">How to Order</a>
+
+      <a href="delivery.html">Delivery</a>
+
+      <a href="contact.html">Contact</a>
+
+      <a href="faq.html">FAQs</a>
+
+      <a href="account.html" id="accountNav">
+        My Account
+      </a>
+
+      <a href="cart.html" class="cart-navigation">
+        Cart (<span id="cartCount">0</span>)
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+<!-- MAIN CONTENT -->
+<main>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+      <p class="eyebrow">JNHJ FURNISHINGS CO.</p>
+
+      <h1>
+        Step Up Your
+        <span>Comfort.</span>
+      </h1>
+
+      <p>
+        Discover a unique combination of functionality,
+        modern aesthetics, comfort, and practicality.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="products.html" class="btn-primary">
+          SHOP NOW
+        </a>
+
+        <a href="about.html" class="btn-secondary">
+          DISCOVER OUR STORY
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PROMOTIONAL ANNOUNCEMENT -->
+  <section class="announcement">
+
+    <p>
+      ✦ WELCOME TO FORMA DOPPIA
+      <span>Discover furniture designed for everyday living.</span>
+    </p>
+
+  </section>
+
+
+  <!-- INTRODUCTION -->
+  <section class="introduction section-padding">
+
+    <div class="section-heading">
+
+      <p class="eyebrow">FORM MEETS FUNCTION</p>
+
+      <h2>
+        More Than a Seat.
+        <span>A Smarter Way to Live.</span>
+      </h2>
+
+      <p>
+        Forma Doppia brings together style, comfort,
+        and functionality through a versatile furniture design
+        created for modern living spaces.
+      </p>
+
+      <a href="about.html" class="text-link">
+        LEARN MORE ABOUT US →
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- FEATURED PRODUCTS -->
+  <section class="featured-section section-padding">
+
+    <div class="section-title">
+
+      <div>
+        <p class="eyebrow">OUR COLLECTION</p>
+        <h2>Featured Products</h2>
+      </div>
+
+      <a href="products.html" class="text-link">
+        VIEW ALL PRODUCTS →
+      </a>
+
+    </div>
+
+    <div class="product-grid" id="featuredProducts">
+
+      <!-- Products will be loaded through JavaScript -->
+
+      <div class="product-loading">
+        Loading products...
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- BRAND STORY BANNER -->
+  <section class="brand-banner">
+
+    <div class="brand-banner-content">
+
+      <p class="eyebrow">THE IDEA BEHIND THE NAME</p>
+
+      <h2>Forma Doppia</h2>
+
+      <p>
+        Inspired by the Italian words "forma" and "doppia",
+        representing form and double functionality.
+
+        Our goal is to transform ordinary spaces into
+        comfortable, stylish, and functional environments.
+      </p>
+
+      <a href="about.html" class="btn-primary">
+        OUR STORY
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- WHY CHOOSE US -->
+  <section class="benefits-section section-padding">
+
+    <div class="section-title centered">
+
+      <p class="eyebrow">WHY FORMA DOPPIA</p>
+
+      <h2>Designed With Purpose</h2>
+
+    </div>
+
+    <div class="benefits-grid">
+
+      <article class="benefit-card">
+        <span>01</span>
+        <h3>Functionality</h3>
+        <p>
+          Practical furniture designed to serve
+          everyday needs.
+        </p>
+      </article>
+
+      <article class="benefit-card">
+        <span>02</span>
+        <h3>Comfort</h3>
+        <p>
+          Bringing convenience and comfort
+          into your living space.
+        </p>
+      </article>
+
+      <article class="benefit-card">
+        <span>03</span>
+        <h3>Modern Design</h3>
+        <p>
+          A versatile aesthetic that complements
+          different interior styles.
+        </p>
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- CUSTOMER REVIEWS -->
+  <section class="reviews-section section-padding">
+
+    <div class="section-title centered">
+
+      <p class="eyebrow">CUSTOMER EXPERIENCE</p>
+
+      <h2>What Our Customers Say</h2>
+
+    </div>
+
+    <div id="featuredReviews" class="reviews-grid">
+
+      <p>
+        Customer reviews will appear here once
+        they are submitted and approved.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- NEWSLETTER / CUSTOMER CARE -->
+  <section class="customer-care-banner">
+
+    <div>
+      <p class="eyebrow">WE ARE HERE TO HELP</p>
+
+      <h2>Need Assistance?</h2>
+
+      <p>
+        Have questions about our products,
+        orders, or delivery?
+      </p>
+
+      <a href="contact.html" class="btn-primary">
+        CONTACT CUSTOMER CARE
+      </a>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="main-footer">
+
+  <div class="footer-container">
+
+    <div class="footer-brand">
+
+      <img src="images/logo.png" alt="Forma Doppia">
+
+      <h2>FORMA DOPPIA</h2>
+
+      <p>STEP UP YOUR COMFORT</p>
+
+      <p>
+        Furniture that combines functionality,
+        comfort, and modern aesthetics.
+      </p>
+
+    </div>
+
+
+    <div class="footer-links">
+
+      <h3>QUICK LINKS</h3>
+
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="about.html">About Us</a>
+      <a href="how-to-order.html">How to Order</a>
+      <a href="delivery.html">Delivery Information</a>
+
+    </div>
+
+
+    <div class="footer-links">
+
+      <h3>CUSTOMER SERVICE</h3>
+
+      <a href="contact.html">Contact Us</a>
+      <a href="faq.html">FAQs</a>
+      <a href="shipping.html">Shipping Policy</a>
+      <a href="returns.html">Returns & Refunds</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="privacy.html">Privacy Policy</a>
+
+    </div>
+
+
+    <div class="footer-links">
+
+      <h3>FOLLOW US</h3>
+
+      <a href="https://www.facebook.com/profile.php?id=61574262187679"
+        target="_blank" rel="noopener">
+        Facebook
+      </a>
+
+      <a href="https://www.instagram.com/jnhjfurnishingsco"
+        target="_blank" rel="noopener">
+        Instagram
+      </a>
+
+      <a href="https://www.tiktok.com/@jnhj.furnishings"
+        target="_blank" rel="noopener">
+        TikTok
+      </a>
+
+      <h3>CONTACT</h3>
+
+      <a href="mailto:jnhjfurnishingscompany@gmail.com">
+        Email Us
+      </a>
+
+      <a href="tel:09108222830">
+        0910 822 2830
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <div class="footer-bottom">
+
+    <p>
+      © <span id="currentYear"></span>
+      JNHJ Furnishings Co. All Rights Reserved.
+    </p>
+
+    <p>
+      Forma Doppia | Step Up Your Comfort
+    </p>
+
+  </div>
+
+</footer>
+
+
+<!-- WELCOME DISCOUNT POPUP -->
+<div id="welcomePopup" class="welcome-popup">
+
+  <div class="welcome-popup-content">
+
+    <button id="closeWelcome" class="popup-close">
+      ×
+    </button>
+
+    <p class="eyebrow">A WARM WELCOME</p>
+
+    <h2>Welcome to Forma Doppia!</h2>
+
+    <p>
+      Explore our furniture collection and discover
+      a more comfortable way to live.
+    </p>
+
+    <a href="products.html" class="btn-primary">
+      EXPLORE PRODUCTS
+    </a>
+
+  </div>
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+<script type="module" src="js/app.js"></script>
+
+</body>
+</html>
+
+
+<style>
+
+/* ==========================================
+   FORMA DOPPIA
+   PART 2 - COMPLETE CSS DESIGN
+   Green and Brown Theme
+========================================== */
+
+/* COLOR VARIABLES */
+
+:root {
+  --green: #294b36;
+  --dark-green: #1d3527;
+  --light-green: #e8eee5;
+  --brown: #9a704d;
+  --dark-brown: #725034;
+  --cream: #f7f4ed;
+  --white: #ffffff;
+  --dark: #252820;
+  --gray: #777777;
+  --border: #deded5;
+  --shadow: 0 5px 20px rgba(0,0,0,.08);
+}
+
+/* GLOBAL SETTINGS */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+section {
+  padding: 65px 6%;
+}
+
+/* SECTION TITLES */
+
+.section-title {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.section-title h2 {
+  color: var(--green);
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.section-title p {
+  color: var(--gray);
+  font-size: 14px;
+}
+
+/* HEADER AND NAVIGATION */
+
+header {
+  width: 100%;
+  background: var(--green);
+  color: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow);
+}
+
+.navbar {
+  min-height: 75px;
+  padding: 12px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.logo img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 13px;
+  transition: .3s;
+}
+
+.nav-links a:hover {
+  color: #d7bd91;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 26px;
+}
+
+/* BUTTONS */
+
+.btn {
+  display: inline-block;
+  padding: 12px 23px;
+  border: none;
+  border-radius: 5px;
+  background: var(--green);
+  color: white;
+  font-weight: bold;
+  transition: .3s;
+}
+
+.btn:hover {
+  background: var(--dark-green);
+  transform: translateY(-2px);
+}
+
+.btn-brown {
+  background: var(--brown);
+}
+
+.btn-brown:hover {
+  background: var(--dark-brown);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--green);
+  color: var(--green);
+}
+
+.btn-outline:hover {
+  background: var(--green);
+  color: white;
+}
+
+/* HERO / COVER */
+
+.hero {
+  min-height: 520px;
+  padding: 0 7%;
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(
+      rgba(20,35,25,.55),
+      rgba(20,35,25,.55)
+    ),
+    url("images/cover.png") center/cover no-repeat;
+  color: white;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero h1 {
+  font-size: clamp(35px, 6vw, 65px);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 17px;
+  margin-bottom: 25px;
+}
+
+/* SEARCH BAR */
+
+.search-container {
+  max-width: 650px;
+  margin: 30px auto;
+  display: flex;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.search-container input {
+  flex: 1;
+  min-width: 0;
+  padding: 15px;
+  border: none;
+  outline: none;
+}
+
+.search-container button {
+  padding: 0 22px;
+  border: none;
+  background: var(--green);
+  color: white;
+}
+
+/* PRODUCT GRID */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.product-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: .3s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,.12);
+}
+
+.product-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  background: #eee;
+}
+
+.product-info {
+  padding: 20px;
+}
+
+.product-info h3 {
+  color: var(--green);
+  margin-bottom: 7px;
+}
+
+.product-info p {
+  color: var(--gray);
+  font-size: 14px;
+}
+
+.product-price {
+  font-weight: bold;
+  color: var(--brown);
+  margin: 10px 0 15px;
+  font-size: 18px;
+}
+
+/* PRODUCT FILTERS */
+
+.product-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.filter-btn {
+  padding: 9px 18px;
+  border: 1px solid var(--green);
+  background: transparent;
+  color: var(--green);
+  border-radius: 25px;
+  transition: .3s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--green);
+  color: white;
+}
+
+/* ABOUT SECTION */
+
+.about-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.about-container img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.about-content h2 {
+  color: var(--green);
+  margin-bottom: 15px;
+}
+
+.about-content p {
+  color: var(--gray);
+}
+
+/* HOW TO ORDER */
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.step-card {
+  background: white;
+  padding: 25px 15px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+.step-card h3 {
+  color: var(--green);
+  margin-bottom: 8px;
+}
+
+.step-card p {
+  font-size: 14px;
+  color: var(--gray);
+}
+
+.step-card .step-number {
+  width: 45px;
+  height: 45px;
+  background: var(--green);
+  color: white;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 15px;
+  font-weight: bold;
+}
+
+/* SHOPPING CART */
+
+.cart-container {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.cart-total {
+  text-align: right;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* CHECKOUT FORM */
+
+.checkout-container {
+  max-width: 750px;
+  margin: auto;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 7px;
+  font-weight: bold;
+  color: var(--green);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  outline-color: var(--green);
+  background: white;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+/* PAYMENT OPTIONS */
+
+.payment-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.payment-option {
+  padding: 15px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-align: center;
+  background: white;
+}
+
+.payment-option:has(input:checked) {
+  border: 2px solid var(--green);
+  background: var(--light-green);
+}
+
+.payment-option img {
+  width: 100%;
+  height: 55px;
+  object-fit: contain;
+  margin: 10px 0;
+}
+
+/* LOGISTICS */
+
+.logistics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  align-items: center;
+}
+
+.logistics-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.logistics-card img {
+  width: 100%;
+  height: 65px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+/* FAQ / TERMS / PRIVACY */
+
+.accordion-container {
+  max-width: 850px;
+  margin: auto;
+}
+
+.accordion-item {
+  background: white;
+  margin-bottom: 12px;
+  border-radius: 7px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.accordion-header {
+  width: 100%;
+  padding: 18px;
+  border: none;
+  background: white;
+  color: var(--green);
+  font-weight: bold;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion-header:hover {
+  background: var(--light-green);
+}
+
+.accordion-content {
+  display: none;
+  padding: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.accordion-item.active .accordion-content {
+  display: block;
+}
+
+/* CONTACT */
+
+.contact-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.contact-card {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+.contact-card h3 {
+  color: var(--green);
+  margin-bottom: 15px;
+}
+
+.contact-card a {
+  color: var(--brown);
+  overflow-wrap: anywhere;
+}
+
+/* FOOTER */
+
+footer {
+  background: var(--dark-green);
+  color: white;
+  padding: 45px 6% 20px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.footer-grid h3 {
+  margin-bottom: 15px;
+}
+
+.footer-grid a {
+  display: block;
+  margin-bottom: 8px;
+  color: #ddd;
+  font-size: 14px;
+}
+
+.footer-grid a:hover {
+  color: #d7bd91;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.2);
+  padding-top: 20px;
+  text-align: center;
+  font-size: 13px;
+}
+
+/* MODALS */
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0,0,0,.65);
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  background: white;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 30px;
+  border-radius: 12px;
+  position: relative;
+}
+
+.modal-content h2 {
+  color: var(--green);
+}
+
+.close-modal {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  border: none;
+  background: none;
+  font-size: 25px;
+}
+
+/* ==========================================
+   TABLET RESPONSIVENESS
+========================================== */
+
+@media (max-width: 900px) {
+
+  .nav-links {
+    gap: 12px;
+  }
+
+  .nav-links a {
+    font-size: 11px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .logistics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+/* ==========================================
+   MOBILE RESPONSIVENESS
+========================================== */
+
+@media (max-width: 650px) {
+
+  section {
+    padding: 45px 5%;
+  }
+
+  .navbar {
+    min-height: 65px;
+    flex-wrap: wrap;
+  }
+
+  .menu-toggle {
+    display: block;
+    order: 3;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    width: 100%;
+    background: var(--dark-green);
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+  }
+
+  .logo {
+    font-size: 16px;
+  }
+
+  .logo img {
+    width: 38px;
+    height: 38px;
+  }
+
+  .nav-actions {
+    gap: 6px;
+  }
+
+  .nav-actions .btn {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  .hero {
+    min-height: 430px;
+    padding: 0 6%;
+    background-position: center;
+  }
+
+  .hero h1 {
+    font-size: 37px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .section-title h2 {
+    font-size: 25px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .product-card img {
+    height: 155px;
+  }
+
+  .product-info {
+    padding: 12px;
+  }
+
+  .product-info h3 {
+    font-size: 14px;
+  }
+
+  .product-info p {
+    font-size: 12px;
+  }
+
+  .product-price {
+    font-size: 15px;
+  }
+
+  .product-info .btn {
+    width: 100%;
+    padding: 9px 5px;
+    font-size: 12px;
+  }
+
+  .about-container,
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+
+  .steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .step-card {
+    padding: 18px 10px;
+  }
+
+  .payment-options {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .checkout-container {
+    padding: 20px 15px;
+  }
+
+  .cart-container {
+    padding: 15px;
+  }
+
+  .cart-item {
+    flex-wrap: wrap;
+  }
+
+  .search-container {
+    margin: 20px auto;
+  }
+
+  .search-container input {
+    padding: 12px;
+  }
+
+  .search-container button {
+    padding: 0 14px;
+  }
+
+  .modal-content {
+    padding: 25px 18px;
+  }
+
+}
+
+/* SMALL MOBILE */
+
+@media (max-width: 360px) {
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .logo {
+    font-size: 14px;
+  }
+
+  .nav-actions .btn {
+    padding: 7px;
+    font-size: 10px;
+  }
+
+}
+
+/* END OF PART 2 */
+
+</style>
+
+
+<!-- =================================
+     FORMA DOPPIA - PART 3
+     MAIN HTML STRUCTURE
+================================= -->
+
+<!-- HEADER -->
+<header>
+  <nav class="navbar">
+
+    <a href="#home" class="logo">
+      <img src="images/logo.png" alt="Forma Doppia Logo">
+      <span>FORMA DOPPIA</span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle">☰</button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#how-to-order">How to Order</a></li>
+      <li><a href="#delivery">Delivery</a></li>
+      <li><a href="#faqs">FAQs</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="btn" onclick="openLogin()">Sign In</button>
+      <a href="#cart" class="btn btn-brown">Cart 🛒</a>
+    </div>
+
+  </nav>
+</header>
+
+<!-- HOME -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>Step Up Your Comfort</h1>
+
+    <p>
+      Discover functional and stylish furniture
+      designed to bring comfort, convenience,
+      and creativity into your home.
+    </p>
+
+    <a href="#products" class="btn btn-brown">
+      Shop Now
+    </a>
+  </div>
+</section>
+
+<!-- SEARCH -->
+<section id="products">
+
+  <div class="section-title">
+    <h2>Our Collection</h2>
+    <p>Discover our multifunctional furniture collection.</p>
+  </div>
+
+  <div class="search-container">
+    <input
+      type="text"
+      id="productSearch"
+      placeholder="Search products..."
+    >
+
+    <button onclick="searchProducts()">Search</button>
+  </div>
+
+  <div class="product-filters">
+    <button class="filter-btn active" onclick="filterProducts('all', this)">
+      All
+    </button>
+
+    <button class="filter-btn" onclick="filterProducts('chair', this)">
+      Chair Ladder
+    </button>
+  </div>
+
+  <div class="product-grid" id="productGrid">
+
+    <!-- PRODUCT 1 -->
+    <div class="product-card" data-name="Original Color" data-category="chair">
+
+      <img src="images/product-1.png" alt="Original Color">
+
+      <div class="product-info">
+        <h3>Original Color</h3>
+        <p>Classic natural wood finish.</p>
+        <div class="product-price">₱2,000</div>
+
+        <button class="btn" onclick="addToCart(1)">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+
+    <!-- PRODUCT 2 -->
+    <div class="product-card" data-name="Whitewash Wood" data-category="chair">
+
+      <img src="images/product-2.png" alt="Whitewash Wood">
+
+      <div class="product-info">
+        <h3>Whitewash Wood</h3>
+        <p>Clean and elegant white finish.</p>
+        <div class="product-price">₱2,300</div>
+
+        <button class="btn" onclick="addToCart(2)">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+
+    <!-- PRODUCT 3 -->
+    <div class="product-card" data-name="Walnut Finish" data-category="chair">
+
+      <img src="images/product-3.png" alt="Walnut Finish">
+
+      <div class="product-info">
+        <h3>Walnut Finish</h3>
+        <p>Warm and sophisticated finish.</p>
+        <div class="product-price">₱2,300</div>
+
+        <button class="btn" onclick="addToCart(3)">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+
+    <!-- PRODUCT 4 -->
+    <div class="product-card" data-name="Sage Green" data-category="chair">
+
+      <img src="images/product-4.png" alt="Sage Green">
+
+      <div class="product-info">
+        <h3>Sage Green</h3>
+        <p>A fresh and modern green finish.</p>
+        <div class="product-price">₱2,300</div>
+
+        <button class="btn" onclick="addToCart(4)">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+
+    <!-- PRODUCT 5 -->
+    <div class="product-card" data-name="Matte Black" data-category="chair">
+
+      <img src="images/product-5.png" alt="Matte Black">
+
+      <div class="product-info">
+        <h3>Matte Black</h3>
+        <p>Minimalist and modern design.</p>
+        <div class="product-price">₱2,300</div>
+
+        <button class="btn" onclick="addToCart(5)">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+
+    <!-- PRODUCT 6 -->
+    <div class="product-card" data-name="With Cushion" data-category="chair">
+
+      <img src="images/product-6.png" alt="With Cushion">
+
+      <div class="product-info">
+        <h3>With Cushion</h3>
+        <p>Additional comfort with cushion.</p>
+        <div class="product-price">₱2,500</div>
+
+        <button class="btn" onclick="addToCart(6)">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+
+  <div class="about-container">
+
+    <div>
+      <img src="images/cover.png" alt="Forma Doppia Furniture">
+    </div>
+
+    <div class="about-content">
+
+      <h2>About Forma Doppia</h2>
+
+      <p>
+        Forma Doppia is a furniture brand focused on
+        functional and innovative furniture designs.
+      </p>
+
+      <br>
+
+      <p>
+        Our chair-ladder concept combines two functions
+        in one product, providing convenience,
+        practicality, and comfort.
+      </p>
+
+      <br>
+
+      <h3>Our Tagline</h3>
+
+      <p><strong>Step Up Your Comfort.</strong></p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- HOW TO ORDER -->
+<section id="how-to-order">
+
+  <div class="section-title">
+    <h2>How to Order</h2>
+    <p>Follow these simple steps to place your order.</p>
+  </div>
+
+  <div class="steps-grid">
+
+    <div class="step-card">
+      <div class="step-number">1</div>
+      <h3>Choose Product</h3>
+      <p>Browse and select your preferred furniture.</p>
+    </div>
+
+    <div class="step-card">
+      <div class="step-number">2</div>
+      <h3>Add to Cart</h3>
+      <p>Add your selected item to your shopping cart.</p>
+    </div>
+
+    <div class="step-card">
+      <div class="step-number">3</div>
+      <h3>Checkout</h3>
+      <p>Enter your information and delivery details.</p>
+    </div>
+
+    <div class="step-card">
+      <div class="step-number">4</div>
+      <h3>Confirm Order</h3>
+      <p>Choose your payment method and submit your order.</p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- SHOPPING CART -->
+<section id="cart">
+
+  <div class="section-title">
+    <h2>Shopping Cart</h2>
+    <p>Review your selected products.</p>
+  </div>
+
+  <div class="cart-container">
+
+    <div id="cartItems">
+      <p>Your cart is currently empty.</p>
+    </div>
+
+    <div class="cart-total">
+      Total: <span id="cartTotal">₱0</span>
+    </div>
+
+    <br>
+
+    <button class="btn" onclick="goToCheckout()">
+      Proceed to Checkout
+    </button>
+
+    <button class="btn btn-outline" onclick="clearCart()">
+      Clear Cart
+    </button>
+
+  </div>
+
+</section>
+
+<!-- CHECKOUT -->
+<section id="checkout">
+
+  <div class="section-title">
+    <h2>Checkout</h2>
+    <p>Complete your order information.</p>
+  </div>
+
+  <div class="checkout-container">
+
+    <form id="checkoutForm">
+
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" id="customerName" required>
+      </div>
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="customerEmail" required>
+      </div>
+
+      <div class="form-group">
+        <label>Contact Number</label>
+        <input type="tel" id="customerPhone" required>
+      </div>
+
+      <div class="form-group">
+        <label>Complete Delivery Address</label>
+        <textarea id="customerAddress" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>City / Municipality</label>
+        <input type="text" id="customerCity" required>
+      </div>
+
+      <div class="form-group">
+        <label>Province</label>
+        <input type="text" id="customerProvince" required>
+      </div>
+
+      <div class="form-group">
+        <label>Postal Code</label>
+        <input type="text" id="customerPostal" required>
+      </div>
+
+      <div class="form-group">
+        <label>Preferred Logistics</label>
+
+        <select id="deliveryOption" required>
+          <option value="">Select Delivery Service</option>
+          <option value="Flash Express">Flash Express</option>
+          <option value="Ninja Van">Ninja Van</option>
+          <option value="LBC">LBC</option>
+          <option value="J&T Express">J&T Express</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Order Notes (Optional)</label>
+        <textarea id="orderNotes"></textarea>
+      </div>
+
+      <!-- PAYMENT METHODS -->
+      <h3>Payment Method</h3>
+
+      <div class="payment-options">
+
+        <label class="payment-option">
+          <input type="radio" name="paymentMethod" value="GCash" required>
+          <img src="images/gcash.png" alt="GCash">
+          <span>GCash</span>
+        </label>
+
+        <label class="payment-option">
+          <input type="radio" name="paymentMethod" value="Maya">
+          <img src="images/maya.jpg" alt="Maya">
+          <span>Maya</span>
+        </label>
+
+        <label class="payment-option">
+          <input type="radio" name="paymentMethod" value="COD">
+          <span>💵</span>
+          <p>Cash on Delivery</p>
+        </label>
+
+      </div>
+
+      <br>
+
+      <div id="onlinePaymentDetails" style="display:none;">
+
+        <div class="form-group">
+          <label>Payment Reference Number</label>
+          <input type="text" id="paymentReference">
+        </div>
+
+        <div class="form-group">
+          <label>Payment Screenshot</label>
+          <input
+            type="file"
+            id="paymentScreenshot"
+            accept="image/*"
+          >
+        </div>
+
+        <p>
+          Please submit your payment details for verification.
+        </p>
+
+      </div>
+
+      <br>
+
+      <div class="cart-total">
+        Order Total: <span id="checkoutTotal">₱0</span>
+      </div>
+
+      <br>
+
+      <button type="submit" class="btn">
+        Place Order
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+
+<!-- DELIVERY -->
+<section id="delivery">
+
+  <div class="section-title">
+    <h2>Delivery Partners</h2>
+    <p>Available logistics options for your orders.</p>
+  </div>
+
+  <div class="logistics-grid">
+
+    <div class="logistics-card">
+      <img src="images/flash.jpg" alt="Flash Express">
+      <h3>Flash Express</h3>
+    </div>
+
+    <div class="logistics-card">
+      <img src="images/ninja.jpg" alt="Ninja Van">
+      <h3>Ninja Van</h3>
+    </div>
+
+    <div class="logistics-card">
+      <img src="images/lbc.jpg" alt="LBC">
+      <h3>LBC</h3>
+    </div>
+
+    <div class="logistics-card">
+      <img src="images/j&t.jpg" alt="J&T Express">
+      <h3>J&T Express</h3>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FAQ -->
+<section id="faqs">
+
+  <div class="section-title">
+    <h2>Frequently Asked Questions</h2>
+    <p>Find answers to common questions.</p>
+  </div>
+
+  <div class="accordion-container">
+
+    <div class="accordion-item">
+      <button class="accordion-header">
+        What is Forma Doppia?
+        <span>+</span>
+      </button>
+      <div class="accordion-content">
+        Forma Doppia offers multifunctional furniture
+        that combines comfort and practicality.
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">
+        How can I place an order?
+        <span>+</span>
+      </button>
+      <div class="accordion-content">
+        Choose your preferred product, add it to your
+        cart, and complete the checkout form.
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">
+        What payment methods are accepted?
+        <span>+</span>
+      </button>
+      <div class="accordion-content">
+        We offer GCash, Maya, and Cash on Delivery
+        subject to availability and order confirmation.
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">
+        What delivery services are available?
+        <span>+</span>
+      </button>
+      <div class="accordion-content">
+        Available delivery options include Flash Express,
+        Ninja Van, LBC, and J&T Express.
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- TERMS AND CONDITIONS -->
+<section id="terms">
+
+  <div class="section-title">
+    <h2>Terms and Conditions</h2>
+    <p>Please review our ordering policies.</p>
+  </div>
+
+  <div class="accordion-container">
+
+    <div class="accordion-item">
+      <button class="accordion-header">
+        1. General Terms
+        <span>+</span>
+      </button>
+      <div class="accordion-content">
+        By using the Forma Doppia website, customers
+        agree to follow the policies and guidelines
+        presented on this website.
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">
+        2. Orders and Confirmation
+        <span>+</span>
+      </button>
+      <div class="accordion-content">
+        All submitted orders are subject to review
+        and confirmation before processing.
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">
+        3. Payments
+        <span>+</span>
+      </button>
+      <div class="accordion-content">
+        Customers must provide accurate payment
+        information. Online payments may require
+        verification before order processing.
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">
+        4. Delivery
+        <span>+</span>
+      </button>
+      <div class="accordion-content">
+        Delivery schedules depend on the selected
+        logistics provider and destination.
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- PRIVACY POLICY -->
+<section id="privacy">
+
+  <div class="section-title">
+    <h2>Privacy Policy</h2>
+    <p>How we handle customer information.</p>
+  </div>
+
+  <div class="accordion-container">
+
+    <div class="accordion-item">
+      <button class="accordion-header">
+        1. Information Collection
+        <span>+</span>
+      </button>
+      <div class="accordion-content">
+        We may collect customer names, contact details,
+        email addresses, and delivery information
+        necessary for order processing.
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">
+        2. Use of Information
+        <span>+</span>
+      </button>
+      <div class="accordion-content">
+        Customer information is used for order
+        processing, communication, and delivery
+        coordination.
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">
+        3. Data Protection
+        <span>+</span>
+      </button>
+      <div class="accordion-content">
+        We aim to protect customer information through
+        appropriate security measures and restricted access.
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">
+        4. Customer Rights
+        <span>+</span>
+      </button>
+      <div class="accordion-content">
+        Customers may request access to or correction
+        of their personal information through our
+        official contact channels.
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+
+  <div class="section-title">
+    <h2>Contact Us</h2>
+    <p>We would love to hear from you.</p>
+  </div>
+
+  <div class="contact-container">
+
+    <div class="contact-card">
+      <h3>Customer Support</h3>
+
+      <p><strong>Company:</strong> JNHJ Furnishings Co.</p>
+
+      <p>
+        <strong>Email:</strong>
+        jnhjfurnishingscompany@gmail.com
+      </p>
+
+      <p>
+        <strong>Location:</strong>
+        Santiago, Sta. Ana, Pampanga
+      </p>
+    </div>
+
+    <div class="contact-card">
+      <h3>Follow Us</h3>
+
+      <p>
+        Facebook:
+        <a href="https://www.facebook.com/profile.php?id=61574262187679" target="_blank">
+          JNHJ Furnishings
+        </a>
+      </p>
+
+      <p>
+        Instagram:
+        <a href="https://www.instagram.com/jnhjfurnishingsco/" target="_blank">
+          @jnhjfurnishingsco
+        </a>
+      </p>
+
+      <p>
+        TikTok:
+        <a href="https://www.tiktok.com/@jnhj.furnishings" target="_blank">
+          @jnhj.furnishings
+        </a>
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+  <div class="footer-grid">
+
+    <div>
+      <h3>FORMA DOPPIA</h3>
+      <p>Step Up Your Comfort.</p>
+      <p>Functional furniture for modern living.</p>
+    </div>
+
+    <div>
+      <h3>Quick Links</h3>
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#about">About Us</a>
+      <a href="#how-to-order">How to Order</a>
+    </div>
+
+    <div>
+      <h3>Customer Information</h3>
+      <a href="#faqs">FAQs</a>
+      <a href="#terms">Terms and Conditions</a>
+      <a href="#privacy">Privacy Policy</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 JNHJ Furnishings Co. All Rights Reserved.
+    <br>
+    FORMA DOPPIA | Step Up Your Comfort.
+  </div>
+
+</footer>
+
+<!-- LOGIN MODAL -->
+<div class="modal" id="loginModal">
+
+  <div class="modal-content">
+
+    <button class="close-modal" onclick="closeLogin()">×</button>
+
+    <h2>Sign In</h2>
+
+    <br>
+
+    <form id="loginForm">
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="loginEmail" required>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="loginPassword" required>
+      </div>
+
+      <button type="submit" class="btn">
+        Sign In
+      </button>
+
+    </form>
+
+    <br>
+
+    <p>
+      Don't have an account?
+      <button type="button" onclick="openSignup()">Create Account</button>
+    </p>
+
+  </div>
+
+</div>
+
+<!-- SIGNUP MODAL -->
+<div class="modal" id="signupModal">
+
+  <div class="modal-content">
+
+    <button class="close-modal" onclick="closeSignup()">×</button>
+
+    <h2>Create Account</h2>
+
+    <br>
+
+    <form id="signupForm">
+
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" id="signupName" required>
+      </div>
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="signupEmail" required>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="signupPassword" minlength="6" required>
+      </div>
+
+      <button type="submit" class="btn">
+        Create Account
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+<!-- ORDER SUCCESS MODAL -->
+<div class="modal" id="orderSuccessModal">
+
+  <div class="modal-content">
+
+    <h2>Thank You!</h2>
+
+    <p>Your order has been submitted successfully.</p>
+
+    <p>Our team will review your order.</p>
+
+    <br>
+
+    <button class="btn" onclick="closeOrderSuccess()">
+      Continue Shopping
+    </button>
+
+  </div>
+
+</div>
+
+<!-- END OF PART 3 -->
+
+
+<script type="module">
+/* =========================================
+   PART 4 + 5: JAVASCRIPT AND FIREBASE
+   FORMA DOPPIA
+========================================= */
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 
 import {
-getFirestore,
-doc,
-setDoc,
-addDoc,
-collection,
-getDocs,
-query,
-where,
-serverTimestamp
+  getFirestore,
+  collection,
+  addDoc,
+  serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
-/* ==================================
 
-1. FIREBASE CONFIGURATION
-   ================================== */
+/* =========================================
+   1. FIREBASE CONFIGURATION
+   ILAGAY DITO ANG EXISTING CONFIG MO
+========================================= */
 
 const firebaseConfig = {
-apiKey: "AIzaSyCFG89ZrF_SfNJfyAfX5IHZtMPYcCQY_Uo",
-authDomain: "forma-doppia.firebaseapp.com",
-projectId: "forma-doppia",
-storageBucket: "forma-doppia.firebasestorage.app",
-messagingSenderId: "785041343",
-appId: "1:785041343:web:d4b5d159542642aa78030a",
-measurementId: "G-T29DY5VE3B"
+  // Kopyahin dito ang buong existing firebaseConfig mo.
+  // Huwag maglagay ng bagong project configuration.
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-/* ==================================
-2. PRODUCT INFORMATION
-================================== */
+
+/* =========================================
+   2. PRODUCT LIST
+========================================= */
 
 const products = [
-{
-id:"FD001",
-name:"Original Color",
-image:"product-1.png",
-price:2000,
-category:"wood",
-description:"The original Forma Doppia finish."
-},
-{
-id:"FD002",
-name:"Whitewash Wood",
-image:"product-2.png",
-price:2300,
-category:"wood",
-description:"A light and elegant whitewash finish."
-},
-{
-id:"FD003",
-name:"Walnut Finish",
-image:"product-3.png",
-price:2300,
-category:"wood",
-description:"A warm walnut-inspired furniture finish."
-},
-{
-id:"FD004",
-name:"Sage Green",
-image:"product-4.png",
-price:2300,
-category:"color",
-description:"A contemporary sage green finish."
-},
-{
-id:"FD005",
-name:"Matte Black",
-image:"product-5.png",
-price:2300,
-category:"color",
-description:"A sleek and modern matte black finish."
-},
-{
-id:"FD006",
-name:"With Cushion",
-image:"product-6.png",
-price:2500,
-category:"cushion",
-description:"Forma Doppia with an added cushion."
-}
+  { id: 1, name: "Original Color", price: 2000, image: "images/product-1.png" },
+  { id: 2, name: "Whitewash Wood", price: 2300, image: "images/product-2.png" },
+  { id: 3, name: "Walnut Finish", price: 2300, image: "images/product-3.png" },
+  { id: 4, name: "Sage Green", price: 2300, image: "images/product-4.png" },
+  { id: 5, name: "Matte Black", price: 2300, image: "images/product-5.png" },
+  { id: 6, name: "With Cushion", price: 2500, image: "images/product-6.png" }
 ];
-
-const $ = id => document.getElementById(id);
-
-const peso = amount =>
-"₱" + Number(amount).toLocaleString("en-PH",{
-minimumFractionDigits:2,
-maximumFractionDigits:2
-});
-
-function safe(value){
-return String(value).replace(/[&<>"']/g, char => ({
-"&":"&",
-"<":"<",
-">":">",
-'"':""",
-"'":"'"
-})[char]);
-}
-
-function openModal(id){
-$(id).classList.add("show");
-}
-
-function closeModal(id){
-$(id).classList.remove("show");
-}
-
-/* ==================================
-3. OPENING CLICKWRAP AGREEMENT
-================================== */
-
-const AGREEMENT_VERSION = "2026-11-09-v1";
-
-const savedAgreement =
-localStorage.getItem("formaDoppiaAgreement");
-
-if(savedAgreement === AGREEMENT_VERSION){
-$("agreementScreen").style.display = "none";
-$("websiteContent").classList.remove("hidden");
-document.body.classList.remove("locked");
-}
-
-function checkAgreement(){
-$("enterStore").disabled = !(
-$("acceptTerms").checked &&
-$("acceptPrivacy").checked
-);
-}
-
-$("acceptTerms").addEventListener("change",checkAgreement);
-$("acceptPrivacy").addEventListener("change",checkAgreement);
-
-$("enterStore").addEventListener("click",()=>{
-if(!$("acceptTerms").checked ||
-!$("acceptPrivacy").checked){
-return;
-}
-
-localStorage.setItem(
-"formaDoppiaAgreement",
-AGREEMENT_VERSION
-);
-
-localStorage.setItem(
-"formaDoppiaAgreementDate",
-new Date().toISOString()
-);
-
-$("agreementScreen").style.display = "none";
-$("websiteContent").classList.remove("hidden");
-document.body.classList.remove("locked");
-});
-
-/* ==================================
-4. PRODUCT SEARCH AND FILTERS
-================================== */
-
-let activeFilter = "all";
-
-function renderProducts(){
-
-const search =
-$("searchInput").value.toLowerCase().trim();
-
-let list = products.filter(product => {
-
-const matchesSearch =  
-  product.name.toLowerCase().includes(search);  
-
-const matchesFilter =  
-  activeFilter === "all" ||  
-  product.category === activeFilter;  
-
-return matchesSearch && matchesFilter;
-
-});
-
-const sort = $("sortSelect").value;
-
-if(sort === "low"){
-list.sort((a,b)=>a.price-b.price);
-}
-
-if(sort === "high"){
-list.sort((a,b)=>b.price-a.price);
-}
-
-if(sort === "az"){
-list.sort((a,b)=>a.name.localeCompare(b.name));
-}
-
-$("noProducts").classList.toggle(
-"hidden",
-list.length !== 0
-);
-
-$("productGrid").innerHTML = list.map(product => `
-<article class="product-card">
-
-<div class="product-image">  
-    <img  
-      src="${product.image}"  
-      alt="${safe(product.name)}"  
-      loading="lazy"  
-    >  
-  </div>  
-
-  <div class="product-info">  
-    <h3>${safe(product.name)}</h3>  
-
-    <p>${safe(product.description)}</p>  
-
-    <div class="product-price">  
-      ${peso(product.price)}  
-    </div>  
-
-    <div class="product-buttons">  
-      <button  
-        class="btn"  
-        data-add="${product.id}"  
-      >  
-        Add to Cart  
-      </button>  
-
-      <button  
-        class="btn btn-outline"  
-        data-view="${product.id}"  
-      >  
-        View Details  
-      </button>  
-    </div>  
-  </div>  
-</article>
-
-`).join("");
-}
-
-$("searchInput").addEventListener("input",renderProducts);
-$("sortSelect").addEventListener("change",renderProducts);
-
-document.querySelectorAll(".filter-btn").forEach(button=>{
-button.addEventListener("click",()=>{
-document.querySelectorAll(".filter-btn")
-.forEach(b=>b.classList.remove("active"));
-
-button.classList.add("active");  
-activeFilter = button.dataset.filter;  
-
-renderProducts();
-
-});
-});
-
-/* ==================================
-5. SHOPPING CART
-================================== */
 
 let cart = [];
 
-try{
-cart = JSON.parse(
-localStorage.getItem("formaDoppiaCart") || "[]"
-);
 
-if(!Array.isArray(cart)) cart = [];
-}catch{
-cart = [];
+/* =========================================
+   3. HELPER FUNCTIONS
+========================================= */
+
+function peso(amount) {
+  return "₱" + Number(amount).toLocaleString("en-PH");
 }
 
-function saveCart(){
-localStorage.setItem(
-"formaDoppiaCart",
-JSON.stringify(cart)
-);
-
-$("cartCount").textContent =
-cart.reduce((sum,item)=>sum+item.quantity,0);
+function getElement(id) {
+  return document.getElementById(id);
 }
 
-function addToCart(id){
-
-const existing = cart.find(item=>item.id===id);
-
-if(existing){
-existing.quantity++;
-}else{
-cart.push({
-id:id,
-quantity:1
-});
+function showMessage(message) {
+  alert(message);
 }
 
-saveCart();
-renderCart();
-}
 
-function getTotal(){
-return cart.reduce((sum,item)=>{
-const product = products.find(p=>p.id===item.id);
+/* =========================================
+   4. SHOPPING CART
+========================================= */
 
-return sum + (  
-  product ? product.price * item.quantity : 0  
-);
+window.addToCart = function(productId) {
+  const product = products.find(item => item.id === Number(productId));
 
-},0);
-}
+  if (!product) return;
 
-function renderCart(){
+  const existing = cart.find(item => item.id === product.id);
 
-const validCart = cart.filter(item =>
-products.some(p=>p.id===item.id)
-);
+  if (existing) {
+    existing.quantity++;
+  } else {
+    cart.push({ ...product, quantity: 1 });
+  }
 
-cart = validCart;
-
-if(cart.length === 0){
-
-$("cartItems").innerHTML =  
-  "<p>Your shopping cart is empty.</p>";  
-
-$("cartTotal").textContent = peso(0);  
-$("checkoutButton").disabled = true;  
-
-saveCart();  
-return;
-
-}
-
-$("checkoutButton").disabled = false;
-
-$("cartItems").innerHTML = cart.map(item=>{
-
-const product = products.find(p=>p.id===item.id);  
-
-return `  
-  <div class="cart-line">  
-
-    <img src="${product.image}" alt="">  
-
-    <div>  
-      <strong>${safe(product.name)}</strong>  
-
-      <small>${peso(product.price)} each</small>  
-
-      <div class="cart-controls">  
-
-        <button data-dec="${product.id}">−</button>  
-
-        <span>${item.quantity}</span>  
-
-        <button data-inc="${product.id}">+</button>  
-
-        <button data-remove="${product.id}">  
-          Remove  
-        </button>  
-
-      </div>  
-    </div>  
-
-    <strong>  
-      ${peso(product.price*item.quantity)}  
-    </strong>  
-
-  </div>  
-`;
-
-}).join("");
-
-$("cartTotal").textContent = peso(getTotal());
-
-saveCart();
-}
-
-$("cartButton").addEventListener("click",()=>{
-renderCart();
-openModal("cartModal");
-});
-
-/* ==================================
-6. PRODUCT DETAILS
-================================== */
-
-function showProduct(id){
-
-const product = products.find(p=>p.id===id);
-
-if(!product) return;
-
-$("productDetails").innerHTML = `
-<img  
-src="${product.image}"  
-alt="${safe(product.name)}"  
-style="width:100%;max-height:280px;object-fit:contain;background:#f7f4ec"  
->
-
-<h2>${safe(product.name)}</h2>  
-
-<p>${safe(product.description)}</p>  
-
-<h3 style="color:#173d30">  
-  ${peso(product.price)}  
-</h3>  
-
-<button class="btn" id="detailAdd">  
-  Add to Cart  
-</button>
-
-`;
-
-openModal("productModal");
-
-$("detailAdd").addEventListener("click",()=>{
-addToCart(id);
-closeModal("productModal");
-});
-}
-
-/* ==================================
-7. SIGN UP AND LOGIN
-================================== */
-
-let authMode = "signup";
-let currentUser = null;
-
-function openAuth(mode){
-
-authMode = mode;
-
-$("authTitle").textContent =
-mode === "signup" ? "Create Account" : "Welcome Back";
-
-$("authSubmit").textContent =
-mode === "signup" ? "Create Account" : "Log In";
-
-$("signupAgreement").classList.toggle(
-"hidden",
-mode !== "signup"
-);
-
-$("authMessage").textContent = "";
-
-openModal("authModal");
-}
-
-$("authButton").addEventListener("click",()=>{
-openAuth("signup");
-});
-
-$("switchAuth").addEventListener("click",event=>{
-event.preventDefault();
-
-openAuth(
-authMode === "signup" ? "login" : "signup"
-);
-});
-
-function firebaseError(error){
-
-const messages = {
-"auth/email-already-in-use":"Email is already registered.",
-"auth/invalid-email":"Invalid email address.",
-"auth/weak-password":"Password must be at least 6 characters.",
-"auth/invalid-credential":"Incorrect email or password.",
-"auth/network-request-failed":"Please check your internet connection.",
-"permission-denied":"Database permission denied. Check Firestore Rules."
+  updateCart();
+  showMessage(product.name + " added to your cart!");
 };
 
-return messages[error.code] ||
-error.message ||
-"Something went wrong.";
+function updateCart() {
+  const cartItems = getElement("cartItems");
+  const cartTotal = getElement("cartTotal");
+  const cartCount = getElement("cartCount");
+
+  let total = 0;
+  let count = 0;
+
+  if (cartItems) {
+    cartItems.innerHTML = "";
+
+    if (cart.length === 0) {
+      cartItems.innerHTML = "<p>Your cart is empty.</p>";
+    }
+
+    cart.forEach(item => {
+      const subtotal = item.price * item.quantity;
+      total += subtotal;
+      count += item.quantity;
+
+      const row = document.createElement("div");
+      row.className = "cart-item";
+
+      row.innerHTML = `
+        <div>
+          <strong>${item.name}</strong>
+          <p>${peso(item.price)} × ${item.quantity}</p>
+          <strong>${peso(subtotal)}</strong>
+        </div>
+
+        <div class="cart-controls">
+          <button type="button" data-action="minus" data-id="${item.id}">−</button>
+          <span>${item.quantity}</span>
+          <button type="button" data-action="plus" data-id="${item.id}">+</button>
+          <button type="button" data-action="remove" data-id="${item.id}">Remove</button>
+        </div>
+      `;
+
+      cartItems.appendChild(row);
+    });
+  }
+
+  if (cartTotal) cartTotal.textContent = peso(total);
+  if (cartCount) cartCount.textContent = count;
 }
 
-$("authSubmit").addEventListener("click",async()=>{
+if (getElement("cartItems")) {
+  getElement("cartItems").addEventListener("click", function(event) {
+    const button = event.target.closest("button[data-action]");
+    if (!button) return;
 
-const email = $("authEmail").value.trim();
-const password = $("authPassword").value;
+    const id = Number(button.dataset.id);
+    const action = button.dataset.action;
+    const item = cart.find(product => product.id === id);
 
-if(!email || !password){
-$("authMessage").textContent =
-"Please enter your email and password.";
-return;
+    if (!item) return;
+
+    if (action === "plus") item.quantity++;
+    if (action === "minus") item.quantity--;
+
+    if (action === "remove" || item.quantity <= 0) {
+      cart = cart.filter(product => product.id !== id);
+    }
+
+    updateCart();
+  });
 }
 
-$("authSubmit").disabled = true;
-$("authMessage").textContent = "Please wait...";
-
-try{
-
-if(authMode === "signup"){  
-
-  if(  
-    !$("signupTerms").checked ||  
-    !$("signupPrivacy").checked  
-  ){  
-    $("authMessage").textContent =  
-      "Please accept both agreements.";  
-    return;  
-  }  
-
-  const credential =  
-    await createUserWithEmailAndPassword(  
-      auth,email,password  
-    );  
-
-  await setDoc(  
-    doc(db,"customers",credential.user.uid),  
-    {  
-      email:credential.user.email,  
-      termsAccepted:true,  
-      privacyAccepted:true,  
-      agreementVersion:AGREEMENT_VERSION,  
-      acceptedAt:serverTimestamp(),  
-      createdAt:serverTimestamp()  
-    }  
-  );  
-
-}else{  
-
-  await signInWithEmailAndPassword(  
-    auth,email,password  
-  );  
-
-}  
-
-$("authMessage").textContent = "Successful!";  
-
-setTimeout(()=>{  
-  closeModal("authModal");  
-},500);
-
-}catch(error){
-
-$("authMessage").textContent =  
-  firebaseError(error);
-
-}finally{
-
-$("authSubmit").disabled = false;
-
-}
-});
-}finally{
-
-$("authSubmit").disabled = false;
-
-}
-});
-
-/* ==================================
-8. AUTOMATIC LOGIN STATE
-================================== */
-
-onAuthStateChanged(auth,user=>{
-
-currentUser = user;
-
-$("authButton").classList.toggle(
-"hidden",!!user
-);
-
-$("accountButton").classList.toggle(
-"hidden",!user
-);
-
-$("logoutButton").classList.toggle(
-"hidden",!user
-);
-
-if(user){
-$("accountEmail").textContent =
-user.email || "Customer Account";
-}
-
-});
-
-/* ==================================
-9. LOGOUT
-================================== */
-
-$("logoutButton").addEventListener("click",async()=>{
-
-try{
-
-await signOut(auth);  
-
-alert("You have successfully logged out.");
-
-}catch(error){
-
-alert(firebaseError(error));
-
-}
-
-});
-
-/* ==================================
-10. CHECKOUT
-================================== */
-
-$("checkoutButton").addEventListener("click",()=>{
-
-if(!currentUser){
-
-closeModal("cartModal");  
-
-openAuth("login");  
-
-$("authMessage").textContent =  
-  "Please log in before checkout.";  
-
-return;
-
-}
-
-closeModal("cartModal");
-
-$("customerEmail").value =
-currentUser.email || "";
-
-openModal("checkoutModal");
-
-});
-
-/* ==================================
-11. SAVE ORDER TO FIRESTORE
-================================== */
-
-$("placeOrder").addEventListener("click",async()=>{
-
-if(!currentUser){
-$("checkoutMessage").textContent =
-"Please log in first.";
-return;
-}
-
-if(cart.length===0){
-$("checkoutMessage").textContent =
-"Your cart is empty.";
-return;
-}
-
-if(!$("orderAgreement").checked){
-$("checkoutMessage").textContent =
-"Please accept the order agreement.";
-return;
-}
-
-const name = $("customerName").value.trim();
-const phone = $("customerPhone").value.trim();
-const email = $("customerEmail").value.trim();
-const address = $("customerAddress").value.trim();
-
-if(!name || !phone || !email || !address){
-$("checkoutMessage").textContent =
-"Please complete all required information.";
-return;
-}
-
-const items = cart.map(item=>{
-
-const product =  
-  products.find(p=>p.id===item.id);  
-
-return {  
-  productId:product.id,  
-  productName:product.name,  
-  unitPrice:product.price,  
-  quantity:item.quantity,  
-  subtotal:product.price*item.quantity  
+window.clearCart = function() {
+  if (!confirm("Are you sure you want to clear your cart?")) return;
+  cart = [];
+  updateCart();
 };
 
-});
-const total = getTotal();
+window.goToCheckout = function() {
+  if (cart.length === 0) {
+    showMessage("Your cart is empty.");
+    return;
+  }
 
-$("placeOrder").disabled = true;
-$("checkoutMessage").textContent =
-"Submitting your order...";
+  const checkout = getElement("checkout");
 
-try{
+  if (checkout) {
+    checkout.scrollIntoView({ behavior: "smooth" });
+  }
+};
 
-console.log("AUTH UID:", currentUser?.uid);
-console.log("PAYMENT STATUS:", "pending");
-console.log("PAYMENT METHOD:", $("paymentSelect").value);
 
-const order = await addDoc(
-collection(db,"orders"),
-{
-userId:currentUser.uid,
+/* =========================================
+   5. PRODUCT SEARCH AND FILTER
+========================================= */
 
-customer:{  
-      name,  
-      phone,  
-      email,  
-      address  
-    },  
+window.searchProducts = function() {
+  const searchInput = getElement("productSearch");
+  const keyword = searchInput ? searchInput.value.toLowerCase() : "";
 
-    items,  
-    total,  
-    currency:"PHP",  
+  document.querySelectorAll(".product-card").forEach(card => {
+    const text = card.textContent.toLowerCase();
+    card.style.display = text.includes(keyword) ? "" : "none";
+  });
+};
 
-    courier:$("courierSelect").value,  
+window.filterProducts = function(category, button) {
+  document.querySelectorAll(".filter-btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
 
-    paymentMethod:$("paymentSelect").value,  
+  if (button) button.classList.add("active");
 
-    paymentReference:  
-      $("paymentReference").value.trim() || null,  
+  document.querySelectorAll(".product-card").forEach(card => {
+    const matches =
+      category === "all" ||
+      card.dataset.category === category;
 
-    status:"Pending Review",  
-    paymentStatus:"pending",  
+    card.style.display = matches ? "" : "none";
+  });
+};
 
-    orderAgreementAccepted:true,  
 
-    createdAt:serverTimestamp()  
-  }  
-);  
+/* =========================================
+   6. MOBILE NAVIGATION
+========================================= */
 
-cart = [];  
+window.toggleMenu = function() {
+  const nav = getElement("navLinks");
+  if (nav) nav.classList.toggle("active");
+};
 
-saveCart();  
-renderCart();  
-
-$("checkoutMessage").textContent =  
-  "Order request submitted! Reference: " + order.id +  
-  ". Please wait for confirmation from JNHJ Furnishings Co.";
-
-}catch(error){
-
-$("checkoutMessage").textContent =  
-  firebaseError(error);
-
-}finally{
-
-$("placeOrder").disabled = false;
-
-}
-
+document.querySelectorAll("#navLinks a").forEach(link => {
+  link.addEventListener("click", () => {
+    const nav = getElement("navLinks");
+    if (nav) nav.classList.remove("active");
+  });
 });
 
-/* ==================================
-12. CUSTOMER ORDER HISTORY
-================================== */
 
-$("accountButton").addEventListener("click",async()=>{
+/* =========================================
+   7. FAQ, TERMS AND PRIVACY ACCORDION
+========================================= */
 
-openModal("accountModal");
-
-await loadOrders();
-
+document.querySelectorAll(".accordion-header").forEach(header => {
+  header.addEventListener("click", function() {
+    const item = this.closest(".accordion-item");
+    if (item) item.classList.toggle("active");
+  });
 });
 
-async function loadOrders(){
 
-if(!currentUser) return;
+/* =========================================
+   8. LOGIN AND SIGNUP MODALS
+========================================= */
 
-$("myOrders").textContent = "Loading orders...";
+window.openLogin = function() {
+  getElement("loginModal")?.classList.add("show");
+};
 
-try{
+window.closeLogin = function() {
+  getElement("loginModal")?.classList.remove("show");
+};
 
-const orderQuery = query(  
-  collection(db,"orders"),  
-  where("userId","==",currentUser.uid)  
-);  
+window.openSignup = function() {
+  getElement("signupModal")?.classList.add("show");
+};
 
-const results = await getDocs(orderQuery);  
+window.closeSignup = function() {
+  getElement("signupModal")?.classList.remove("show");
+};
 
-if(results.empty){  
+window.switchToSignup = function() {
+  window.closeLogin();
+  window.openSignup();
+};
 
-  $("myOrders").innerHTML =  
-    "<p>You have no orders yet.</p>";  
+window.switchToLogin = function() {
+  window.closeSignup();
+  window.openLogin();
+};
 
-  return;  
-}  
 
-const orders = results.docs.map(document=>({  
-  id:document.id,  
-  ...document.data()  
-}));  
+/* =========================================
+   9. FIREBASE SIGNUP
+========================================= */
 
-orders.sort((a,b)=>  
-  (b.createdAt?.seconds || 0) -  
-  (a.createdAt?.seconds || 0)  
-);  
+const signupForm = getElement("signupForm");
 
-$("myOrders").innerHTML = orders.map(order=>`  
+if (signupForm) {
+  signupForm.addEventListener("submit", async function(event) {
+    event.preventDefault();
 
-  <div class="status-box">  
+    const name = getElement("signupName")?.value.trim();
+    const email = getElement("signupEmail")?.value.trim();
+    const password = getElement("signupPassword")?.value;
 
-    <strong>Order ${safe(order.id)}</strong>  
+    if (!name || !email || !password) {
+      showMessage("Please complete all signup fields.");
+      return;
+    }
 
-    <p>Status: ${safe(order.status)}</p>  
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
 
-    <p>Total: ${peso(order.total)}</p>  
+      showMessage("Account created successfully!");
+      signupForm.reset();
+      window.closeSignup();
 
-    <p>Payment: ${safe(order.paymentMethod)}</p>  
-
-    <p>Courier: ${safe(order.courier)}</p>  
-
-  </div>  
-
-`).join("");
-
-}catch(error){
-
-$("myOrders").textContent =  
-  firebaseError(error);
-
+    } catch (error) {
+      showMessage(error.message);
+    }
+  });
 }
 
+
+/* =========================================
+   10. FIREBASE LOGIN
+========================================= */
+
+const loginForm = getElement("loginForm");
+
+if (loginForm) {
+  loginForm.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const email = getElement("loginEmail")?.value.trim();
+    const password = getElement("loginPassword")?.value;
+
+    if (!email || !password) {
+      showMessage("Please enter your email and password.");
+      return;
+    }
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+
+      showMessage("Login successful!");
+      loginForm.reset();
+      window.closeLogin();
+
+    } catch (error) {
+      showMessage(error.message);
+    }
+  });
 }
 
-/* ==================================
-13. BUTTON EVENTS
-================================== */
 
-document.addEventListener("click",event=>{
+/* =========================================
+   11. LOGOUT
+========================================= */
 
-const add = event.target.closest("[data-add]");
+window.logoutUser = async function() {
+  try {
+    await signOut(auth);
+    showMessage("You have been logged out.");
+  } catch (error) {
+    showMessage(error.message);
+  }
+};
 
-if(add){
-addToCart(add.dataset.add);
-return;
-}
 
-const view = event.target.closest("[data-view]");
+/* =========================================
+   12. LOGIN STATUS
+========================================= */
 
-if(view){
-showProduct(view.dataset.view);
-return;
-}
+onAuthStateChanged(auth, user => {
+  const loginButton = getElement("loginButton");
+  const logoutButton = getElement("logoutButton");
+  const accountName = getElement("accountName");
 
-const increase = event.target.closest("[data-inc]");
-
-if(increase){
-
-const item = cart.find(  
-  x=>x.id===increase.dataset.inc  
-);  
-
-if(item) item.quantity++;  
-
-saveCart();  
-renderCart();  
-return;
-
-}
-
-const decrease = event.target.closest("[data-dec]");
-
-if(decrease){
-
-const item = cart.find(  
-  x=>x.id===decrease.dataset.dec  
-);  
-
-if(item){  
-  item.quantity = Math.max(1,item.quantity-1);  
-}  
-
-saveCart();  
-renderCart();  
-return;
-
-}
-
-const remove = event.target.closest("[data-remove]");
-
-if(remove){
-
-cart = cart.filter(  
-  x=>x.id!==remove.dataset.remove  
-);  
-
-saveCart();  
-renderCart();  
-return;
-
-}
-
-const close = event.target.closest("[data-close]");
-
-if(close){
-closeModal(close.dataset.close);
-}
-
+  if (user) {
+    if (loginButton) loginButton.style.display = "none";
+    if (logoutButton) logoutButton.style.display = "inline-block";
+    if (accountName) accountName.textContent = user.email;
+  } else {
+    if (loginButton) loginButton.style.display = "inline-block";
+    if (logoutButton) logoutButton.style.display = "none";
+    if (accountName) accountName.textContent = "Guest";
+  }
 });
 
-document.querySelectorAll(".close-modal").forEach(button=>{
 
-button.addEventListener("click",()=>{
-const modal = button.closest(".modal");
+/* =========================================
+   13. PAYMENT METHOD DISPLAY
+========================================= */
 
-if(modal) modal.classList.remove("show");
+document.querySelectorAll('input[name="payment"]').forEach(input => {
+  input.addEventListener("change", function() {
+    const onlineDetails = getElement("onlinePaymentDetails");
 
+    if (onlineDetails) {
+      onlineDetails.style.display =
+        this.value === "GCash" || this.value === "Maya"
+          ? "block"
+          : "none";
+    }
+  });
 });
 
-});
 
-document.querySelectorAll(".modal").forEach(modal=>{
+/* =========================================
+   14. FIRESTORE ORDER SUBMISSION
+========================================= */
 
-modal.addEventListener("click",event=>{
+const checkoutForm = getElement("checkoutForm");
 
-if(event.target===modal){  
-  modal.classList.remove("show");  
+if (checkoutForm) {
+  checkoutForm.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const user = auth.currentUser;
+
+    if (!user) {
+      showMessage("Please sign in before placing your order.");
+      window.openLogin();
+      return;
+    }
+
+    if (cart.length === 0) {
+      showMessage("Your cart is empty.");
+      return;
+    }
+
+    const customerName = getElement("customerName")?.value.trim();
+    const customerEmail = getElement("customerEmail")?.value.trim();
+    const customerPhone = getElement("customerPhone")?.value.trim();
+    const customerAddress = getElement("customerAddress")?.value.trim();
+    const logistics = getElement("logistics")?.value;
+
+    const selectedPayment = document.querySelector(
+      'input[name="payment"]:checked'
+    );
+
+    if (!customerName || !customerEmail || !customerPhone ||
+        !customerAddress || !logistics || !selectedPayment) {
+      showMessage("Please complete all required checkout fields.");
+      return;
+    }
+
+    const paymentMethod = selectedPayment.value;
+    const paymentReference = getElement("paymentReference")?.value.trim() || "";
+
+    const orderItems = cart.map(item => ({
+      productId: item.id,
+      productName: item.name,
+      price: item.price,
+      quantity: item.quantity,
+      subtotal: item.price * item.quantity
+    }));
+
+    const total = cart.reduce(
+      (sum, item) => sum + item.price * item.quantity, 0
+    );
+
+    const orderData = {
+      userId: user.uid,
+      customerName,
+      customerEmail,
+      customerPhone,
+      customerAddress,
+      logistics,
+      paymentMethod,
+      paymentReference,
+      items: orderItems,
+      total,
+      orderStatus: "Pending",
+      paymentStatus: "pending",
+      createdAt: serverTimestamp()
+    };
+
+    const submitButton = checkoutForm.querySelector(
+      'button[type="submit"]'
+    );
+
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Submitting...";
+    }
+
+    try {
+      await addDoc(collection(db, "orders"), orderData);
+
+      showMessage(
+        "Your order has been submitted successfully! " +
+        "Please wait for order confirmation."
+      );
+
+      cart = [];
+      updateCart();
+      checkoutForm.reset();
+
+      const successModal = getElement("orderSuccessModal");
+      if (successModal) successModal.classList.add("show");
+
+    } catch (error) {
+      console.error("Order submission error:", error);
+      showMessage("Unable to submit your order. Please try again.");
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = "Place Order";
+      }
+    }
+  });
 }
 
-});
 
-});
+/* =========================================
+   15. ORDER SUCCESS MODAL
+========================================= */
 
-/* ==================================
-14. INITIALIZATION
-================================== */
+window.closeOrderSuccess = function() {
+  getElement("orderSuccessModal")?.classList.remove("show");
+};
 
-$("currentYear").textContent =
-new Date().getFullYear();
 
-saveCart();
-renderProducts();
-renderCart();
+/* =========================================
+   16. CLICKWRAP TERMS AND PRIVACY
+========================================= */
 
-</script>  
-</body>  
-  </html>  
+const AGREEMENT_VERSION = "2026-11-14-v1";
+
+const agreementScreen = getElement("agreementScreen");
+const acceptTerms = getElement("acceptTerms");
+const acceptPrivacy = getElement("acceptPrivacy");
+const enterStore = getElement("enterStore");
+const websiteContent = getElement("websiteContent");
+
+function updateAgreementButton() {
+  if (!enterStore) return;
+
+  enterStore.disabled = !(
+    acceptTerms?.checked && acceptPrivacy?.checked
+  );
+}
+
+if (acceptTerms) {
+  acceptTerms.addEventListener("change", updateAgreementButton);
+}
+
+if (acceptPrivacy) {
+  acceptPrivacy.addEventListener("change", updateAgreementButton);
+}
+
+if (enterStore) {
+  enterStore.addEventListener("click", function() {
+    if (!acceptTerms?.checked || !acceptPrivacy?.checked) {
+      showMessage("Please agree to both Terms and Privacy Policy.");
+      return;
+    }
+
+    localStorage.setItem("formaAgreementVersion", AGREEMENT_VERSION);
+
+    if (agreementScreen) agreementScreen.style.display = "none";
+    if (websiteContent) websiteContent.style.display = "block";
+  });
+}
+
+const savedAgreement = localStorage.getItem("formaAgreementVersion");
+
+if (savedAgreement === AGREEMENT_VERSION) {
+  if (agreementScreen) agreementScreen.style.display = "none";
+  if (websiteContent) websiteContent.style.display = "block";
+} else {
+  if (agreementScreen) agreementScreen.style.display = "flex";
+  if (websiteContent) websiteContent.style.display = "none";
+}
+
+updateAgreementButton();
+
+
+/* =========================================
+   17. INITIALIZE CART
+========================================= */
+
+updateCart();
+
+console.log("Forma Doppia website initialized successfully.");
+
+</script>
+</body>
+</html>
