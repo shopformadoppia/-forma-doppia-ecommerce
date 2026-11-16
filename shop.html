@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#26382c">
+<title>Forma Doppia | Shop</title>
+
+<style>
+:root{
+ --forest:#26382c;--deep:#19271e;--olive:#65765b;
+ --cream:#f4f0e6;--paper:#fffdf7;--brown:#76563d;
+ --gold:#c7a875;--ink:#263129;--muted:#687168;--line:#e5e0d4;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,sans-serif;line-height:1.6}
+body.locked{overflow:hidden}
+a{color:inherit;text-decoration:none}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+.serif{font-family:Georgia,serif}
+.topbar{position:sticky;top:0;z-index:30;background:#26382cf5;color:white;box-shadow:0 4px 18px #0002}
+.nav{max-width:1200px;margin:auto;padding:12px 20px;display:flex;align-items:center;gap:18px}
+.brand{display:flex;align-items:center;gap:10px;margin-right:auto}
+.brand img{width:42px;height:42px;object-fit:contain;background:white;border-radius:50%;padding:3px}
+.brand strong{font:19px Georgia,serif;display:block}
+.brand small{font-size:9px;letter-spacing:2px;color:#d9ddcf}
+.navlinks{display:flex;gap:17px;font-size:12px}
+.navlinks a:hover{color:var(--gold)}
+.nav-actions{display:flex;gap:8px}
+.nav-btn,.menu-btn{background:transparent;border:1px solid #ffffff66;color:white;padding:9px 12px;border-radius:25px;font-size:12px}
+.cart-count{background:var(--gold);color:var(--deep);padding:1px 7px;border-radius:20px}
+.menu-btn{display:none}
+.section{padding:65px 20px}
+.section-inner{max-width:1150px;margin:auto}
+.section-head{text-align:center;max-width:700px;margin:0 auto 30px}
+.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:3px;color:var(--brown);font-weight:bold}
+h1,h2,h3{font-family:Georgia,serif;color:var(--forest)}
+h2{font-size:clamp(28px,4vw,42px);line-height:1.15;margin:10px 0}
+p{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--gold);color:var(--deep);border:0;border-radius:3px;padding:12px 18px;font-weight:bold;font-size:12px}
+.btn-dark{background:var(--forest);color:white}
+.btn-light{background:transparent;border:1px solid var(--forest);color:var(--forest)}
+.shop{background:#eae6da}
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+.search{width:100%;max-width:360px;padding:12px;border:1px solid var(--line);background:white}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.product-card{background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column}
+.product-img{height:250px;background:#e8e4d9;display:flex;align-items:center;justify-content:center}
+.product-img img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.product-info{padding:18px;display:flex;flex-direction:column;flex:1}
+.product-code{font-size:10px;letter-spacing:2px;color:var(--brown);font-weight:bold}
+.product-info h3{font-size:22px;margin:5px 0}
+.price{font-weight:bold;font-size:19px;color:var(--brown)}
+.product-info p{font-size:13px}
+.spec-mini{font-size:11px;border-top:1px solid var(--line);padding-top:10px;margin-top:auto;color:var(--muted)}
+.card-actions{display:flex;gap:8px;margin-top:15px}
+.card-actions button{flex:1;padding:10px 5px;font-size:11px}
+.delivery-grid{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
+.courier-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
+.courier{background:white;border:1px solid var(--line);padding:12px;min-height:85px;display:flex;align-items:center;justify-content:center}
+.courier img{max-width:100%;max-height:55px;object-fit:contain}
+.notice{background:#edf0e8;border-left:3px solid var(--olive);padding:12px;font-size:12px;margin:12px 0;color:var(--forest)}
+.policy-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.policy-card{background:white;border:1px solid var(--line);padding:20px}
+.policy-card h3{margin:0 0 8px}
+.policy-card p{font-size:13px}
+.text-btn{border:0;background:none;color:var(--brown);text-decoration:underline;font-weight:bold;padding:0}
+.faq-list{max-width:850px;margin:auto}
+.faq-item{border-bottom:1px solid #d8d2c5}
+.faq-q{width:100%;padding:17px 4px;border:0;background:none;text-align:left;display:flex;justify-content:space-between;color:var(--forest);font-weight:bold}
+.faq-a{display:none;padding:0 25px 17px 4px;font-size:14px;color:var(--muted)}
+.faq-item.open .faq-a{display:block}
+.contact{background:#eae6da}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+.contact-box{background:white;padding:25px;border:1px solid var(--line)}
+.contact-box p{font-size:14px}
+.socials{display:flex;gap:10px;flex-wrap:wrap}
+.socials a{border:1px solid var(--line);padding:8px 12px;font-size:12px}
+footer{background:var(--deep);color:white;padding:35px 20px}
+.footer-inner{max-width:1150px;margin:auto;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.footer-note{font-size:11px;color:#b8c0b4}
+.footer-links{display:flex;gap:15px;flex-wrap:wrap;font-size:12px}
+.overlay{position:fixed;inset:0;background:#101a14bb;z-index:100;display:none;align-items:center;justify-content:center;padding:14px;overflow:auto}
+.overlay.show{display:flex}
+.modal{background:var(--paper);width:min(650px,100%);max-height:92vh;overflow:auto;padding:25px;position:relative}
+.modal.wide{width:min(850px,100%)}
+.modal h2{font-size:30px}
+.modal p,.modal li{font-size:14px;color:var(--muted)}
+.modal label{display:block;font-size:12px;font-weight:bold;color:var(--forest);margin:12px 0 5px}
+.close{float:right;border:0;border-radius:50%;width:34px;height:34px;background:var(--forest);color:white;font-size:20px}
+.field{width:100%;padding:12px;border:1px solid var(--line);background:white;border-radius:3px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.muted-link{color:var(--brown);text-decoration:underline;font-size:12px;cursor:pointer}
+.error{color:#a33125!important;font-size:12px}
+.success{color:#28613c!important;font-size:12px}
+.product-detail{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.product-detail img{width:100%;max-height:350px;object-fit:contain;background:#eeeadd}
+.spec-table{width:100%;border-collapse:collapse;font-size:12px}
+.spec-table td{padding:8px;border-bottom:1px solid var(--line)}
+.spec-table td:first-child{color:var(--muted);width:42%}
+.qty{display:flex;align-items:center;gap:10px;margin-top:10px}
+.qty button{width:30px;height:30px;border:1px solid var(--line);background:white}
+.cart-line{display:grid;grid-template-columns:65px 1fr auto;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);align-items:center}
+.cart-line img{width:65px;height:65px;object-fit:contain;background:#eeeadd}
+.cart-line small{display:block;color:var(--muted)}
+.total-row{display:flex;justify-content:space-between;padding:8px 0}
+.total-row.grand{font-size:18px;font-weight:bold;border-top:1px solid var(--line);margin-top:8px;padding-top:14px}
+.payment-choice{display:flex;gap:15px;flex-wrap:wrap}
+.payment-choice label{display:flex;align-items:center;gap:6px;font-weight:normal}
+.qr{width:140px;height:140px;object-fit:contain;background:white;border:1px solid var(--line);padding:5px}
+@media(max-width:850px){
+ .nav{gap:8px}.navlinks{display:none;position:absolute;top:65px;left:0;right:0;background:var(--forest);padding:18px;flex-direction:column}
+ .navlinks.show{display:flex}.menu-btn{display:block}.nav-btn{padding:8px}
+ .product-grid{grid-template-columns:repeat(2,1fr)}
+ .delivery-grid{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+ .product-grid{grid-template-columns:1fr}
+ .product-img{height:260px}
+ .contact-grid,.form-row,.product-detail{grid-template-columns:1fr}
+ .policy-list{grid-template-columns:1fr}
+ .courier-grid{grid-template-columns:repeat(2,1fr)}
+ .modal{padding:18px}
+ .brand strong{font-size:16px}
+}
+</style>
+</head>
+
+<body>
+<header class="topbar">
+<nav class="nav">
+<a class="brand" href="index.html">
+<img src="images/logo.png" alt="Forma Doppia">
+<span><strong>Forma Doppia</strong><small>Step Up Your Comfort</small></span>
+</a>
+
+<div class="navlinks" id="navlinks">
+<a href="index.html">Home</a>
+<a href="shop.html">Shop Now</a>
+<a href="index.html#about">About Us</a>
+<a href="#delivery">Delivery</a>
+<a href="#policies">Policies</a>
+<a href="#faqs">FAQs</a>
+<a href="#contact">Contact</a>
+</div>
+
+<div class="nav-actions">
+<button class="nav-btn" id="accountBtn">Sign In</button>
+<button class="nav-btn" id="cartBtn">Cart <span class="cart-count" id="cartCount">0</span></button>
+<button class="menu-btn" id="menuBtn">☰</button>
+</div>
+</nav>
+</header>
+
+<main>
+<section class="section shop" id="shop">
+<div class="section-inner">
+<div class="section-head">
+<div class="eyebrow">The collection</div>
+<h2>Find your Forma Doppia.</h2>
+<p>Choose the finish that feels right for your space. Tap a product to view its details and available options.</p>
+</div>
+<div class="toolbar">
+<input class="search" id="searchProducts" placeholder="Search finishes..." aria-label="Search products">
+<span class="footer-note" id="productCount">6 finishes available</span>
+</div>
+<div class="product-grid" id="productGrid"></div>
+</div>
+</section>
+
+<section class="section" id="delivery">
+<div class="section-inner delivery-grid">
+<div>
+<div class="eyebrow">Shipping & delivery</div>
+<h2>From our hands to your home.</h2>
+<p>Orders are prepared carefully and dispatched through available courier services. Our usual estimated shipping time is <strong>2 to 3 days after dispatch</strong>, depending on your destination, courier availability, and operating conditions. Preparation and confirmation time may be additional.</p>
+<p>Delivery fees and serviceability are confirmed during order processing. Severe weather, holidays, and transport interruptions may affect delivery schedules.</p>
+<div class="notice">The 2–3 day estimate is not a guaranteed delivery date. The actual schedule will be confirmed with the customer.</div>
+<button class="btn btn-dark" onclick="openPolicy('shipping')">READ SHIPPING POLICY</button>
+</div>
+<div>
+<div class="eyebrow">Our courier partners</div>
+<h2>Delivery partners</h2>
+<p>Courier availability depends on destination and shipment arrangements.</p>
+<div class="courier-grid">
+<div class="courier"><img src="images/flash.jpg" alt="Flash Express"></div>
+<div class="courier"><img src="images/ninja.jpg" alt="Ninja Van"></div>
+<div class="courier"><img src="images/lbc.jpg" alt="LBC"></div>
+<div class="courier"><img src="images/j&t.jpg" alt="J&T Express"></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section" id="policies">
+<div class="section-inner">
+<div class="section-head">
+<div class="eyebrow">Helpful information</div>
+<h2>Policies & customer care</h2>
+<p>Clear information for a convenient and reliable shopping experience.</p>
+</div>
+<div class="policy-list">
+<article class="policy-card"><h3>Customer Care</h3><p>Assistance with inquiries, concerns, and product-related needs.</p><button class="text-btn" onclick="openPolicy('care')">Read policy →</button></article>
+<article class="policy-card"><h3>Shipping & Delivery</h3><p>Delivery estimates, courier arrangements, and possible delays.</p><button class="text-btn" onclick="openPolicy('shipping')">Read policy →</button></article>
+<article class="policy-card"><h3>Privacy & Safety</h3><p>How contact, order, and delivery information is used.</p><button class="text-btn" onclick="openPolicy('privacy')">Read policy →</button></article>
+<article class="policy-card"><h3>Returns & Exchanges</h3><p>The seven-day process for defective, damaged, or incorrect items.</p><button class="text-btn" onclick="openPolicy('returns')">Read policy →</button></article>
+<article class="policy-card"><h3>Wholesale Inquiries</h3><p>Potential partnerships and bulk product inquiries.</p><button class="text-btn" onclick="openPolicy('wholesale')">Read policy →</button></article>
+<article class="policy-card"><h3>Terms of Service</h3><p>Terms that apply when using this website and placing an order.</p><button class="text-btn" onclick="openPolicy('terms')">Read policy →</button></article>
+</div>
+</div>
+</section>
+
+<section class="section" id="faqs">
+<div class="section-inner">
+<div class="section-head">
+<div class="eyebrow">Need to know?</div>
+<h2>Frequently asked questions</h2>
+<p>Quick answers about shopping with Forma Doppia.</p>
+</div>
+<div class="faq-list">
+<div class="faq-item"><button class="faq-q">How can I purchase Forma Doppia?<span>＋</span></button><div class="faq-a">Browse the available finishes, add your preferred item to cart, and proceed to checkout. Provide your contact and delivery details. Our team will review and confirm the order and payment instructions.</div></div>
+<div class="faq-item"><button class="faq-q">Can I cancel my order?<span>＋</span></button><div class="faq-a">Orders may be canceled before they are confirmed or processed. Once finalized, prepared for delivery, or shipped, cancellation may no longer be possible. Contact customer service as soon as possible.</div></div>
+<div class="faq-item"><button class="faq-q">What payment methods do you accept?<span>＋</span></button><div class="faq-a">This demo checkout offers GCash, Maya, and cash on delivery, subject to confirmation and availability. Payment details will be confirmed by JNHJ Furnishings Co.</div></div>
+<div class="faq-item"><button class="faq-q">Can you deliver to my preferred address?<span>＋</span></button><div class="faq-a">Delivery is subject to courier coverage. Please provide complete delivery details. Fees and estimated arrival times will be confirmed during order processing.</div></div>
+<div class="faq-item"><button class="faq-q">What if my item arrives damaged?<span>＋</span></button><div class="faq-a">Contact us within seven days from delivery. Keep the packaging and provide your order details plus a clear video showing the issue. Wait for confirmation before returning the item.</div></div>
+<div class="faq-item"><button class="faq-q">How long does delivery take?<span>＋</span></button><div class="faq-a">The usual estimated shipping time is 2 to 3 days after dispatch, depending on location and courier availability. This is an estimate, not a guaranteed delivery date.</div></div>
+</div>
+</div>
+</section>
+
+<section class="section contact" id="contact">
+<div class="section-inner">
+<div class="section-head">
+<div class="eyebrow">Let's talk</div>
+<h2>Contact JNHJ Furnishings Co.</h2>
+<p>Questions, order assistance, or wholesale opportunities? Reach out through our official channels.</p>
+</div>
+<div class="contact-grid">
+<div class="contact-box">
+<h3>Customer assistance</h3>
+<p><strong>Email</strong><br><a href="mailto:jnhjfurnishingscompany@gmail.com">jnhjfurnishingscompany@gmail.com</a></p>
+<p><strong>Contact number</strong><br><a href="tel:09108222830">0910 822 2830</a></p>
+<p>For order concerns, include your order number and a clear description of your concern.</p>
+</div>
+<div class="contact-box">
+<h3>Connect with us</h3>
+<p>Follow JNHJ Furnishings Co. for updates and product information.</p>
+<div class="socials">
+<a target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=61574262187679">Facebook</a>
+<a target="_blank" rel="noopener" href="https://www.instagram.com/jnhjfurnishingsco">Instagram</a>
+<a target="_blank" rel="noopener" href="https://www.tiktok.com/@jnhj.furnishings">TikTok</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="footer-inner">
+<div><strong>FORMA DOPPIA</strong><p class="footer-note">A JNHJ Furnishings Co. project. © <span id="year"></span> All rights reserved.</p></div>
+<div class="footer-links"><a href="index.html#about">Our Story</a><a href="#delivery">Delivery</a><a href="#faqs">FAQs</a><a href="#policies">Policies</a><a href="#contact">Contact Us</a></div>
+</div>
+</footer>
+
+<!-- ACCOUNT MODAL -->
+<div class="overlay" id="accountModal">
+<div class="modal">
+<button class="close" data-close="accountModal">×</button>
+<div class="eyebrow">Your Forma Doppia account</div>
+<h2 id="authTitle">Welcome back.</h2>
+<p id="authSubtitle">Sign in to manage your account and checkout.</p>
+<div id="authMessage"></div>
+<label id="nameLabel" style="display:none">Full name</label>
+<input class="field" id="authName" placeholder="Full name" style="display:none">
+<label>Email address</label>
+<input class="field" id="authEmail" type="email" autocomplete="email" placeholder="you@example.com">
+<label>Password</label>
+<input class="field" id="authPassword" type="password" autocomplete="current-password" placeholder="At least 6 characters">
+<div class="modal-actions">
+<button class="btn" id="authSubmit">SIGN IN</button>
+<button class="btn btn-light" id="guestContinue">CONTINUE AS GUEST</button>
+</div>
+<p><span id="authSwitchText">New here?</span> <span class="muted-link" id="authSwitch">Create an account</span></p>
+</div>
+</div>
+
+<!-- PRODUCT DETAILS -->
+<div class="overlay" id="detailModal">
+<div class="modal wide"><button class="close" data-close="detailModal">×</button><div id="detailContent"></div></div>
+</div>
+
+<!-- CART -->
+<div class="overlay" id="cartModal">
+<div class="modal"><button class="close" data-close="cartModal">×</button><div class="eyebrow">Your selection</div><h2>Shopping cart</h2><div id="cartContent"></div></div>
+</div>
+
+<!-- CHECKOUT -->
+<div class="overlay" id="checkoutModal">
+<div class="modal wide">
+<button class="close" data-close="checkoutModal">×</button>
+<div class="eyebrow">Almost yours</div>
+<h2>Checkout</h2>
+<p>Submit your order request. Our team will review and confirm availability, payment, and delivery details.</p>
+<div id="checkoutMessage"></div>
+<form id="checkoutForm">
+<div class="form-row">
+<div><label>Full name *</label><input class="field" name="name" required></div>
+<div><label>Mobile number *</label><input class="field" name="phone" type="tel" required placeholder="09XXXXXXXXX"></div>
+</div>
+<label>Email address *</label><input class="field" name="email" type="email" required>
+<label>Complete delivery address *</label>
+<textarea class="field" name="address" rows="3" required placeholder="House/Unit, Street, Barangay, City/Municipality, Province"></textarea>
+<label>Payment method *</label>
+<div class="payment-choice">
+<label><input type="radio" name="payment" value="GCash" required> GCash</label>
+<label><input type="radio" name="payment" value="Maya"> Maya</label>
+<label><input type="radio" name="payment" value="Cash on Delivery"> Cash on Delivery</label>
+</div>
+<div id="qrArea" class="notice" style="display:none">
+<p>Scan the selected QR code using your payment app. This demo does not automatically verify payments. Please wait for confirmation from JNHJ Furnishings Co.</p>
+<div style="display:flex;gap:15px;flex-wrap:wrap">
+<div><img class="qr" src="images/gcash.png" alt="GCash QR"><br><small>GCash</small></div>
+<div><img class="qr" src="images/maya.jpg" alt="Maya QR"><br><small>Maya</small></div>
+</div>
+<label>Payment reference number (if already paid)</label>
+<input class="field" name="paymentReference" placeholder="Optional until payment is confirmed">
+</div>
+<label>Order notes (optional)</label>
+<textarea class="field" name="notes" rows="2"></textarea>
+<div id="checkoutSummary"></div>
+<div class="modal-actions"><button class="btn" type="submit" id="placeOrder">PLACE ORDER REQUEST</button></div>
+<p class="footer-note">Orders are not final until confirmed by the seller.</p>
+</form>
+</div>
+</div>
+
+<!-- POLICY MODAL -->
+<div class="overlay" id="policyModal">
+<div class="modal"><button class="close" data-close="policyModal">×</button><div class="eyebrow">JNHJ Furnishings Co.</div><h2 id="policyTitle"></h2><div id="policyContent"></div></div>
+</div>
+
+<!-- WELCOME DISCOUNT: only shown after successful account creation -->
+<div class="overlay" id="welcomeModal">
+<div class="modal">
+<button class="close" data-close="welcomeModal">×</button>
+<div class="eyebrow">A little welcome gift</div>
+<h2>Enjoy 12% off your first purchase.</h2>
+<p>Your first-purchase welcome discount is available for your newly created account. It will be applied at checkout while eligible.</p>
+<div class="notice">Discount eligibility is linked to your registered account and is limited to one first purchase.</div>
+<button class="btn" data-close="welcomeModal">START EXPLORING</button>
+</div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import {
+ getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+ updateProfile, onAuthStateChanged, signOut
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+import {
+ getFirestore, doc, setDoc, getDoc, addDoc, collection, serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+
+const firebaseConfig = {
+ apiKey: "AIzaSyCFG89ZrF_SfNJfyAfX5IHZtMPYcCQY_Uo",
+ authDomain: "forma-doppia.firebaseapp.com",
+ projectId: "forma-doppia",
+ storageBucket: "forma-doppia.firebasestorage.app",
+ messagingSenderId: "785041343",
+ appId: "1:785041343:web:d4b5d159542642aa78030a",
+ measurementId: "G-T29DY5VE3B"
+};
+
+let app, auth, db;
+let firebaseReady = false;
+let currentUser = null;
+let authMode = "signin";
+let cart = [];
+
+const products = [
+ {id:"FD001",name:"Original Color",price:2000,image:"product-1.png",finish:"Natural wood tone",description:"The classic Forma Doppia look, highlighting a warm natural finish that suits a range of interiors."},
+ {id:"FD002",name:"Whitewash Wood",price:2300,image:"product-2.png",finish:"Whitewashed finish",description:"A light, airy finish that pairs beautifully with minimalist and bright spaces."},
+ {id:"FD003",name:"Walnut Finish",price:2300,image:"product-3.png",finish:"Walnut brown",description:"A rich wood-inspired finish for a warm and timeless interior look."},
+ {id:"FD004",name:"Sage Green",price:2300,image:"product-4.png",finish:"Sage green",description:"A muted green finish that adds a subtle contemporary accent to your space."},
+ {id:"FD005",name:"Matte Black",price:2300,image:"product-5.png",finish:"Matte black",description:"A clean, understated finish for modern and industrial-inspired spaces."},
+ {id:"FD006",name:"With Cushion",price:2500,image:"product-6.png",finish:"Cushioned version",description:"A cushioned option designed to add another layer of comfort to the Forma Doppia experience."}
+];
+
+const $ = id => document.getElementById(id);
+const peso = n => "₱" + Number(n).toLocaleString("en-PH",{maximumFractionDigits:2});
+
+function show(id){
+ $(id).classList.add("show");
+ document.body.classList.add("locked");
+}
+function hide(id){
+ $(id).classList.remove("show");
+ if(!document.querySelector(".overlay.show")) document.body.classList.remove("locked");
+}
+
+document.querySelectorAll("[data-close]").forEach(button=>{
+ button.addEventListener("click",()=>hide(button.dataset.close));
+});
+
+document.querySelectorAll(".overlay").forEach(overlay=>{
+ overlay.addEventListener("click",event=>{
+  if(event.target===overlay) hide(overlay.id);
+ });
+});
+
+$("year").textContent = new Date().getFullYear();
+
+try{
+ app = initializeApp(firebaseConfig);
+ auth = getAuth(app);
+ db = getFirestore(app);
+ firebaseReady = true;
+}catch(error){
+ console.error("Firebase initialization error:",error);
+ firebaseReady = false;
+}
+
+function authError(error){
+ const messages = {
+  "auth/invalid-email":"Please enter a valid email address.",
+  "auth/email-already-in-use":"This email is already registered. Please sign in.",
+  "auth/weak-password":"Password must contain at least 6 characters.",
+  "auth/invalid-credential":"Incorrect email or password.",
+  "auth/user-not-found":"No account found for this email.",
+  "auth/wrong-password":"Incorrect email or password.",
+  "auth/api-key-not-valid.-please-pass-a-valid-api-key.":"Firebase API key is invalid. Check the Firebase web app configuration."
+ };
+ return messages[error.code] || error.message || "Something went wrong. Please try again.";
+}
+
+function renderProducts(filter=""){
+ const list = products.filter(product=>
+  (product.name+" "+product.finish).toLowerCase().includes(filter.toLowerCase())
+ );
+
+ $("productCount").textContent = list.length+" finish(es)";
+
+ $("productGrid").innerHTML = list.map(product=>`
+  <article class="product-card">
+   <div class="product-img">
+    <img src="images/${product.image}" alt="Forma Doppia ${product.name}">
+   </div>
+   <div class="product-info">
+    <span class="product-code">${product.id}</span>
+    <h3>${product.name}</h3>
+    <div class="price">${peso(product.price)}</div>
+    <p>${product.description}</p>
+    <div class="spec-mini">Dual-purpose furniture · ${product.finish}</div>
+    <div class="card-actions">
+     <button class="btn btn-dark" onclick="addToCart('${product.id}')">ADD TO CART</button>
+     <button class="btn btn-light" onclick="viewProduct('${product.id}')">VIEW DETAILS</button>
+    </div>
+   </div>
+  </article>
+ `).join("") || "<p>No matching finish found.</p>";
+}
+
+window.viewProduct = id=>{
+ const product = products.find(item=>item.id===id);
+
+ $("detailContent").innerHTML = `
+  <div class="product-detail">
+   <img src="images/${product.image}" alt="${product.name}">
+   <div>
+    <div class="eyebrow">${product.id} · FORMA DOPPIA</div>
+    <h2>${product.name}</h2>
+    <div class="price">${peso(product.price)}</div>
+    <p>${product.description}</p>
+    <h3>Product attributes</h3>
+    <table class="spec-table">
+     <tr><td>Product type</td><td>Convertible chair-ladder furniture</td></tr>
+     <tr><td>Finish</td><td>${product.finish}</td></tr>
+     <tr><td>Design</td><td>Dual-purpose, space-conscious</td></tr>
+     <tr><td>Primary material</td><td>Wood / wood-based construction (confirm exact material with seller)</td></tr>
+     <tr><td>Estimated dimensions</td><td>Approx. 45 × 35 × 60 cm (L × W × H)</td></tr>
+     <tr><td>Estimated weight</td><td>Approx. 4–6 kg</td></tr>
+     <tr><td>Load capacity</td><td>Not yet verified; ask seller before use as a step ladder</td></tr>
+     <tr><td>Care</td><td>Wipe with a soft, dry or slightly damp cloth</td></tr>
+     <tr><td>What's included</td><td>1 Forma Doppia unit in selected finish</td></tr>
+    </table>
+    <div class="notice">Dimensions and weight are preliminary display estimates, not verified product measurements. Confirm exact specifications and safe load capacity with JNHJ Furnishings Co. before purchase or use.</div>
+    <div class="qty">
+     <button onclick="changeDetailQty(-1)">−</button>
+     <strong id="detailQty">1</strong>
+     <button onclick="changeDetailQty(1)">+</button>
+    </div>
+    <div class="modal-actions">
+     <button class="btn" onclick="addToCart('${product.id}',Number($('detailQty').textContent));hide('detailModal')">ADD TO CART</button>
+    </div>
+   </div>
+  </div>
+ `;
+ show("detailModal");
+};
+
+window.changeDetailQty = difference=>{
+ $("detailQty").textContent = Math.max(1,Math.min(20,Number($("detailQty").textContent)+difference));
+};
+
+window.addToCart = (id,quantity=1)=>{
+ const item = cart.find(entry=>entry.id===id);
+ if(item) item.qty = Math.min(20,item.qty+quantity);
+ else cart.push({id,qty:quantity});
+ updateCart();
+ toast("Added to cart.");
+};
+
+function updateCart(){
+ $("cartCount").textContent = cart.reduce((sum,item)=>sum+item.qty,0);
+}
+
+function toast(message){
+ const element = document.createElement("div");
+ element.textContent = message;
+ element.style.cssText = "position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#19271e;color:white;padding:12px 20px;z-index:200;border-radius:4px;font-size:13px";
+ document.body.appendChild(element);
+ setTimeout(()=>element.remove(),2200);
+}
+
+function cartTotals(){
+ return cart.reduce((sum,item)=>{
+  const product = products.find(p=>p.id===item.id);
+  return sum+product.price*item.qty;
+ },0);
+}
+
+function renderCart(){
+ $("cartContent").innerHTML = cart.length
+ ? cart.map(item=>{
+    const product = products.find(p=>p.id===item.id);
+    return `
+     <div class="cart-line">
+      <img src="images/${product.image}" alt="${product.name}">
+      <div>
+       <b>${product.name}</b>
+       <small>${peso(product.price)} each</small>
+       <div class="qty">
+        <button onclick="cartQty('${product.id}',-1)">−</button>
+        ${item.qty}
+        <button onclick="cartQty('${product.id}',1)">+</button>
+       </div>
+      </div>
+      <b>${peso(product.price*item.qty)}</b>
+     </div>
+    `;
+   }).join("")+
+   `<div class="total-row grand"><span>Subtotal</span><span>${peso(cartTotals())}</span></div>
+    <div class="modal-actions"><button class="btn" onclick="startCheckout()">PROCEED TO CHECKOUT</button></div>`
+ : `<p>Your cart is empty. Explore the collection to add an item.</p>
+    <a class="btn btn-dark" href="#shop" onclick="hide('cartModal')">SHOP NOW</a>`;
+}
+
+window.cartQty = (id,difference)=>{
+ const item = cart.find(entry=>entry.id===id);
+ if(!item) return;
+ item.qty += difference;
+ if(item.qty<=0) cart = cart.filter(entry=>entry.id!==id);
+ updateCart();
+ renderCart();
+};
+
+$("cartBtn").onclick = ()=>{
+ renderCart();
+ show("cartModal");
+};
+
+window.startCheckout = ()=>{
+ if(!cart.length) return;
+
+ if(!currentUser){
+  hide("cartModal");
+  openAuth("signin");
+  $("authMessage").innerHTML = '<p class="notice">Please sign in or create an account before submitting an order.</p>';
+  return;
+ }
+
+ hide("cartModal");
+
+ $("checkoutSummary").innerHTML = `
+  <div class="total-row"><span>Subtotal</span><b>${peso(cartTotals())}</b></div>
+  <div class="total-row"><span>Delivery fee</span><span>To be confirmed</span></div>
+  <div class="total-row grand"><span>Estimated total before discount</span><b>${peso(cartTotals())}</b></div>
+ `;
+
+ show("checkoutModal");
+};
+
+function openAuth(mode){
+ authMode = mode;
+ const signup = mode==="signup";
+
+ $("authTitle").textContent = signup ? "Create your account." : "Welcome back.";
+ $("authSubtitle").textContent = signup
+  ? "Register to save your details and access your first-purchase offer."
+  : "Sign in to manage your account and checkout.";
+
+ $("nameLabel").style.display = signup ? "block" : "none";
+ $("authName").style.display = signup ? "block" : "none";
+ $("authName").required = signup;
+ $("authPassword").autocomplete = signup ? "new-password" : "current-password";
+ $("authSubmit").textContent = signup ? "CREATE ACCOUNT" : "SIGN IN";
+ $("authSwitchText").textContent = signup ? "Already have an account?" : "New here?";
+ $("authSwitch").textContent = signup ? "Sign in" : "Create an account";
+ $("authMessage").innerHTML = "";
+
+ show("accountModal");
+}
+
+$("accountBtn").onclick = ()=>{
+ if(currentUser){
+  signOut(auth);
+  toast("Signed out.");
+ }else{
+  openAuth("signin");
+ }
+};
+
+$("authSwitch").onclick = ()=>{
+ openAuth(authMode==="signup" ? "signin" : "signup");
+};
+
+$("authSubmit").onclick = async()=>{
+ const email = $("authEmail").value.trim();
+ const password = $("authPassword").value;
+ const name = $("authName").value.trim();
+
+ $("authMessage").innerHTML = "";
+
+ if(!firebaseReady){
+  $("authMessage").innerHTML = '<p class="error">Firebase could not initialize. Check the Firebase web app configuration.</p>';
+  return;
+ }
+
+ if(!email || !password || (authMode==="signup"&&!name)){
+  $("authMessage").innerHTML = '<p class="error">Please complete all required fields.</p>';
+  return;
+ }
+
+ try{
+  $("authSubmit").disabled = true;
+
+  if(authMode==="signup"){
+   const credential = await createUserWithEmailAndPassword(auth,email,password);
+
+   await updateProfile(credential.user,{displayName:name});
+
+   await setDoc(doc(db,"customers",credential.user.uid),{
+    fullName:name,
+    email:email,
+    createdAt:serverTimestamp(),
+    welcomeDiscount:{
+     percent:12,
+     status:"available",
+     redeemed:false
+    }
+   },{merge:true});
+
+   hide("accountModal");
+   show("welcomeModal");
+  }else{
+   await signInWithEmailAndPassword(auth,email,password);
+   hide("accountModal");
+   toast("Welcome back.");
+  }
+ }catch(error){
+  $("authMessage").innerHTML = '<p class="error">'+authError(error)+'</p>';
+ }finally{
+  $("authSubmit").disabled = false;
+ }
+};
+
+$("guestContinue").onclick = ()=>{
+ hide("accountModal");
+ toast("Browsing as guest. Sign in is required to submit an order.");
+};
+
+function updateAccount(){
+ if(currentUser){
+  $("accountBtn").textContent = "Sign Out";
+  $("accountBtn").title = currentUser.email||"";
+ }else{
+  $("accountBtn").textContent = "Sign In";
+  $("accountBtn").title = "";
+ }
+}
+
+if(auth){
+ onAuthStateChanged(auth,user=>{
+  currentUser = user;
+  updateAccount();
+ });
+}
+
+$("checkoutForm").payment.forEach(radio=>{
+ radio.addEventListener("change",()=>{
+  $("qrArea").style.display =
+   (radio.value==="GCash"||radio.value==="Maya")&&radio.checked
+   ? "block" : "none";
+ });
+});
+
+$("checkoutForm").addEventListener("submit",async event=>{
+ event.preventDefault();
+
+ if(!currentUser){
+  $("checkoutMessage").innerHTML = '<p class="error">Please sign in again to continue.</p>';
+  return;
+ }
+
+ if(!firebaseReady){
+  $("checkoutMessage").innerHTML = '<p class="error">Firebase is not connected. Your order was not submitted.</p>';
+  return;
+ }
+
+ const formData = new FormData(event.target);
+ const payment = formData.get("payment");
+ const button = $("placeOrder");
+
+ button.disabled = true;
+ button.textContent = "SUBMITTING...";
+
+ try{
+  const profileSnapshot = await getDoc(doc(db,"customers",currentUser.uid));
+  const profile = profileSnapshot.exists() ? profileSnapshot.data() : {};
+  const welcome = profile.welcomeDiscount||{};
+
+  const subtotal = cartTotals();
+  const discount =
+   welcome.percent===12 &&
+   !welcome.redeemed &&
+   welcome.status==="available"
+   ? Math.round(subtotal*0.12*100)/100
+   : 0;
+
+  const order = {
+   userId:currentUser.uid,
+   customerName:formData.get("name"),
+   email:formData.get("email"),
+   phone:formData.get("phone"),
+   deliveryAddress:formData.get("address"),
+   paymentMethod:payment,
+   paymentReference:formData.get("paymentReference")||"",
+   notes:formData.get("notes")||"",
+   items:cart.map(item=>{
+    const product = products.find(p=>p.id===item.id);
+    return {
+     productId:product.id,
+     productName:product.name,
+     unitPrice:product.price,
+     quantity:item.qty,
+     lineTotal:product.price*item.qty
+    };
+   }),
+   subtotal:subtotal,
+   discount:discount,
+   estimatedTotal:subtotal-discount,
+   orderStatus:"pending_confirmation",
+   paymentStatus:"pending",
+   createdAt:serverTimestamp()
+  };
+
+  const orderReference = await addDoc(collection(db,"orders"),order);
+
+  if(discount>0){
+   await setDoc(doc(db,"customers",currentUser.uid),{
+    welcomeDiscount:{
+     percent:12,
+     status:"redeemed",
+     redeemed:true,
+     redeemedOrderId:orderReference.id
+    }
+   },{merge:true});
+  }
+
+  $("checkoutMessage").innerHTML = `
+   <div class="notice">
+    <strong>Order request submitted!</strong><br>
+    Your reference number is <b>${orderReference.id}</b>.<br>
+    Subtotal: ${peso(subtotal)}<br>
+    First-purchase discount: ${peso(discount)}<br>
+    Estimated total: <strong>${peso(subtotal-discount)}</strong><br>
+    Please wait for JNHJ Furnishings Co. to confirm your order and delivery details.
+   </div>
+  `;
+
+  cart = [];
+  updateCart();
+  event.target.reset();
+  $("qrArea").style.display = "none";
+  $("checkoutSummary").innerHTML = "";
+  toast("Order request submitted.");
+
+ }catch(error){
+  console.error(error);
+  $("checkoutMessage").innerHTML =
+   '<p class="error">We could not submit the order. Please check your Firestore rules and try again. '+authError(error)+'</p>';
+ }finally{
+  button.disabled = false;
+  button.textContent = "PLACE ORDER REQUEST";
+ }
+});
+
+$("searchProducts").addEventListener("input",event=>{
+ renderProducts(event.target.value);
+});
+
+$("menuBtn").onclick = ()=>{
+ $("navlinks").classList.toggle("show");
+};
+
+$("navlinks").querySelectorAll("a").forEach(link=>{
+ link.addEventListener("click",()=>{
+  $("navlinks").classList.remove("show");
+ });
+});
+
+document.querySelectorAll(".faq-q").forEach(question=>{
+ question.addEventListener("click",()=>{
+  const item = question.parentElement;
+  item.classList.toggle("open");
+  question.querySelector("span").textContent =
+   item.classList.contains("open") ? "−" : "＋";
+ });
+});
+
+const policies = {
+ care:[
+  "Customer Care",
+  "At JNHJ Furnishings Co., we are committed to providing helpful customer care and ensuring customer satisfaction. We assist with inquiries, concerns, and product-related needs regarding Forma Doppia. For faster assistance, provide your order reference, contact details, and a clear description of your concern."
+ ],
+ shipping:[
+  "Shipping and Delivery Policy",
+  "Delivery lead times vary depending on destination, product availability, and courier services. Our usual estimated shipping time is 2 to 3 days after dispatch; order preparation may take additional time. Delivery fees and the estimated schedule will be confirmed after order review. Delays may occur due to severe weather, public holidays, transportation issues, or third-party courier operations."
+ ],
+ privacy:[
+  "Privacy and Safety",
+  "We may collect your name, email address, contact number, delivery address, order details, and payment reference information for account management, order processing, payment verification, customer support, and delivery. We use Firebase Authentication and Firestore for account and order functions in this website. Do not send passwords, one-time codes, or full card details to staff. Contact us to request correction of information you submitted."
+ ],
+ returns:[
+  "Return and Exchange Policy",
+  "Returns and exchanges may be requested within seven (7) days from delivery for defective, damaged, or incorrect items. Contact us first with your order number and a clear video showing the issue. For shipping damage, provide an unboxing video when possible, along with supporting photos. Keep the original packaging and wait for our confirmation and return instructions before sending the item. Refunds or replacements are subject to verification and product availability."
+ ],
+ wholesale:[
+  "Wholesale Inquiries",
+  "We welcome inquiries from retailers, furniture stores, and other businesses interested in potential partnerships. Contact JNHJ Furnishings Co. to request product specifications, pricing, and wholesale information. All arrangements are subject to separate discussion and confirmation."
+ ],
+ terms:[
+  "Terms of Service",
+  "By using this website, you agree to provide accurate information and use the website lawfully. Product prices, specifications, and availability may change and are confirmed during order processing. An order submitted through this demo is a request only and is not final until confirmed by JNHJ Furnishings Co. Orders may be canceled before confirmation or processing. Delivery times are estimates. Returns for defective, damaged, or incorrect items follow the seven-day policy and require supporting evidence, including a clear video of the issue. This website is a demonstration storefront and does not represent automatic courier booking or payment verification."
+ ]
+};
+
+window.openPolicy = key=>{
+ const policy = policies[key];
+ $("policyTitle").textContent = policy[0];
+ $("policyContent").innerHTML = policy.slice(1).map(text=>"<p>"+text+"</p>").join("");
+ show("policyModal");
+};
+
+const params = new URLSearchParams(location.search);
+
+if(params.get("account")==="1"){
+ setTimeout(()=>{
+  if(currentUser){
+   toast("You are already signed in.");
+  }else{
+   openAuth("signin");
+  }
+ },700);
+}
+
+renderProducts();
+</script>
+</body>
+</html>
