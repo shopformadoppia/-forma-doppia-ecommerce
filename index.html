@@ -4,337 +4,168 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Forma Doppia | Welcome</title>
+<title>Forma Doppia Welcome</title>
 
 <style>
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  --green: #344b37;
-  --brown: #806348;
-  --cream: #f5f0e7;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  min-height: 100vh;
-}
-
-/* COVER BACKGROUND */
-
-.cover {
+  font-family: Georgia, serif;
+  background: #26382c;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 25px 15px;
-
-  background:
-    linear-gradient(rgba(20,30,20,.35),
-                    rgba(20,30,20,.50)),
-    url("images/cover.png") center/cover no-repeat;
+  padding: 20px;
 }
 
-/* TRANSPARENT AGREEMENT BOX */
-
-.agreement {
+.welcome-box {
   width: 100%;
-  max-width: 490px;
-  padding: 30px 27px;
+  max-width: 650px;
+  background: #eee5d5;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 15px 45px #0006;
+}
 
-  background: rgba(255,255,255,.79);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+/* COVER PHOTO */
+.cover {
+  min-height: 270px;
+  position: relative;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(24, 43, 31, .94) 0%,
+      rgba(24, 43, 31, .78) 43%,
+      rgba(24, 43, 31, .10) 100%
+    ),
+    url('images/cover.png');
 
-  border: 1px solid rgba(255,255,255,.65);
-  border-radius: 17px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding: 28px;
+}
 
-  box-shadow: 0 15px 50px rgba(0,0,0,.20);
+.cover-content {
+  max-width: 65%;
+  color: #fff4df;
 }
 
 .logo {
-  text-align: center;
-  margin-bottom: 17px;
-}
-
-.logo img {
-  width: 72px;
-  height: 72px;
+  width: 65px;
+  height: 65px;
   object-fit: contain;
-  margin-bottom: 8px;
+  margin-bottom: 18px;
 }
 
-.logo h1 {
-  color: var(--green);
-  font-size: 25px;
-  letter-spacing: 3px;
-}
-
-.logo p {
-  color: var(--brown);
-  font-size: 10px;
-  letter-spacing: 3px;
-  margin-top: 6px;
-}
-
-.welcome {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.welcome h2 {
-  font-size: 18px;
-  color: var(--green);
+.cover h1 {
+  font-size: clamp(25px, 5vw, 38px);
+  line-height: 1.15;
   margin-bottom: 10px;
+  font-weight: normal;
 }
 
-.welcome p {
-  font-size: 12px;
-  color: #55554e;
-  line-height: 1.7;
+.cover h1 span {
+  color: #d6b98e;
+  font-style: italic;
 }
 
-/* POLICY LINKS */
-
-.policy-link {
-  background: rgba(255,255,255,.65);
-  border: 1px solid #d9d1c3;
-  border-radius: 9px;
-  padding: 13px 14px;
-  margin-bottom: 11px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  cursor: pointer;
-  transition: .2s;
-}
-
-.policy-link:hover {
-  background: white;
-  border-color: var(--brown);
-}
-
-.policy-link h3 {
-  color: var(--green);
-  font-size: 14px;
-  margin-bottom: 5px;
-}
-
-.policy-link p {
-  font-size: 11px;
-  color: #777168;
-}
-
-.arrow {
-  color: var(--brown);
-  font-size: 21px;
-}
-
-/* CHECKBOXES */
-
-.check-row {
-  display: flex;
-  gap: 9px;
-  align-items: flex-start;
-  font-size: 11px;
-  line-height: 1.5;
-  margin: 13px 0;
-  color: #484840;
-}
-
-.check-row input {
-  width: 16px;
-  height: 16px;
-  accent-color: var(--green);
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-
-.check-row input:disabled {
-  cursor: not-allowed;
-}
-
-.locked {
-  color: #a07842;
-  font-size: 10px;
-  margin-top: -8px;
-  margin-left: 25px;
-}
-
-/* BUTTONS */
-
-.buttons {
-  margin-top: 20px;
-  display: grid;
-  gap: 10px;
-}
-
-button {
-  cursor: pointer;
-  font-family: inherit;
-}
-
-.main-btn {
-  width: 100%;
-  padding: 14px;
-  border: none;
-  border-radius: 7px;
-  background: var(--green);
-  color: white;
-  font-size: 12px;
-  letter-spacing: .5px;
-  transition: .2s;
-}
-
-.main-btn:disabled {
-  background: #a7a79d;
-  cursor: not-allowed;
-}
-
-.guest-btn {
-  width: 100%;
-  padding: 13px;
-  background: transparent;
-  border: 1px solid var(--green);
-  border-radius: 7px;
-  color: var(--green);
-  font-size: 12px;
-}
-
-.note {
-  text-align: center;
-  font-size: 10px;
-  line-height: 1.6;
-  color: #777168;
-  margin-top: 13px;
-}
-
-/* POLICY MODAL */
-
-.modal {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  background: rgba(15,22,16,.70);
-
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 15px;
-}
-
-.modal.show {
-  display: flex;
-}
-
-.modal-content {
-  width: 100%;
-  max-width: 570px;
-  max-height: 88vh;
-  background: #fffdf8;
-  border-radius: 13px;
-  padding: 22px;
-
-  display: flex;
-  flex-direction: column;
-}
-
-.modal-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 13px;
-}
-
-.modal-header h2 {
-  color: var(--green);
-  font-size: 19px;
-}
-
-.close {
-  border: none;
-  background: transparent;
-  font-size: 25px;
-  color: #777;
-  padding: 3px 8px;
-}
-
-.modal-subtitle {
-  font-size: 11px;
-  color: #888;
-  margin-bottom: 13px;
-}
-
-.policy-content {
-  overflow-y: auto;
-  border: 1px solid #e1d9cc;
-  background: #faf8f3;
-  padding: 18px;
-  border-radius: 8px;
-  line-height: 1.7;
-  font-size: 12px;
-  color: #555;
-  min-height: 180px;
-  flex: 1;
-}
-
-.policy-content h3 {
-  color: var(--green);
+.cover p {
   font-size: 13px;
-  margin: 15px 0 5px;
+  letter-spacing: 2px;
+  color: #e8d8bc;
+  line-height: 1.6;
 }
 
-.policy-content p {
-  margin-bottom: 10px;
+/* AGREEMENT */
+.agreement {
+  padding: 25px;
+  color: #3d382f;
 }
 
-.modal-footer {
-  padding-top: 14px;
-}
-
-.modal-status {
-  font-size: 10px;
-  color: #a07842;
-  margin-bottom: 10px;
-}
-
-.modal-agree {
-  display: flex;
-  gap: 9px;
-  font-size: 12px;
-  align-items: flex-start;
-  line-height: 1.5;
+.agreement h2 {
+  font-size: 19px;
+  color: #354a37;
   margin-bottom: 12px;
 }
 
-.modal-agree input {
-  accent-color: var(--green);
-  width: 17px;
-  height: 17px;
-  flex-shrink: 0;
+.agreement p {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.8;
+  margin-bottom: 12px;
 }
 
-.modal-agree input:disabled {
+.terms {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  margin: 17px 0;
+}
+
+.terms input {
+  accent-color: #354a37;
+  width: 16px;
+  height: 16px;
+}
+
+button {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 6px;
+  background: #354a37;
+  color: #fff4df;
+  font-size: 12px;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: .45;
   cursor: not-allowed;
 }
 
+.footer {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  color: #827761;
+  margin-top: 14px;
+}
+
+/* PHONE */
 @media(max-width: 480px) {
+  body {
+    padding: 12px;
+  }
+
+  .cover {
+    min-height: 235px;
+    padding: 20px;
+    background-position: center;
+  }
+
+  .cover-content {
+    max-width: 80%;
+  }
+
+  .logo {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 12px;
+  }
+
   .agreement {
-    padding: 24px 19px;
-  }
-
-  .logo h1 {
-    font-size: 22px;
-  }
-
-  .modal-content {
-    padding: 17px;
+    padding: 20px;
   }
 }
 </style>
@@ -342,542 +173,82 @@ button {
 
 <body>
 
-<main class="cover">
+<div class="welcome-box">
 
-  <section class="agreement">
+  <!-- COVER WITH TEXT OVERLAY -->
+  <div class="cover">
+    <div class="cover-content">
 
-    <div class="logo">
-      <img src="images/logo.png"
-           alt="Forma Doppia Logo"
-           onerror="this.style.display='none'">
+      <img
+        src="images/logo.png"
+        class="logo"
+        alt="Forma Doppia Logo"
+      >
 
-      <h1>FORMA DOPPIA</h1>
-      <p>STEP UP YOUR COMFORT</p>
+      <h1>
+        Welcome to<br>
+        <span>Forma Doppia</span>
+      </h1>
+
+      <p>STEP UP YOUR COMFORT.</p>
+
     </div>
+  </div>
 
-    <div class="welcome">
-      <h2>Welcome to Forma Doppia Website!</h2>
+  <!-- WEBSITE AGREEMENT -->
+  <div class="agreement">
 
-      <p>
-        By accessing and using our website, you agree
-        to follow the Terms of Service and Policies
-        stated below. These guidelines are designed
-        to provide a safe, convenient, and reliable
-        shopping experience for all our customers.
-      </p>
-    </div>
+    <h2>Website Agreement</h2>
 
-    <!-- TERMS LINK -->
-    <div class="policy-link"
-         onclick="openPolicy('terms')">
+    <p>
+      Welcome to Forma Doppia Website!
+    </p>
 
-      <div>
-        <h3>Terms of Service</h3>
-        <p>Read the website terms and customer guidelines.</p>
-      </div>
+    <p>
+      By accessing and using our website, you agree
+      to follow our terms and conditions, respect our
+      policies, and use our website responsibly.
+    </p>
 
-      <span class="arrow">›</span>
-    </div>
+    <p>
+      Please read and understand this agreement
+      before proceeding to our website.
+    </p>
 
-    <!-- PRIVACY LINK -->
-    <div class="policy-link"
-         onclick="openPolicy('privacy')">
-
-      <div>
-        <h3>Privacy Policy</h3>
-        <p>Learn how customer information is handled.</p>
-      </div>
-
-      <span class="arrow">›</span>
-    </div>
-
-    <!-- TERMS CHECKBOX -->
-    <label class="check-row">
-      <input type="checkbox"
-             id="termsCheck"
-             disabled>
-
+    <label class="terms">
+      <input type="checkbox" id="agree">
       <span>
-        I have read and agree to the Terms of Service.
+        I have read and agree to the terms and
+        conditions of Forma Doppia.
       </span>
     </label>
 
-    <p class="locked" id="termsLock">
-      Read the Terms of Service first.
-    </p>
+    <button id="continue" disabled>
+      CONTINUE TO WEBSITE
+    </button>
 
-    <!-- PRIVACY CHECKBOX -->
-    <label class="check-row">
-      <input type="checkbox"
-             id="privacyCheck"
-             disabled>
-
-      <span>
-        I have read and agree to the Privacy Policy.
-      </span>
-    </label>
-
-    <p class="locked" id="privacyLock">
-      Read the Privacy Policy first.
-    </p>
-
-    <!-- BUTTONS -->
-    <div class="buttons">
-
-      <button class="main-btn"
-              id="accountBtn"
-              disabled
-              onclick="continueToAccount()">
-
-        Continue to Account Access →
-
-      </button>
-
-      <button class="guest-btn"
-              id="guestBtn"
-              disabled
-              onclick="continueAsGuest()">
-
-        Continue as Guest
-
-      </button>
-
-    </div>
-
-    <p class="note">
-      Guests can browse the website.
-      An account is required to add products to the cart
-      and make a purchase.
-    </p>
-
-  </section>
-
-</main>
-
-
-<!-- TERMS MODAL -->
-
-<div class="modal" id="termsModal">
-
-  <div class="modal-content">
-
-    <div class="modal-header">
-      <h2>Terms of Service</h2>
-      <button class="close" onclick="closePolicy()">×</button>
-    </div>
-
-    <p class="modal-subtitle">
-      JNHJ Furnishings Co. | Forma Doppia
-    </p>
-
-    <div class="policy-content" id="termsContent">
-
-      <h3>1. Welcome to Forma Doppia</h3>
-      <p>
-        These Terms of Service govern your access to
-        and use of the Forma Doppia website and shopping
-        services provided by JNHJ Furnishings Co.
-      </p>
-
-      <h3>2. Product Information</h3>
-      <p>
-        Forma Doppia is a multifunctional furniture
-        product designed to combine style, comfort,
-        functionality, and practicality. Product images,
-        descriptions, variants, and prices are displayed
-        to help customers make informed decisions.
-      </p>
-
-      <h3>3. Orders and Purchases</h3>
-      <p>
-        Customers may select their preferred product,
-        variant, and quantity through the website.
-        Customers must provide accurate contact and
-        delivery information when placing an order.
-      </p>
-
-      <h3>4. Payment Methods</h3>
-      <p>
-        Available payment options may include GCash,
-        Maya, and Cash on Delivery. Payment instructions
-        and order status will be displayed during
-        the checkout process.
-      </p>
-
-      <h3>5. Payment Simulation</h3>
-      <p>
-        During the demonstration phase, simulated
-        payment confirmations are for website testing
-        and demonstration purposes only. They do not
-        represent actual money transfers or successful
-        financial transactions.
-      </p>
-
-      <h3>6. Order Cancellation</h3>
-      <p>
-        Orders may be canceled before they are confirmed
-        or processed. Once an order has been finalized,
-        prepared for delivery, or shipped, cancellation
-        may no longer be possible. Contact customer
-        service for cancellation requests.
-      </p>
-
-      <h3>7. Shipping and Delivery</h3>
-      <p>
-        Delivery schedules depend on product availability,
-        customer location, and courier services.
-        Estimated delivery information and applicable
-        delivery fees will be provided during ordering.
-      </p>
-
-      <h3>8. Returns and Exchanges</h3>
-      <p>
-        Returns and exchanges are accepted within seven
-        (7) days from delivery for defective, damaged,
-        or incorrect items. Customers must provide a
-        clear video showing the issue as proof.
-        Please wait for confirmation before returning
-        an item.
-      </p>
-
-      <h3>9. Customer Responsibilities</h3>
-      <p>
-        Customers are responsible for providing accurate
-        information and reviewing their selected products,
-        quantities, and delivery details before submitting
-        their orders.
-      </p>
-
-      <h3>10. Customer Support</h3>
-      <p>
-        For questions, concerns, or product-related
-        inquiries, customers may contact JNHJ Furnishings
-        Co. through its official communication channels.
-      </p>
-
-      <h3>11. Agreement</h3>
-      <p>
-        By accepting these Terms of Service, you
-        acknowledge that you have read and understood
-        the guidelines governing the use of this website.
-      </p>
-
-    </div>
-
-    <div class="modal-footer">
-
-      <p class="modal-status" id="termsModalStatus">
-        Scroll to the bottom to unlock agreement.
-      </p>
-
-      <label class="modal-agree">
-        <input type="checkbox"
-               id="termsModalCheck"
-               disabled>
-        <span>
-          I have read and agree to the Terms of Service.
-        </span>
-      </label>
-
-      <button class="main-btn"
-              id="termsAgreeBtn"
-              disabled
-              onclick="acceptPolicy('terms')">
-
-        I Agree
-
-      </button>
-
+    <div class="footer">
+      © 2026 JNHJ Furnishings Co. | Forma Doppia
     </div>
 
   </div>
 </div>
-
-
-<!-- PRIVACY MODAL -->
-
-<div class="modal" id="privacyModal">
-
-  <div class="modal-content">
-
-    <div class="modal-header">
-      <h2>Privacy Policy</h2>
-      <button class="close" onclick="closePolicy()">×</button>
-    </div>
-
-    <p class="modal-subtitle">
-      JNHJ Furnishings Co. | Customer Privacy
-    </p>
-
-    <div class="policy-content" id="privacyContent">
-
-      <h3>1. Privacy and Safety</h3>
-      <p>
-        At JNHJ Furnishings Co., we prioritize the
-        privacy and safety of our customers. We are
-        committed to explaining how personal information
-        is collected, used, and protected.
-      </p>
-
-      <h3>2. Information We Collect</h3>
-      <p>
-        Information may include your name, contact number,
-        email address, delivery address, order details,
-        and payment-related information submitted during
-        transactions.
-      </p>
-
-      <h3>3. How We Use Your Information</h3>
-      <p>
-        Customer information is used for order processing,
-        payment verification, delivery arrangements,
-        customer assistance, and transaction-related
-        communication.
-      </p>
-
-      <h3>4. Payment Information</h3>
-      <p>
-        Payment-related information is used for
-        processing and verifying customer orders.
-        Never provide passwords, PINs, or OTPs through
-        the website or to another person.
-      </p>
-
-      <h3>5. Information Protection</h3>
-      <p>
-        We take appropriate measures to protect
-        customer information and maintain confidentiality.
-        Information should only be accessed and used
-        for legitimate business purposes.
-      </p>
-
-      <h3>6. Third-Party Services</h3>
-      <p>
-        Delivery arrangements may involve third-party
-        courier providers. Necessary delivery information
-        may be shared with them to fulfill customer orders.
-      </p>
-
-      <h3>7. Data Retention</h3>
-      <p>
-        Customer information may be retained for as long
-        as necessary for order fulfillment, customer
-        support, and applicable business or legal
-        requirements.
-      </p>
-
-      <h3>8. Customer Privacy Concerns</h3>
-      <p>
-        Customers may contact JNHJ Furnishings Co.
-        regarding questions or concerns about their
-        personal information and its handling.
-      </p>
-
-      <h3>9. Contact Information</h3>
-      <p>
-        Email: jnhjfurnishingscompany@gmail.com
-      </p>
-      <p>
-        Contact Number: 09108222830
-      </p>
-
-      <h3>10. Agreement</h3>
-      <p>
-        By accepting this Privacy Policy, you acknowledge
-        that you have read and understood how your
-        personal information may be handled when using
-        the Forma Doppia website.
-      </p>
-
-    </div>
-
-    <div class="modal-footer">
-
-      <p class="modal-status" id="privacyModalStatus">
-        Scroll to the bottom to unlock agreement.
-      </p>
-
-      <label class="modal-agree">
-        <input type="checkbox"
-               id="privacyModalCheck"
-               disabled>
-        <span>
-          I have read and agree to the Privacy Policy.
-        </span>
-      </label>
-
-      <button class="main-btn"
-              id="privacyAgreeBtn"
-              disabled
-              onclick="acceptPolicy('privacy')">
-
-        I Agree
-
-      </button>
-
-    </div>
-
-  </div>
-</div>
-
 
 <script>
+const agree = document.getElementById("agree");
+const button = document.getElementById("continue");
 
-// AGREEMENT STATUS
-let termsAccepted = false;
-let privacyAccepted = false;
-
-// OPEN POLICY
-function openPolicy(type) {
-
-  document.getElementById(type + "Modal")
-    .classList.add("show");
-
-  const content = document.getElementById(type + "Content");
-
-  content.scrollTop = 0;
-
-  if (type === "terms") {
-    document.getElementById("termsModalCheck").checked = false;
-    document.getElementById("termsModalCheck").disabled = true;
-    document.getElementById("termsAgreeBtn").disabled = true;
-    document.getElementById("termsModalStatus").textContent =
-      "Scroll to the bottom to unlock agreement.";
-  }
-
-  if (type === "privacy") {
-    document.getElementById("privacyModalCheck").checked = false;
-    document.getElementById("privacyModalCheck").disabled = true;
-    document.getElementById("privacyAgreeBtn").disabled = true;
-    document.getElementById("privacyModalStatus").textContent =
-      "Scroll to the bottom to unlock agreement.";
-  }
-}
-
-
-// CLOSE POLICY
-function closePolicy() {
-  document.querySelectorAll(".modal").forEach(modal => {
-    modal.classList.remove("show");
-  });
-}
-
-
-// SCROLL DETECTION
-function watchScroll(type) {
-
-  const content = document.getElementById(type + "Content");
-
-  content.addEventListener("scroll", function() {
-
-    const atBottom =
-      content.scrollTop + content.clientHeight >=
-      content.scrollHeight - 3;
-
-    if (atBottom) {
-
-      document.getElementById(type + "ModalCheck").disabled = false;
-
-      document.getElementById(type + "ModalStatus").textContent =
-        "✓ You have reached the bottom. You may now agree.";
-
-    }
-
-  });
-
-}
-
-watchScroll("terms");
-watchScroll("privacy");
-
-
-// CHECKBOX CONTROLS
-["terms", "privacy"].forEach(type => {
-
-  document.getElementById(type + "ModalCheck")
-    .addEventListener("change", function() {
-
-      document.getElementById(type + "AgreeBtn").disabled =
-        !this.checked;
-
-    });
-
+agree.addEventListener("change", () => {
+  button.disabled = !agree.checked;
 });
 
-
-// ACCEPT POLICY
-function acceptPolicy(type) {
-
-  const checkbox =
-    document.getElementById(type + "ModalCheck");
-
-  if (!checkbox.checked) return;
-
-  if (type === "terms") {
-
-    termsAccepted = true;
-
-    document.getElementById("termsCheck").checked = true;
-    document.getElementById("termsCheck").disabled = false;
-    document.getElementById("termsLock").textContent =
-      "✓ Terms of Service accepted.";
-
+button.addEventListener("click", () => {
+  if (agree.checked) {
+    document.querySelector(".welcome-box").style.display = "none";
+    document.body.innerHTML +=
+      '<h1 style="color:#eee5d5;text-align:center;margin:auto;">Welcome to Forma Doppia!</h1>';
   }
-
-  if (type === "privacy") {
-
-    privacyAccepted = true;
-
-    document.getElementById("privacyCheck").checked = true;
-    document.getElementById("privacyCheck").disabled = false;
-    document.getElementById("privacyLock").textContent =
-      "✓ Privacy Policy accepted.";
-
-  }
-
-  closePolicy();
-  updateButtons();
-
-}
-
-
-// UPDATE MAIN BUTTONS
-function updateButtons() {
-
-  const ready = termsAccepted && privacyAccepted;
-
-  document.getElementById("accountBtn").disabled = !ready;
-  document.getElementById("guestBtn").disabled = !ready;
-
-}
-
-
-// CONTINUE AS GUEST
-function continueAsGuest() {
-
-  if (!termsAccepted || !privacyAccepted) return;
-
-  sessionStorage.setItem("formaGuest", "true");
-  sessionStorage.setItem("formaTermsAccepted", "true");
-  sessionStorage.setItem("formaPrivacyAccepted", "true");
-
-  window.location.href = "home.html";
-
-}
-
-
-// ACCOUNT ACCESS
-function continueToAccount() {
-
-  if (!termsAccepted || !privacyAccepted) return;
-
-  sessionStorage.setItem("formaTermsAccepted", "true");
-  sessionStorage.setItem("formaPrivacyAccepted", "true");
-
-  window.location.href = "account.html";
-
-}
-
+});
 </script>
 
 </body>
