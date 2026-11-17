@@ -9,312 +9,261 @@
 
 <style>
 /* CLICKWRAP */
-#clickwrapLayer {
- position:fixed;
- inset:0;
- z-index:99999;
- background:rgba(15,25,19,.88);
- display:flex;
- align-items:center;
- justify-content:center;
- padding:14px;
- overflow-y:auto;
+.clickwrap {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(15, 25, 18, .88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  overflow-y: auto;
 }
 
-#clickwrapLayer * {
- box-sizing:border-box;
+.clickwrap-box {
+  background: #f8f5eb;
+  width: 100%;
+  max-width: 540px;
+  max-height: 94vh;
+  overflow-y: auto;
+  border-radius: 16px;
+  padding: 18px;
+  color: #26382c;
 }
 
-#clickwrapLayer .clickwrap-box {
- width:100%;
- max-width:540px;
- max-height:94vh;
- overflow-y:auto;
- background:#f5f0e6;
- border-radius:18px;
- box-shadow:0 15px 50px rgba(0,0,0,.4);
- color:#26382c;
+/* COVER IMAGE */
+.welcome-cover {
+  position: relative;
+  width: 100%;
+  height: 270px;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 18px;
 }
 
-/* COVER PHOTO */
-#clickwrapLayer .welcome-cover {
- position:relative;
- width:100%;
- height:250px;
- overflow:hidden;
- border-radius:18px 18px 0 0;
- background:#26382c;
+.welcome-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-#clickwrapLayer .welcome-cover img {
- width:100%;
- height:100%;
- object-fit:cover;
- display:block;
+.cover-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 40%,
+    rgba(38,56,44,.18) 60%,
+    rgba(38,56,44,.88) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  text-align: left;
+  padding: 22px;
 }
 
-/* COVER OVERLAY */
-#clickwrapLayer .cover-overlay {
- position:absolute;
- inset:0;
- background:linear-gradient(
-  to bottom,
-  transparent 45%,
-  rgba(38,56,44,.35) 70%,
-  rgba(38,56,44,.95) 100%
- );
- display:flex;
- flex-direction:column;
- justify-content:flex-end;
- padding:25px;
- color:#fff8e9;
+.cover-overlay .brand-small {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #244b35;
+  text-align: left;
+  margin-bottom: 9px;
 }
 
-#clickwrapLayer .cover-overlay .brand-small {
- font-family:Arial,sans-serif;
- font-size:11px;
- font-weight:700;
- letter-spacing:3px;
- color:#9bb58d;
- margin-bottom:10px;
+.cover-overlay h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(34px, 8vw, 48px);
+  font-weight: 700;
+  line-height: 1.08;
+  color: #244b35;
+  text-align: left;
+  margin: 0 0 10px;
+  text-shadow: none;
 }
 
-#clickwrapLayer .cover-overlay h1 {
- font-family:Georgia,"Times New Roman",serif;
- font-size:clamp(36px,8vw,48px);
- font-weight:700;
- line-height:1.05;
- letter-spacing:1px;
- color:#ead5a8;
- margin-bottom:10px;
+.cover-overlay p {
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #fff8e9;
+  text-align: left;
+  max-width: 390px;
 }
 
-#clickwrapLayer .cover-overlay p {
- font-family:Arial,sans-serif;
- font-size:13px;
- font-weight:400;
- line-height:1.6;
- color:#fff8e9;
- max-width:390px;
+/* AGREEMENT */
+.clickwrap-intro {
+  text-align: center;
+  margin: 8px 0 16px;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
-/* MAIN AGREEMENT */
-#clickwrapLayer .clickwrap-inner {
- padding:22px;
+.reader {
+  background: #eee9dc;
+  border: 1px solid #d9d1bf;
+  border-radius: 10px;
+  padding: 13px;
+  margin-bottom: 12px;
 }
 
-#clickwrapLayer .clickwrap-heading {
- text-align:center;
- margin-bottom:18px;
+.reader-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 700;
 }
 
-#clickwrapLayer .clickwrap-heading h2 {
- font-family:Georgia,serif;
- font-size:22px;
- color:#26382c;
- margin-bottom:6px;
+.read-btn {
+  border: none;
+  border-radius: 20px;
+  padding: 8px 17px;
+  background: #26382c;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-#clickwrapLayer .clickwrap-heading p {
- font-size:13px;
- color:#6c7168;
- line-height:1.5;
+.read-btn.done {
+  background: #66805d;
 }
 
-#clickwrapLayer .reader {
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:12px;
- padding:14px;
- margin-bottom:10px;
- background:#fffdf8;
- border:1px solid #ddd5c5;
- border-radius:10px;
+.reader-content {
+  display: none;
 }
 
-#clickwrapLayer .reader b {
- font-size:14px;
+.reader-content.open {
+  display: block;
 }
 
-#clickwrapLayer button {
- cursor:pointer;
- border:none;
- font-family:inherit;
+.agreement-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 17px 0;
+  opacity: .5;
 }
 
-#clickwrapLayer .read-btn {
- background:#26382c;
- color:#fff;
- padding:9px 18px;
- border-radius:7px;
- font-size:11px;
- font-weight:bold;
- letter-spacing:.5px;
+.agreement-check input {
+  margin-top: 3px;
+  accent-color: #26382c;
 }
 
-#clickwrapLayer .read-btn.done {
- background:#647c5d;
+.continue-area {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
 }
 
-#clickwrapLayer .agreement-check {
- display:flex;
- align-items:flex-start;
- gap:10px;
- margin:17px 0;
- font-size:12px;
- line-height:1.5;
- color:#4b5149;
- opacity:.55;
+.continue-area.show {
+  display: flex;
 }
 
-#clickwrapLayer .agreement-check input {
- width:17px;
- height:17px;
- flex-shrink:0;
- accent-color:#26382c;
+.continue-area a {
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  padding: 13px;
+  border-radius: 25px;
+  font-size: 12px;
+  font-weight: bold;
 }
 
-#clickwrapLayer .continue-area {
- display:none;
- flex-direction:column;
- gap:10px;
- margin-top:15px;
+.continue-area .btn {
+  background: #26382c;
+  color: white;
 }
 
-#clickwrapLayer .continue-area.show {
- display:flex;
+.continue-area .btn.gold {
+  background: #c4a66a;
+  color: #26382c;
 }
 
-#clickwrapLayer .continue-area a {
- display:block;
- width:100%;
- text-align:center;
- text-decoration:none;
- padding:13px;
- border-radius:8px;
- font-size:12px;
- font-weight:bold;
+/* READING PANEL */
+.reading-screen {
+  display: none;
 }
 
-#clickwrapLayer .continue-account {
- background:#26382c;
- color:white;
+.reading-screen.active {
+  display: block;
 }
 
-#clickwrapLayer .continue-guest {
- background:#d6c4a3;
- color:#26382c;
+.reading-screen h2 {
+  font-family: Georgia, serif;
+  color: #26382c;
+  margin-bottom: 12px;
+  font-size: 23px;
 }
 
-#clickwrapLayer .clickwrap-note {
- text-align:center;
- font-size:10px;
- color:#888779;
- margin-top:15px;
+.reading-body {
+  background: #fffdf7;
+  border: 1px solid #ddd5c5;
+  border-radius: 10px;
+  padding: 15px;
+  height: 48vh;
+  overflow-y: auto;
+  font-size: 13px;
+  line-height: 1.7;
+  margin-bottom: 14px;
 }
 
-/* READING SCREEN */
-#clickwrapLayer .reading-screen {
- display:none;
- padding:22px;
+.reading-body h3 {
+  color: #26382c;
+  margin: 12px 0 5px;
 }
 
-#clickwrapLayer .reading-screen.active {
- display:block;
+.reading-body p {
+  margin-bottom: 12px;
 }
 
-#clickwrapLayer .agreement-screen.hidden {
- display:none;
+.back-btn {
+  width: 100%;
+  border: none;
+  border-radius: 25px;
+  padding: 13px;
+  background: #26382c;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-#clickwrapLayer .reading-header {
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:10px;
- border-bottom:1px solid #d8d0c0;
- padding-bottom:14px;
- margin-bottom:16px;
-}
-
-#clickwrapLayer .reading-header h2 {
- font-family:Georgia,serif;
- font-size:21px;
- color:#26382c;
-}
-
-#clickwrapLayer .reading-body {
- height:48vh;
- min-height:230px;
- max-height:430px;
- overflow-y:auto;
- padding:16px;
- background:#fffdf8;
- border:1px solid #e0d8c9;
- border-radius:10px;
- font-size:13px;
- line-height:1.75;
- color:#454a43;
-}
-
-#clickwrapLayer .reading-body h3 {
- color:#26382c;
- font-family:Georgia,serif;
- margin:14px 0 6px;
- font-size:15px;
-}
-
-#clickwrapLayer .reading-body h3:first-child {
- margin-top:0;
-}
-
-#clickwrapLayer .reading-body p {
- margin-bottom:12px;
-}
-
-#clickwrapLayer .reading-footer {
- margin-top:15px;
-}
-
-#clickwrapLayer .back-btn {
- width:100%;
- padding:13px;
- background:#26382c;
- color:white;
- border-radius:8px;
- font-size:12px;
- font-weight:bold;
-}
-
-#clickwrapLayer .reading-instruction {
- font-size:11px;
- color:#77786d;
- text-align:center;
- margin-bottom:10px;
+.back-btn:disabled {
+  background: #aaa99e;
+  cursor: not-allowed;
 }
 
 @media(max-width:480px) {
- #clickwrapLayer {
-  padding:9px;
- }
+  .clickwrap-box {
+    padding: 13px;
+  }
 
- #clickwrapLayer .welcome-cover {
-  height:215px;
- }
+  .welcome-cover {
+    height: 235px;
+  }
 
- #clickwrapLayer .cover-overlay {
-  padding:20px;
- }
+  .cover-overlay {
+    padding: 17px;
+  }
 
- #clickwrapLayer .cover-overlay h1 {
-  font-size:clamp(34px,9vw,42px);
- }
+  .cover-overlay h1 {
+    font-size: 36px;
+  }
 
- #clickwrapLayer .clickwrap-inner,
- #clickwrapLayer .reading-screen {
-  padding:17px;
- }
+  .reading-body {
+    height: 48vh;
+  }
 }
 </style>
 </head>
@@ -325,302 +274,381 @@
 
 <main>
 <section class="hero">
- <div class="hero-content">
-  <p class="eyebrow">JNHJ Furnishings Co.</p>
-  <h1>Step Up Your Comfort.</h1>
-  <p>Discover practical furniture designed to bring comfort, function, and style into your everyday space.</p>
-  <a href="shop.html" class="btn gold">SHOP NOW</a>
- </div>
+  <div class="hero-content">
+    <p class="eyebrow">JNHJ Furnishings Co.</p>
+    <h1>Step Up Your Comfort.</h1>
+    <p>Discover practical furniture designed to bring comfort, function, and style into your everyday space.</p>
+    <a href="shop.html" class="btn gold">SHOP NOW</a>
+  </div>
 </section>
 
 <section class="container">
- <div class="section-title">
-  <p class="eyebrow">Welcome to Forma Doppia</p>
-  <h2>Comfort Meets Function</h2>
-  <p>Furniture that makes everyday living more practical.</p>
- </div>
-
- <div class="content-grid">
-  <img src="images/cover.png" alt="Forma Doppia furniture">
-  <div>
-   <h2 style="color:var(--green);font-family:Georgia,serif">A Smarter Way to Use Space</h2>
-   <p>Forma Doppia offers multifunctional furniture that combines practical use and simple design. Our featured convertible chair-ladder concept is made to provide two functions in one piece of furniture.</p>
-   <div class="two-buttons">
-    <a href="about.html" class="btn">OUR STORY</a>
-    <a href="shop.html" class="btn gold">EXPLORE PRODUCTS</a>
-   </div>
+  <div class="section-title">
+    <p class="eyebrow">Welcome to Forma Doppia</p>
+    <h2>Comfort Meets Function</h2>
+    <p>Furniture that makes everyday living more practical.</p>
   </div>
- </div>
+
+  <div class="content-grid">
+    <img src="images/cover.png" alt="Forma Doppia furniture">
+    <div>
+      <h2 style="color:var(--green);font-family:Georgia,serif">
+        A Smarter Way to Use Space
+      </h2>
+      <p>
+        Forma Doppia offers multifunctional furniture that combines
+        practical use and simple design. Our featured convertible
+        chair-ladder concept is made to provide two functions in one
+        piece of furniture.
+      </p>
+
+      <div class="two-buttons">
+        <a href="about.html" class="btn">OUR STORY</a>
+        <a href="shop.html" class="btn gold">EXPLORE PRODUCTS</a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="container" style="text-align:center">
- <div class="panel">
-  <p class="eyebrow">Explore Forma Doppia</p>
-  <h2 style="color:var(--green);font-family:Georgia,serif">Find the right finish for your space.</h2>
-  <p>Choose from our available product finishes and options.</p>
-  <a href="shop.html" class="btn gold" style="margin-top:15px">SHOP NOW</a>
- </div>
+  <div class="panel">
+    <p class="eyebrow">Explore Forma Doppia</p>
+    <h2 style="color:var(--green);font-family:Georgia,serif">
+      Find the right finish for your space.
+    </h2>
+    <p>Choose from our available product finishes and options.</p>
+    <a href="shop.html" class="btn gold" style="margin-top:15px">
+      SHOP NOW
+    </a>
+  </div>
 </section>
 </main>
 
 <footer class="footer">
- <p><b>FORMA DOPPIA</b></p>
- <p>Step Up Your Comfort</p>
- <p>JNHJ Furnishings Co.</p>
- <p><a href="contact.html">Contact Us</a> | <a href="policies.html">Policies</a></p>
- <p>© 2026 Forma Doppia. All rights reserved.</p>
+  <p><b>FORMA DOPPIA</b></p>
+  <p>Step Up Your Comfort</p>
+  <p>JNHJ Furnishings Co.</p>
+  <p>
+    <a href="contact.html">Contact Us</a> |
+    <a href="policies.html">Policies</a>
+  </p>
+  <p>© 2026 Forma Doppia. All rights reserved.</p>
 </footer>
 
 <!-- CLICKWRAP -->
-<div id="clickwrapLayer">
- <div class="clickwrap-box">
+<div class="clickwrap" id="clickwrapLayer">
 
-  <!-- AGREEMENT SCREEN -->
-  <div class="agreement-screen" id="agreementScreen">
+  <div class="clickwrap-box">
 
-   <div class="welcome-cover">
-    <img src="images/cover.png" alt="Forma Doppia Cover">
+    <!-- WELCOME SCREEN -->
+    <div id="agreementScreen">
 
-    <div class="cover-overlay">
-     <span class="brand-small">JNHJ FURNISHINGS CO.</span>
-     <h1>Welcome to Forma Doppia</h1>
-     <p>Step Up Your Comfort. Discover functional and stylish furniture designed to bring comfort and convenience into your everyday life.</p>
+      <div class="welcome-cover">
+        <img src="images/cover.png" alt="Forma Doppia Cover">
+
+        <div class="cover-overlay">
+          <span class="brand-small">JNHJ FURNISHINGS CO.</span>
+          <h1>Welcome to Forma Doppia</h1>
+          <p>
+            Step Up Your Comfort. Discover functional and stylish
+            furniture designed to bring comfort and convenience
+            into your everyday life.
+          </p>
+        </div>
+      </div>
+
+      <p class="clickwrap-intro">
+        Welcome! Please review our website agreements before continuing.
+      </p>
+
+      <div class="reader">
+        <div class="reader-heading">
+          <span>Terms of Service</span>
+          <button type="button" class="read-btn" id="termsRead">READ</button>
+        </div>
+      </div>
+
+      <div class="reader">
+        <div class="reader-heading">
+          <span>Privacy Policy</span>
+          <button type="button" class="read-btn" id="privacyRead">READ</button>
+        </div>
+      </div>
+
+      <label class="agreement-check" id="agreementLabel">
+        <input type="checkbox" id="agreementCheck" disabled>
+        <span>
+          I have read and agree to the Terms of Service and Privacy Policy.
+        </span>
+      </label>
+
+      <div class="continue-area" id="continueChoices">
+        <a href="shop.html?account=1" class="btn">
+          CONTINUE TO ACCOUNT ACCESS
+        </a>
+        <a href="shop.html?guest=1" class="btn gold">
+          CONTINUE AS GUEST
+        </a>
+      </div>
     </div>
-   </div>
 
-   <div class="clickwrap-inner">
-    <div class="clickwrap-heading">
-     <h2>Before You Continue</h2>
-     <p>Please take a moment to read our website agreements before accessing Forma Doppia.</p>
+    <!-- TERMS READING SCREEN -->
+    <div class="reading-screen" id="termsScreen">
+      <h2>Terms of Service</h2>
+
+      <div class="reading-body" id="termsBody">
+
+        <h3>1. Acceptance of Terms</h3>
+        <p>
+          By accessing and using the Forma Doppia website, you agree
+          to follow these Terms of Service. If you do not agree with
+          these terms, please discontinue using the website.
+        </p>
+
+        <h3>2. Website Use</h3>
+        <p>
+          Customers are expected to use the website responsibly and
+          provide accurate information when creating an account,
+          submitting inquiries, or placing orders.
+        </p>
+
+        <h3>3. Product Information</h3>
+        <p>
+          Product descriptions, photographs, prices, and other
+          information are provided for customer reference. We make
+          reasonable efforts to present product information accurately.
+          Product details and availability may be updated when necessary.
+        </p>
+
+        <h3>4. Orders and Payment</h3>
+        <p>
+          Orders submitted through the website are subject to review
+          and confirmation. Available payment methods may include
+          GCash, Maya, and Cash on Delivery, depending on availability
+          and the selected arrangement.
+        </p>
+
+        <h3>5. Shipping and Delivery</h3>
+        <p>
+          Delivery schedules, shipping fees, and courier availability
+          may vary depending on the customer's location and selected
+          delivery arrangement.
+        </p>
+
+        <h3>6. Returns and Exchanges</h3>
+        <p>
+          Customers should contact us if they receive damaged, incorrect,
+          or defective items. Requests will be reviewed according to
+          the applicable return and exchange policies.
+        </p>
+
+        <h3>7. Proper Product Use</h3>
+        <p>
+          Customers should review the product descriptions and
+          specifications before purchasing or using any product.
+          Products should only be used for their intended purposes
+          and within their stated limitations.
+        </p>
+
+        <h3>8. Changes to These Terms</h3>
+        <p>
+          Forma Doppia may revise or update these Terms of Service
+          when necessary. Updated terms will be published on the website.
+        </p>
+
+        <h3>9. Contact Information</h3>
+        <p>
+          For questions or concerns regarding these terms, contact us at
+          jnhjfurnishingscompany@gmail.com.
+        </p>
+
+      </div>
+
+      <button type="button" class="back-btn" id="termsBack" disabled>
+        BACK TO AGREEMENT
+      </button>
     </div>
 
-    <div class="reader">
-     <b>Terms of Service</b>
-     <button type="button" class="read-btn" id="termsRead">READ</button>
+    <!-- PRIVACY READING SCREEN -->
+    <div class="reading-screen" id="privacyScreen">
+      <h2>Privacy Policy</h2>
+
+      <div class="reading-body" id="privacyBody">
+
+        <h3>1. Introduction</h3>
+        <p>
+          Forma Doppia respects the privacy of customers and aims
+          to handle personal information responsibly when customers
+          use the website.
+        </p>
+
+        <h3>2. Information We Collect</h3>
+        <p>
+          We may collect information such as a customer's name,
+          email address, phone number, delivery address, account
+          details, and order information when these details are
+          submitted through the website.
+        </p>
+
+        <h3>3. How We Use Information</h3>
+        <p>
+          Collected information may be used to manage customer accounts,
+          process orders, coordinate delivery, respond to inquiries,
+          and provide customer support.
+        </p>
+
+        <h3>4. Information Sharing</h3>
+        <p>
+          Customer information may be shared with relevant service
+          providers when necessary to process orders or coordinate
+          delivery. Information is not intended for public display.
+        </p>
+
+        <h3>5. Data Storage and Security</h3>
+        <p>
+          We use reasonable measures to protect information submitted
+          through the website. However, no online system can guarantee
+          absolute security.
+        </p>
+
+        <h3>6. Customer Responsibility</h3>
+        <p>
+          Customers are responsible for keeping their account
+          credentials confidential and providing accurate information
+          when using the website.
+        </p>
+
+        <h3>7. Data Retention</h3>
+        <p>
+          Customer information may be retained for as long as necessary
+          for account management, order processing, customer service,
+          and other legitimate operational purposes.
+        </p>
+
+        <h3>8. Changes to This Policy</h3>
+        <p>
+          Forma Doppia may update this Privacy Policy when necessary.
+          Changes will be reflected on this page.
+        </p>
+
+        <h3>9. Contact Information</h3>
+        <p>
+          For privacy-related questions or concerns, contact us at
+          jnhjfurnishingscompany@gmail.com.
+        </p>
+
+      </div>
+
+      <button type="button" class="back-btn" id="privacyBack" disabled>
+        BACK TO AGREEMENT
+      </button>
     </div>
 
-    <div class="reader">
-     <b>Privacy Policy</b>
-     <button type="button" class="read-btn" id="privacyRead">READ</button>
-    </div>
-
-    <label class="agreement-check" id="agreementLabel">
-     <input type="checkbox" id="agreementCheck" disabled>
-     <span>I have read and agree to the Terms of Service and Privacy Policy.</span>
-    </label>
-
-    <div class="continue-area" id="continueChoices">
-     <a href="shop.html?account=1" class="continue-account">CONTINUE TO ACCOUNT ACCESS</a>
-     <a href="shop.html?guest=1" class="continue-guest">CONTINUE AS GUEST</a>
-    </div>
-
-    <p class="clickwrap-note">JNHJ Furnishings Co. | Forma Doppia</p>
-   </div>
   </div>
-
-  <!-- TERMS SCREEN -->
-  <div class="reading-screen" id="termsScreen">
-   <div class="reading-header">
-    <h2>Terms of Service</h2>
-   </div>
-
-   <p class="reading-instruction">Please scroll down to read the entire agreement.</p>
-
-   <div class="reading-body" id="termsBody">
-    <h3>1. Acceptance of Terms</h3>
-    <p>By accessing or using the Forma Doppia website, you agree to comply with these Terms of Service. If you do not agree with these terms, please do not proceed with using the website.</p>
-
-    <h3>2. Website Use</h3>
-    <p>This website is provided to present Forma Doppia products, services, and information. Users agree to use the website responsibly and avoid activities that may disrupt its operation.</p>
-
-    <h3>3. Product Information</h3>
-    <p>Product descriptions, photos, finishes, prices, and other details are provided for customer reference. We make reasonable efforts to keep information accurate, but product details and availability may change when necessary.</p>
-
-    <h3>4. Orders and Payment</h3>
-    <p>Submitting an order does not automatically mean that it has been accepted or confirmed. Orders remain subject to review and confirmation by JNHJ Furnishings Co.</p>
-    <p>Available payment methods may include GCash, Maya, and Cash on Delivery, depending on availability and the applicable order arrangement.</p>
-
-    <h3>5. Shipping and Delivery</h3>
-    <p>Delivery fees, schedules, courier availability, and estimated arrival times depend on the customer's location and selected shipping arrangement. Delivery estimates are not guaranteed.</p>
-
-    <h3>6. Returns and Exchanges</h3>
-    <p>Customers who receive damaged, incorrect, or defective products should contact us as soon as possible. Return or exchange requests will be reviewed according to the applicable policies and arrangements.</p>
-
-    <h3>7. Proper Product Use</h3>
-    <p>Customers should review product descriptions and important specifications before purchase and use. Products must be used according to their intended purpose and stated safety limitations.</p>
-
-    <h3>8. Changes to These Terms</h3>
-    <p>Forma Doppia may revise these Terms of Service when necessary. Updated terms will be made available on the website.</p>
-
-    <h3>9. Contact Information</h3>
-    <p>For questions or concerns regarding these Terms of Service, you may contact JNHJ Furnishings Co. at jnhjfurnishingscompany@gmail.com.</p>
-
-    <p><b>Thank you for taking the time to read our Terms of Service.</b></p>
-   </div>
-
-   <div class="reading-footer">
-    <button type="button" class="back-btn" id="termsBack" disabled>SCROLL TO THE BOTTOM TO CONTINUE</button>
-   </div>
-  </div>
-
-  <!-- PRIVACY SCREEN -->
-  <div class="reading-screen" id="privacyScreen">
-   <div class="reading-header">
-    <h2>Privacy Policy</h2>
-   </div>
-
-   <p class="reading-instruction">Please scroll down to read the entire policy.</p>
-
-   <div class="reading-body" id="privacyBody">
-    <h3>1. Introduction</h3>
-    <p>Forma Doppia, under JNHJ Furnishings Co., respects the privacy of customers and is committed to handling personal information responsibly.</p>
-
-    <h3>2. Information We May Collect</h3>
-    <p>Depending on the services used, we may collect a customer's name, email address, phone number, delivery address, account details, and order information.</p>
-
-    <h3>3. How We Use Information</h3>
-    <p>Collected information may be used to create and manage customer accounts, process orders, coordinate delivery, respond to inquiries, and provide customer support.</p>
-
-    <h3>4. Information Sharing</h3>
-    <p>Information may be shared with service providers when reasonably necessary to operate the website, process transactions, or coordinate deliveries. We do not intend to publicly display customers' private information.</p>
-
-    <h3>5. Data Storage and Security</h3>
-    <p>Customer information may be handled through connected website services and platforms. We take reasonable steps to protect submitted information, although no online system can guarantee absolute security.</p>
-
-    <h3>6. Customer Responsibility</h3>
-    <p>Customers should keep their passwords and account credentials confidential and avoid sharing sensitive account information with unauthorized persons.</p>
-
-    <h3>7. Data Retention</h3>
-    <p>Information may be retained for as long as reasonably necessary for account management, order processing, customer support, and applicable legal or operational requirements.</p>
-
-    <h3>8. Changes to This Policy</h3>
-    <p>Forma Doppia may update this Privacy Policy when necessary. Any revised policy will be made available through the website.</p>
-
-    <h3>9. Contact Information</h3>
-    <p>For questions or concerns about privacy and personal information, contact JNHJ Furnishings Co. at jnhjfurnishingscompany@gmail.com.</p>
-
-    <p><b>Thank you for reading our Privacy Policy.</b></p>
-   </div>
-
-   <div class="reading-footer">
-    <button type="button" class="back-btn" id="privacyBack" disabled>SCROLL TO THE BOTTOM TO CONTINUE</button>
-   </div>
-  </div>
-
- </div>
 </div>
 
 <script>
-(function(){
+const agreementScreen = document.getElementById("agreementScreen");
 
- const agreementScreen=document.getElementById("agreementScreen");
- const termsScreen=document.getElementById("termsScreen");
- const privacyScreen=document.getElementById("privacyScreen");
+const termsRead = document.getElementById("termsRead");
+const privacyRead = document.getElementById("privacyRead");
 
- const termsRead=document.getElementById("termsRead");
- const privacyRead=document.getElementById("privacyRead");
+const termsScreen = document.getElementById("termsScreen");
+const privacyScreen = document.getElementById("privacyScreen");
 
- const termsBody=document.getElementById("termsBody");
- const privacyBody=document.getElementById("privacyBody");
+const termsBody = document.getElementById("termsBody");
+const privacyBody = document.getElementById("privacyBody");
 
- const termsBack=document.getElementById("termsBack");
- const privacyBack=document.getElementById("privacyBack");
+const termsBack = document.getElementById("termsBack");
+const privacyBack = document.getElementById("privacyBack");
 
- const agreementCheck=document.getElementById("agreementCheck");
- const continueChoices=document.getElementById("continueChoices");
- const agreementLabel=document.getElementById("agreementLabel");
+const agreementCheck = document.getElementById("agreementCheck");
+const continueChoices = document.getElementById("continueChoices");
+const agreementLabel = document.getElementById("agreementLabel");
 
- let termsDone=false;
- let privacyDone=false;
+let termsDone = false;
+let privacyDone = false;
 
- function checkBottom(body,backButton){
-  const atBottom=body.scrollTop+body.clientHeight>=body.scrollHeight-5;
-
-  if(atBottom){
-   backButton.disabled=false;
-   backButton.textContent="BACK TO AGREEMENT";
-   backButton.style.opacity="1";
-   backButton.style.cursor="pointer";
-  }
- }
-
- function openReader(screen,body,backButton){
-  agreementScreen.classList.add("hidden");
+function openReader(screen, body, backButton) {
+  agreementScreen.style.display = "none";
   termsScreen.classList.remove("active");
   privacyScreen.classList.remove("active");
 
   screen.classList.add("active");
-  body.scrollTop=0;
 
-  backButton.disabled=true;
-  backButton.textContent="SCROLL TO THE BOTTOM TO CONTINUE";
-  backButton.style.opacity=".55";
-  backButton.style.cursor="not-allowed";
+  body.scrollTop = 0;
+  backButton.disabled = true;
 
-  checkBottom(body,backButton);
- }
+  checkReadingProgress(body, backButton);
+}
 
- termsRead.addEventListener("click",function(){
-  openReader(termsScreen,termsBody,termsBack);
- });
+function checkReadingProgress(body, backButton) {
+  const reachedBottom =
+    body.scrollTop + body.clientHeight >= body.scrollHeight - 5;
 
- privacyRead.addEventListener("click",function(){
-  openReader(privacyScreen,privacyBody,privacyBack);
- });
+  if (reachedBottom) {
+    backButton.disabled = false;
+  }
+}
 
- termsBody.addEventListener("scroll",function(){
-  checkBottom(termsBody,termsBack);
- });
+termsRead.addEventListener("click", function() {
+  openReader(termsScreen, termsBody, termsBack);
+});
 
- privacyBody.addEventListener("scroll",function(){
-  checkBottom(privacyBody,privacyBack);
- });
+privacyRead.addEventListener("click", function() {
+  openReader(privacyScreen, privacyBody, privacyBack);
+});
 
- termsBack.addEventListener("click",function(){
-  if(termsBack.disabled)return;
+termsBody.addEventListener("scroll", function() {
+  checkReadingProgress(termsBody, termsBack);
+});
 
-  termsDone=true;
-  termsRead.textContent="READ ✓";
+privacyBody.addEventListener("scroll", function() {
+  checkReadingProgress(privacyBody, privacyBack);
+});
+
+termsBack.addEventListener("click", function() {
+  if (termsBack.disabled) return;
+
+  termsDone = true;
+  termsRead.textContent = "READ ✓";
   termsRead.classList.add("done");
 
   termsScreen.classList.remove("active");
-  agreementScreen.classList.remove("hidden");
+  agreementScreen.style.display = "block";
 
   updateAgreement();
- });
+});
 
- privacyBack.addEventListener("click",function(){
-  if(privacyBack.disabled)return;
+privacyBack.addEventListener("click", function() {
+  if (privacyBack.disabled) return;
 
-  privacyDone=true;
-  privacyRead.textContent="READ ✓";
+  privacyDone = true;
+  privacyRead.textContent = "READ ✓";
   privacyRead.classList.add("done");
 
   privacyScreen.classList.remove("active");
-  agreementScreen.classList.remove("hidden");
+  agreementScreen.style.display = "block";
 
   updateAgreement();
- });
+});
 
- function updateAgreement(){
-  const bothRead=termsDone&&privacyDone;
+function updateAgreement() {
+  const bothRead = termsDone && privacyDone;
 
-  agreementCheck.disabled=!bothRead;
-  agreementLabel.style.opacity=bothRead?"1":".55";
+  agreementCheck.disabled = !bothRead;
+  agreementLabel.style.opacity = bothRead ? "1" : ".5";
+}
 
-  if(!bothRead){
-   agreementCheck.checked=false;
-   continueChoices.classList.remove("show");
-  }
- }
-
- agreementCheck.addEventListener("change",function(){
-  continueChoices.classList.toggle("show",agreementCheck.checked);
- });
-
-})();
+agreementCheck.addEventListener("change", function() {
+  continueChoices.classList.toggle(
+    "show",
+    agreementCheck.checked
+  );
+});
 </script>
 
 <script type="module" src="app.js"></script>
+
 </body>
 </html>
