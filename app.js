@@ -1,5 +1,17 @@
 
+/* =================================
+   APPLY SAVED WEBSITE THEME
+================================= */
+
+const savedTheme = localStorage.getItem("formaDoppiaTheme") || "classic";
+document.documentElement.setAttribute("data-theme", savedTheme);
+
+/* =================================
+   FIREBASE IMPORTS
+================================= */
+
 import { auth, db } from "./firebase.js";
+
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -79,7 +91,9 @@ const products = [
   }
 ];
 
-/* SAMPLE SPECIFICATIONS FOR SCHOOL PROJECT DEMONSTRATION */
+/* =================================
+   PRODUCT SPECIFICATIONS
+================================= */
 
 const productSpecifications = {
   productType: "Convertible Chair-Ladder Furniture",
@@ -172,6 +186,7 @@ function nav() {
       </button>
 
       <nav class="nav-links" id="navLinks">
+
         <a href="home.html">Home</a>
         <a href="shop.html">Shop Now</a>
         <a href="about.html">About Us</a>
@@ -179,6 +194,7 @@ function nav() {
         <a href="policies.html">Policies</a>
         <a href="faqs.html">FAQs</a>
         <a href="contact.html">Contact</a>
+        <a href="settings.html">Settings</a>
 
         <button id="accountNav" type="button">
           Sign In
@@ -187,6 +203,7 @@ function nav() {
         <a href="cart.html">
           Cart <span class="cart-count">0</span>
         </a>
+
       </nav>
 
     </div>
@@ -226,7 +243,9 @@ function nav() {
 
 nav();
 
-/* ACCOUNT STATUS */
+/* =================================
+   ACCOUNT STATUS
+================================= */
 
 onAuthStateChanged(auth, user => {
   const button = $("#accountNav");
@@ -507,46 +526,16 @@ function showDetails(id) {
 
       <ul class="info-list">
 
-        <li>
-          <b>Product Type:</b>
-          ${specs.productType}
-        </li>
-
-        <li>
-          <b>Finish:</b>
-          ${p.finish}
-        </li>
-
-        <li>
-          <b>Material:</b>
-          ${specs.material}
-        </li>
-
-        <li>
-          <b>Dimensions:</b>
-          ${specs.dimensions}
-        </li>
-
-        <li>
-          <b>Approximate Weight:</b>
-          ${specs.weight}
-        </li>
-
-        <li>
-          <b>Sample Maximum Load Capacity:</b>
-          ${specs.loadCapacity}
-        </li>
-
-        <li>
-          <b>Variation:</b>
-          ${p.name}
-        </li>
+        <li><b>Product Type:</b> ${specs.productType}</li>
+        <li><b>Finish:</b> ${p.finish}</li>
+        <li><b>Material:</b> ${specs.material}</li>
+        <li><b>Dimensions:</b> ${specs.dimensions}</li>
+        <li><b>Approximate Weight:</b> ${specs.weight}</li>
+        <li><b>Sample Maximum Load Capacity:</b> ${specs.loadCapacity}</li>
+        <li><b>Variation:</b> ${p.name}</li>
 
         ${p.id === "p6" ? `
-          <li>
-            <b>Additional Feature:</b>
-            Cushioned seating
-          </li>
+          <li><b>Additional Feature:</b> Cushioned seating</li>
         ` : ""}
 
       </ul>
@@ -554,13 +543,10 @@ function showDetails(id) {
     </div>
 
     <div class="policy-block">
-
       <h3>Key Features</h3>
-
       <ul class="info-list">
         ${specs.features.map(item => `<li>${item}</li>`).join("")}
       </ul>
-
     </div>
 
     <div class="notice">
@@ -862,7 +848,9 @@ async function checkout() {
   });
 }
 
-/* REFRESH CART IF NEEDED */
+/* =================================
+   REFRESH CART IF NEEDED
+================================= */
 
 if (location.hash === "#cart") {
   renderCart();
