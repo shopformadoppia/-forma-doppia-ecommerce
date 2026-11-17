@@ -36,6 +36,7 @@
  color:#26382c;
 }
 
+/* COVER PHOTO */
 #clickwrapLayer .welcome-cover {
  position:relative;
  width:100%;
@@ -52,40 +53,53 @@
  display:block;
 }
 
+/* COVER TEXT OVERLAY */
 #clickwrapLayer .cover-overlay {
  position:absolute;
  inset:0;
  background:linear-gradient(
   to top,
-  rgba(20,35,25,.92),
-  rgba(20,35,25,.12)
+  rgba(20,30,22,.94),
+  rgba(20,30,22,.20)
  );
  display:flex;
  flex-direction:column;
  justify-content:flex-end;
- padding:24px;
+ padding:25px;
  color:#fff8e9;
 }
 
 #clickwrapLayer .cover-overlay .brand-small {
+ font-family:Arial,sans-serif;
  font-size:11px;
- letter-spacing:3px;
- margin-bottom:8px;
+ font-weight:700;
+ letter-spacing:4px;
+ color:#e8d3a9;
+ margin-bottom:10px;
 }
 
 #clickwrapLayer .cover-overlay h1 {
- font-family:Georgia,serif;
- font-size:30px;
- line-height:1.2;
- margin-bottom:7px;
+ font-family:Georgia,"Times New Roman",serif;
+ font-size:clamp(36px,8vw,48px);
+ font-weight:700;
+ line-height:1.05;
+ letter-spacing:1px;
+ color:#fff4d9;
+ text-shadow:0 3px 12px rgba(0,0,0,.65);
+ margin-bottom:10px;
 }
 
 #clickwrapLayer .cover-overlay p {
+ font-family:Arial,sans-serif;
  font-size:13px;
- line-height:1.5;
+ font-weight:400;
+ line-height:1.6;
+ color:#ffffff;
+ text-shadow:0 2px 6px rgba(0,0,0,.7);
  max-width:390px;
 }
 
+/* MAIN AGREEMENT */
 #clickwrapLayer .clickwrap-inner {
  padding:22px;
 }
@@ -288,8 +302,11 @@
  #clickwrapLayer .welcome-cover {
   height:215px;
  }
+ #clickwrapLayer .cover-overlay {
+  padding:20px;
+ }
  #clickwrapLayer .cover-overlay h1 {
-  font-size:26px;
+  font-size:clamp(34px,9vw,42px);
  }
  #clickwrapLayer .clickwrap-inner,
  #clickwrapLayer .reading-screen {
@@ -319,6 +336,7 @@
   <h2>Comfort Meets Function</h2>
   <p>Furniture that makes everyday living more practical.</p>
  </div>
+
  <div class="content-grid">
   <img src="images/cover.png" alt="Forma Doppia furniture">
   <div>
@@ -352,23 +370,22 @@
 
 <!-- CLICKWRAP -->
 <div id="clickwrapLayer">
-
  <div class="clickwrap-box">
 
-  <!-- AGREEMENT MAIN SCREEN -->
+  <!-- AGREEMENT SCREEN -->
   <div class="agreement-screen" id="agreementScreen">
 
    <div class="welcome-cover">
     <img src="images/cover.png" alt="Forma Doppia Cover">
+
     <div class="cover-overlay">
      <span class="brand-small">JNHJ FURNISHINGS CO.</span>
-     <h1>Welcome to Forma Doppia</h1>
-     <p>Step Up Your Comfort. Discover functional and stylish furniture designed to bring comfort and convenience into your everyday life.</p>
+     <h1>FORMA<br>DOPPIA</h1>
+     <p>Welcome to Forma Doppia. Step Up Your Comfort. Discover functional and stylish furniture designed to bring comfort and convenience into your everyday life.</p>
     </div>
    </div>
 
    <div class="clickwrap-inner">
-
     <div class="clickwrap-heading">
      <h2>Before You Continue</h2>
      <p>Please take a moment to read our website agreements before accessing Forma Doppia.</p>
@@ -398,9 +415,8 @@
    </div>
   </div>
 
-  <!-- TERMS READING SCREEN -->
+  <!-- TERMS SCREEN -->
   <div class="reading-screen" id="termsScreen">
-
    <div class="reading-header">
     <h2>Terms of Service</h2>
    </div>
@@ -444,9 +460,8 @@
    </div>
   </div>
 
-  <!-- PRIVACY READING SCREEN -->
+  <!-- PRIVACY SCREEN -->
   <div class="reading-screen" id="privacyScreen">
-
    <div class="reading-header">
     <h2>Privacy Policy</h2>
    </div>
@@ -521,13 +536,14 @@
   privacyScreen.classList.remove("active");
 
   screen.classList.add("active");
-
   body.scrollTop=0;
 
   backButton.disabled=true;
   backButton.textContent="SCROLL TO THE BOTTOM TO CONTINUE";
   backButton.style.opacity=".55";
   backButton.style.cursor="not-allowed";
+
+  checkBottom(body,backButton);
  }
 
  function checkBottom(body,backButton){
