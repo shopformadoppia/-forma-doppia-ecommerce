@@ -32,7 +32,7 @@
   color: #26382c;
 }
 
-/* COVER IMAGE */
+/* WELCOME COVER */
 .welcome-cover {
   position: relative;
   width: 100%;
@@ -40,6 +40,7 @@
   overflow: hidden;
   border-radius: 12px;
   margin-bottom: 18px;
+  background: #e9e5d7;
 }
 
 .welcome-cover img {
@@ -54,9 +55,10 @@
   inset: 0;
   background: linear-gradient(
     to bottom,
-    transparent 40%,
-    rgba(38,56,44,.18) 60%,
-    rgba(38,56,44,.88) 100%
+    rgba(255, 248, 233, .48) 0%,
+    rgba(255, 248, 233, .20) 38%,
+    rgba(38, 56, 44, .48) 65%,
+    rgba(38, 56, 44, .96) 100%
   );
   display: flex;
   flex-direction: column;
@@ -94,6 +96,7 @@
   color: #fff8e9;
   text-align: left;
   max-width: 390px;
+  margin: 0;
 }
 
 /* AGREEMENT */
@@ -134,14 +137,6 @@
 
 .read-btn.done {
   background: #66805d;
-}
-
-.reader-content {
-  display: none;
-}
-
-.reader-content.open {
-  display: block;
 }
 
 .agreement-check {
@@ -190,7 +185,7 @@
   color: #26382c;
 }
 
-/* READING PANEL */
+/* READING SCREENS */
 .reading-screen {
   display: none;
 }
@@ -273,11 +268,15 @@
 <header id="siteHeader"></header>
 
 <main>
+
 <section class="hero">
   <div class="hero-content">
     <p class="eyebrow">JNHJ Furnishings Co.</p>
     <h1>Step Up Your Comfort.</h1>
-    <p>Discover practical furniture designed to bring comfort, function, and style into your everyday space.</p>
+    <p>
+      Discover practical furniture designed to bring comfort,
+      function, and style into your everyday space.
+    </p>
     <a href="shop.html" class="btn gold">SHOP NOW</a>
   </div>
 </section>
@@ -291,10 +290,12 @@
 
   <div class="content-grid">
     <img src="images/cover.png" alt="Forma Doppia furniture">
+
     <div>
       <h2 style="color:var(--green);font-family:Georgia,serif">
         A Smarter Way to Use Space
       </h2>
+
       <p>
         Forma Doppia offers multifunctional furniture that combines
         practical use and simple design. Our featured convertible
@@ -313,34 +314,40 @@
 <section class="container" style="text-align:center">
   <div class="panel">
     <p class="eyebrow">Explore Forma Doppia</p>
+
     <h2 style="color:var(--green);font-family:Georgia,serif">
       Find the right finish for your space.
     </h2>
+
     <p>Choose from our available product finishes and options.</p>
+
     <a href="shop.html" class="btn gold" style="margin-top:15px">
       SHOP NOW
     </a>
   </div>
 </section>
+
 </main>
 
 <footer class="footer">
   <p><b>FORMA DOPPIA</b></p>
   <p>Step Up Your Comfort</p>
   <p>JNHJ Furnishings Co.</p>
+
   <p>
     <a href="contact.html">Contact Us</a> |
     <a href="policies.html">Policies</a>
   </p>
+
   <p>© 2026 Forma Doppia. All rights reserved.</p>
 </footer>
 
-<!-- CLICKWRAP -->
+<!-- CLICKWRAP AGREEMENT -->
 <div class="clickwrap" id="clickwrapLayer">
 
   <div class="clickwrap-box">
 
-    <!-- WELCOME SCREEN -->
+    <!-- WELCOME / AGREEMENT SCREEN -->
     <div id="agreementScreen">
 
       <div class="welcome-cover">
@@ -348,7 +355,9 @@
 
         <div class="cover-overlay">
           <span class="brand-small">JNHJ FURNISHINGS CO.</span>
+
           <h1>Welcome to Forma Doppia</h1>
+
           <p>
             Step Up Your Comfort. Discover functional and stylish
             furniture designed to bring comfort and convenience
@@ -364,14 +373,18 @@
       <div class="reader">
         <div class="reader-heading">
           <span>Terms of Service</span>
-          <button type="button" class="read-btn" id="termsRead">READ</button>
+          <button type="button" class="read-btn" id="termsRead">
+            READ
+          </button>
         </div>
       </div>
 
       <div class="reader">
         <div class="reader-heading">
           <span>Privacy Policy</span>
-          <button type="button" class="read-btn" id="privacyRead">READ</button>
+          <button type="button" class="read-btn" id="privacyRead">
+            READ
+          </button>
         </div>
       </div>
 
@@ -386,14 +399,17 @@
         <a href="shop.html?account=1" class="btn">
           CONTINUE TO ACCOUNT ACCESS
         </a>
+
         <a href="shop.html?guest=1" class="btn gold">
           CONTINUE AS GUEST
         </a>
       </div>
+
     </div>
 
-    <!-- TERMS READING SCREEN -->
+    <!-- TERMS OF SERVICE -->
     <div class="reading-screen" id="termsScreen">
+
       <h2>Terms of Service</h2>
 
       <div class="reading-body" id="termsBody">
@@ -467,10 +483,12 @@
       <button type="button" class="back-btn" id="termsBack" disabled>
         BACK TO AGREEMENT
       </button>
+
     </div>
 
-    <!-- PRIVACY READING SCREEN -->
+    <!-- PRIVACY POLICY -->
     <div class="reading-screen" id="privacyScreen">
+
       <h2>Privacy Policy</h2>
 
       <div class="reading-body" id="privacyBody">
@@ -542,6 +560,7 @@
       <button type="button" class="back-btn" id="privacyBack" disabled>
         BACK TO AGREEMENT
       </button>
+
     </div>
 
   </div>
@@ -571,6 +590,7 @@ let privacyDone = false;
 
 function openReader(screen, body, backButton) {
   agreementScreen.style.display = "none";
+
   termsScreen.classList.remove("active");
   privacyScreen.classList.remove("active");
 
@@ -611,6 +631,7 @@ termsBack.addEventListener("click", function() {
   if (termsBack.disabled) return;
 
   termsDone = true;
+
   termsRead.textContent = "READ ✓";
   termsRead.classList.add("done");
 
@@ -624,6 +645,7 @@ privacyBack.addEventListener("click", function() {
   if (privacyBack.disabled) return;
 
   privacyDone = true;
+
   privacyRead.textContent = "READ ✓";
   privacyRead.classList.add("done");
 
