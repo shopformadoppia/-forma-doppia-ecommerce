@@ -1,1 +1,289 @@
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forma Doppia | Settings</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="settings.css">
+</head>
+<body>
+
+<header id="siteHeader"></header>
+
+<main class="container settings-container">
+
+ <div class="section-title">
+  <p class="eyebrow">Personalize Your Experience</p>
+  <h1>Settings</h1>
+  <p>Manage your preferences and customize your Forma Doppia experience.</p>
+ </div>
+
+ <div class="settings-layout">
+
+  <aside class="settings-sidebar">
+   <a href="#appearance" class="settings-nav active">
+    <span>🎨</span> Appearance
+   </a>
+   <a href="#account" class="settings-nav">
+    <span>👤</span> Account Settings
+   </a>
+   <a href="#notifications" class="settings-nav">
+    <span>🔔</span> Notifications
+   </a>
+   <a href="#delivery" class="settings-nav">
+    <span>📍</span> Delivery Preferences
+   </a>
+   <a href="#privacy" class="settings-nav">
+    <span>🔒</span> Privacy & Security
+   </a>
+   <a href="#general" class="settings-nav">
+    <span>⚙️</span> Language & Currency
+   </a>
+   <a href="#about" class="settings-nav">
+    <span>ℹ️</span> About Forma Doppia
+   </a>
+  </aside>
+
+  <div class="settings-content">
+
+   <!-- APPEARANCE -->
+   <section class="settings-card" id="appearance">
+    <div class="settings-heading">
+     <div>
+      <p class="settings-label">PERSONALIZATION</p>
+      <h2>Appearance</h2>
+      <p>Choose the color theme you prefer.</p>
+     </div>
+     <span class="settings-icon">🎨</span>
+    </div>
+
+    <div class="theme-grid">
+
+     <button class="theme-option" data-theme-choice="classic" type="button">
+      <div class="theme-preview classic-preview">
+       <span></span><span></span><span></span>
+      </div>
+      <div class="theme-info">
+       <strong>Classic Green</strong>
+       <small>Original Forma Doppia theme</small>
+      </div>
+      <span class="theme-check">✓</span>
+     </button>
+
+     <button class="theme-option" data-theme-choice="dark" type="button">
+      <div class="theme-preview dark-preview">
+       <span></span><span></span><span></span>
+      </div>
+      <div class="theme-info">
+       <strong>Dark Green</strong>
+       <small>Deep green and warm cream</small>
+      </div>
+      <span class="theme-check">✓</span>
+     </button>
+
+     <button class="theme-option" data-theme-choice="sage" type="button">
+      <div class="theme-preview sage-preview">
+       <span></span><span></span><span></span>
+      </div>
+      <div class="theme-info">
+       <strong>Sage Green</strong>
+       <small>Soft and natural colors</small>
+      </div>
+      <span class="theme-check">✓</span>
+     </button>
+
+     <button class="theme-option" data-theme-choice="midnight" type="button">
+      <div class="theme-preview midnight-preview">
+       <span></span><span></span><span></span>
+      </div>
+      <div class="theme-info">
+       <strong>Midnight Black</strong>
+       <small>Dark charcoal and gold</small>
+      </div>
+      <span class="theme-check">✓</span>
+     </button>
+
+    </div>
+   </section>
+
+   <!-- ACCOUNT -->
+   <section class="settings-card" id="account">
+    <div class="settings-heading">
+     <div>
+      <p class="settings-label">PROFILE</p>
+      <h2>Account Settings</h2>
+      <p>Manage your account information.</p>
+     </div>
+     <span class="settings-icon">👤</span>
+    </div>
+
+    <div class="settings-information">
+     <p>Account information, email, and password management.</p>
+     <p class="settings-muted">
+      Your account details are managed through your Forma Doppia account.
+     </p>
+    </div>
+   </section>
+
+   <!-- NOTIFICATIONS -->
+   <section class="settings-card" id="notifications">
+    <div class="settings-heading">
+     <div>
+      <p class="settings-label">PREFERENCES</p>
+      <h2>Notifications</h2>
+      <p>Choose the updates you want to receive.</p>
+     </div>
+     <span class="settings-icon">🔔</span>
+    </div>
+
+    <div class="settings-row">
+     <div>
+      <strong>Order Updates</strong>
+      <small>Receive updates about your orders.</small>
+     </div>
+     <label class="switch">
+      <input type="checkbox" id="orderNotifications" checked>
+      <span class="switch-slider"></span>
+     </label>
+    </div>
+
+    <div class="settings-row">
+     <div>
+      <strong>Promotional Notifications</strong>
+      <small>Receive announcements and special offers.</small>
+     </div>
+     <label class="switch">
+      <input type="checkbox" id="promoNotifications">
+      <span class="switch-slider"></span>
+     </label>
+    </div>
+   </section>
+
+   <!-- DELIVERY -->
+   <section class="settings-card" id="delivery">
+    <div class="settings-heading">
+     <div>
+      <p class="settings-label">SHIPPING</p>
+      <h2>Delivery Preferences</h2>
+      <p>Save your preferred delivery information.</p>
+     </div>
+     <span class="settings-icon">📍</span>
+    </div>
+
+    <form id="deliveryPreferencesForm">
+     <label for="deliveryName">Recipient Name</label>
+     <input type="text" id="deliveryName" placeholder="Enter recipient name">
+
+     <label for="deliveryPhone">Contact Number</label>
+     <input type="tel" id="deliveryPhone" placeholder="Enter contact number">
+
+     <label for="deliveryAddress">Delivery Address</label>
+     <textarea id="deliveryAddress" rows="3" placeholder="Enter your complete delivery address"></textarea>
+
+     <button type="submit" class="settings-save">Save Delivery Preferences</button>
+    </form>
+   </section>
+
+   <!-- PRIVACY -->
+   <section class="settings-card" id="privacy">
+    <div class="settings-heading">
+     <div>
+      <p class="settings-label">PROTECTION</p>
+      <h2>Privacy & Security</h2>
+      <p>Information about your account and privacy.</p>
+     </div>
+     <span class="settings-icon">🔒</span>
+    </div>
+
+    <div class="settings-link-row">
+     <div>
+      <strong>Privacy Policy</strong>
+      <small>Learn how your information is handled.</small>
+     </div>
+     <a href="policies.html">View</a>
+    </div>
+
+    <div class="settings-link-row">
+     <div>
+      <strong>Terms & Conditions</strong>
+      <small>Review the terms of using our website.</small>
+     </div>
+     <a href="policies.html">View</a>
+    </div>
+   </section>
+
+   <!-- GENERAL -->
+   <section class="settings-card" id="general">
+    <div class="settings-heading">
+     <div>
+      <p class="settings-label">REGIONAL PREFERENCES</p>
+      <h2>Language & Currency</h2>
+      <p>Set your preferred language and currency.</p>
+     </div>
+     <span class="settings-icon">🌐</span>
+    </div>
+
+    <label for="languageSelect">Language</label>
+    <select id="languageSelect">
+     <option value="English">English</option>
+     <option value="Filipino">Filipino</option>
+    </select>
+
+    <label for="currencySelect">Currency</label>
+    <select id="currencySelect">
+     <option value="PHP">Philippine Peso (₱)</option>
+    </select>
+   </section>
+
+   <!-- ABOUT -->
+   <section class="settings-card" id="about">
+    <div class="settings-heading">
+     <div>
+      <p class="settings-label">OUR BRAND</p>
+      <h2>About Forma Doppia</h2>
+      <p>Step Up Your Comfort.</p>
+     </div>
+     <span class="settings-icon">ℹ️</span>
+    </div>
+
+    <p class="about-description">
+     Forma Doppia is a furniture brand focused on functional,
+     practical, and thoughtfully designed furniture that combines
+     form and functionality.
+    </p>
+
+    <div class="about-version">
+     <span>Website</span>
+     <strong>Forma Doppia</strong>
+    </div>
+    <div class="about-version">
+     <span>Version</span>
+     <strong>1.0.0</strong>
+    </div>
+   </section>
+
+   <div class="settings-reset">
+    <button type="button" id="resetSettings">Reset Preferences</button>
+   </div>
+
+  </div>
+ </div>
+
+ <div id="settingsMessage" class="settings-message" role="status"></div>
+
+</main>
+
+<footer class="footer">
+ <p><b>FORMA DOPPIA</b> | Step Up Your Comfort</p>
+ <p><a href="contact.html">Contact Us</a></p>
+ <p>© 2026 Forma Doppia. All rights reserved.</p>
+</footer>
+
+<script type="module" src="app.js"></script>
+<script type="module" src="settings.js"></script>
+
+</body>
+</html>
