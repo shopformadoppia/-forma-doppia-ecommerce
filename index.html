@@ -53,14 +53,15 @@
  display:block;
 }
 
-/* COVER TEXT OVERLAY */
+/* COVER OVERLAY */
 #clickwrapLayer .cover-overlay {
  position:absolute;
  inset:0;
  background:linear-gradient(
-  to top,
-  rgba(20,30,22,.94),
-  rgba(20,30,22,.20)
+  to bottom,
+  transparent 45%,
+  rgba(38,56,44,.35) 70%,
+  rgba(38,56,44,.95) 100%
  );
  display:flex;
  flex-direction:column;
@@ -73,8 +74,8 @@
  font-family:Arial,sans-serif;
  font-size:11px;
  font-weight:700;
- letter-spacing:4px;
- color:#e8d3a9;
+ letter-spacing:3px;
+ color:#9bb58d;
  margin-bottom:10px;
 }
 
@@ -84,8 +85,7 @@
  font-weight:700;
  line-height:1.05;
  letter-spacing:1px;
- color:#fff4d9;
- text-shadow:0 3px 12px rgba(0,0,0,.65);
+ color:#ead5a8;
  margin-bottom:10px;
 }
 
@@ -94,8 +94,7 @@
  font-size:13px;
  font-weight:400;
  line-height:1.6;
- color:#ffffff;
- text-shadow:0 2px 6px rgba(0,0,0,.7);
+ color:#fff8e9;
  max-width:390px;
 }
 
@@ -299,15 +298,19 @@
  #clickwrapLayer {
   padding:9px;
  }
+
  #clickwrapLayer .welcome-cover {
   height:215px;
  }
+
  #clickwrapLayer .cover-overlay {
   padding:20px;
  }
+
  #clickwrapLayer .cover-overlay h1 {
   font-size:clamp(34px,9vw,42px);
  }
+
  #clickwrapLayer .clickwrap-inner,
  #clickwrapLayer .reading-screen {
   padding:17px;
@@ -380,8 +383,8 @@
 
     <div class="cover-overlay">
      <span class="brand-small">JNHJ FURNISHINGS CO.</span>
-     <h1>FORMA<br>DOPPIA</h1>
-     <p>Welcome to Forma Doppia. Step Up Your Comfort. Discover functional and stylish furniture designed to bring comfort and convenience into your everyday life.</p>
+     <h1>Welcome to Forma Doppia</h1>
+     <p>Step Up Your Comfort. Discover functional and stylish furniture designed to bring comfort and convenience into your everyday life.</p>
     </div>
    </div>
 
@@ -530,6 +533,17 @@
  let termsDone=false;
  let privacyDone=false;
 
+ function checkBottom(body,backButton){
+  const atBottom=body.scrollTop+body.clientHeight>=body.scrollHeight-5;
+
+  if(atBottom){
+   backButton.disabled=false;
+   backButton.textContent="BACK TO AGREEMENT";
+   backButton.style.opacity="1";
+   backButton.style.cursor="pointer";
+  }
+ }
+
  function openReader(screen,body,backButton){
   agreementScreen.classList.add("hidden");
   termsScreen.classList.remove("active");
@@ -544,17 +558,6 @@
   backButton.style.cursor="not-allowed";
 
   checkBottom(body,backButton);
- }
-
- function checkBottom(body,backButton){
-  const atBottom=body.scrollTop+body.clientHeight>=body.scrollHeight-5;
-
-  if(atBottom){
-   backButton.disabled=false;
-   backButton.textContent="BACK TO AGREEMENT";
-   backButton.style.opacity="1";
-   backButton.style.cursor="pointer";
-  }
  }
 
  termsRead.addEventListener("click",function(){
