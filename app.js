@@ -1,5 +1,4 @@
 
-
 import { auth, db } from "./firebase.js";
 import {
   createUserWithEmailAndPassword,
@@ -31,11 +30,13 @@ function saveCart(){
  localStorage.setItem("fd_cart",JSON.stringify(cart));
  updateCartCount();
 }
+
 function updateCartCount(){
  document.querySelectorAll(".cart-count").forEach(el=>{
   el.textContent=cart.reduce((n,x)=>n+x.qty,0);
  });
 }
+
 function addToCart(id,qty=1){
  const found=cart.find(x=>x.id===id);
  if(found) found.qty+=qty;
@@ -43,27 +44,33 @@ function addToCart(id,qty=1){
  saveCart();
  alert("Added to cart!");
 }
+
 function setCartForBuyNow(id){
  cart=[{id,qty:1}];
  saveCart();
  location.href="cart.html";
 }
+
 function openModal(id){$("#"+id)?.classList.add("show");}
 function closeModal(id){$("#"+id)?.classList.remove("show");}
 window.closeModal=closeModal;
 
+/* NAVIGATION */
 function nav(){
  const header=$("#siteHeader");
  if(!header)return;
+
  header.innerHTML=`
  <div class="header-inner">
-  <a class="brand" href="index.html">
+  <a class="brand" href="home.html">
    <img src="images/logo.png" alt="Forma Doppia logo">
    <span>FORMA DOPPIA<small>STEP UP YOUR COMFORT</small></span>
   </a>
+
   <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+
   <nav class="nav-links" id="navLinks">
-   <a href="index.html">Home</a>
+   <a href="home.html">Home</a>
    <a href="shop.html">Shop Now</a>
    <a href="about.html">About Us</a>
    <a href="delivery.html">Delivery</a>
@@ -74,17 +81,25 @@ function nav(){
    <a href="cart.html">Cart <span class="cart-count">0</span></a>
   </nav>
  </div>`;
- $("#menuToggle")?.addEventListener("click",()=>$("#navLinks").classList.toggle("open"));
+
+ $("#menuToggle")?.addEventListener("click",()=>{
+  $("#navLinks")?.classList.toggle("open");
+ });
+
  $("#accountNav")?.addEventListener("click",async()=>{
   if(auth.currentUser){
    if(confirm("Are you sure you want to sign out?")){
     await signOut(auth);
     alert("You have signed out.");
    }
-  }else openModal("accountModal");
+  }else{
+   openModal("accountModal");
+  }
  });
+
  updateCartCount();
 }
+
 nav();
 
 onAuthStateChanged(auth,user=>{
@@ -92,20 +107,25 @@ onAuthStateChanged(auth,user=>{
  if(b)b.textContent=user?"Sign Out":"Sign In";
 });
 
+/* ACCOUNT MODAL */
 function createAccountModal(){
  if($("#accountModal"))return;
+
  document.body.insertAdjacentHTML("beforeend",`
  <div class="modal-backdrop" id="accountModal">
   <div class="modal">
    <button class="modal-close" onclick="closeModal('accountModal')">×</button>
    <h2>Account Access</h2>
    <div id="authMessage" class="notice">Sign in or create your Forma Doppia account.</div>
+
    <form id="loginForm" class="form-stack">
     <label>Email<input type="email" id="loginEmail" required></label>
     <label>Password<input type="password" id="loginPassword" required></label>
     <button class="btn" type="submit">SIGN IN</button>
    </form>
+
    <hr style="margin:18px 0">
+
    <h3>Create an Account</h3>
    <form id="registerForm" class="form-stack">
     <label>Full Name<input id="registerName" required></label>
@@ -114,10 +134,12 @@ function createAccountModal(){
     <label>Phone Number<input id="registerPhone" required></label>
     <button class="btn gold" type="submit">CREATE ACCOUNT</button>
    </form>
+
    <p style="font-size:12px;margin-top:12px">You may browse as a guest without signing in. Checkout requires an account.</p>
    <button class="btn outline" style="margin-top:10px" onclick="closeModal('accountModal')">CONTINUE AS GUEST</button>
   </div>
  </div>
+
  <div class="modal-backdrop" id="welcomeModal">
   <div class="modal">
    <button class="modal-close" onclick="closeModal('welcomeModal')">×</button>
@@ -127,39 +149,63 @@ function createAccountModal(){
    <button class="btn" onclick="closeModal('welcomeModal')">CONTINUE SHOPPING</button>
   </div>
  </div>`);
+
  $("#loginForm").addEventListener("submit",async e=>{
   e.preventDefault();
   const msg=$("#authMessage");
+
   try{
-   await signInWithEmailAndPassword(auth,$("#loginEmail").value,$("#loginPassword").value);
+   await signInWithEmailAndPassword(
+    auth,
+    $("#loginEmail").value,
+    $("#loginPassword").value
+   );
+
    msg.textContent="Successfully signed in.";
    closeModal("accountModal");
    location.reload();
-  }catch(err){msg.textContent=err.message;}
+  }catch(err){
+   msg.textContent=err.message;
+  }
  });
+
  $("#registerForm").addEventListener("submit",async e=>{
   e.preventDefault();
   const msg=$("#authMessage");
+
   try{
    const name=$("#registerName").value.trim();
    const email=$("#registerEmail").value.trim();
    const phone=$("#registerPhone").value.trim();
-   const cred=await createUserWithEmailAndPassword(auth,email,$("#registerPassword").value);
+
+   const cred=await createUserWithEmailAndPassword(
+    auth,email,$("#registerPassword").value
+   );
+
    await updateProfile(cred.user,{displayName:name});
+
    await setDoc(doc(db,"customers",cred.user.uid),{
-    name,email,phone,createdAt:serverTimestamp(),
+    name,email,phone,
+    createdAt:serverTimestamp(),
     welcomeDiscount:{percent:12,status:"available"}
    });
+
    closeModal("accountModal");
    openModal("welcomeModal");
-  }catch(err){msg.textContent=err.message;}
+
+  }catch(err){
+   msg.textContent=err.message;
+  }
  });
 }
+
 createAccountModal();
 
+/* PRODUCTS */
 function renderProducts(){
  const grid=$("#productGrid");
  if(!grid)return;
+
  const draw=(list)=>{
   grid.innerHTML=list.map(p=>`
    <article class="product-card">
@@ -175,27 +221,36 @@ function renderProducts(){
     </div>
    </article>`).join("");
  };
+
  draw(products);
+
  grid.addEventListener("click",e=>{
   const detail=e.target.closest("[data-detail]");
   const add=e.target.closest("[data-add]");
   const buy=e.target.closest("[data-buy]");
+
   if(detail)showDetails(detail.dataset.detail);
   if(add)addToCart(add.dataset.add);
   if(buy)setCartForBuyNow(buy.dataset.buy);
  });
+
  $("#productSearch")?.addEventListener("input",e=>{
   const q=e.target.value.toLowerCase();
   draw(products.filter(p=>p.name.toLowerCase().includes(q)));
  });
 }
+
 function showDetails(id){
  const p=products.find(x=>x.id===id);
  if(!p)return;
+
  $("#detailContent").innerHTML=`
   <img src="${p.img}" alt="${p.name}" style="width:100%;max-height:260px;object-fit:contain">
-  <h2>${p.name}</h2><div class="price">${peso(p.price)}</div>
+  <h2>${p.name}</h2>
+  <div class="price">${peso(p.price)}</div>
+
   <p>Convertible chair-ladder furniture designed to provide practical function and comfort for your space.</p>
+
   <ul class="info-list">
    <li><b>Finish:</b> ${p.finish}</li>
    <li><b>Maximum load capacity:</b> 70 kg (as stated by the seller; follow the product's safe-use instructions)</li>
@@ -203,99 +258,171 @@ function showDetails(id){
    <li><b>Dimensions and product weight:</b> Please contact us for the confirmed measurements.</li>
    <li><b>Care:</b> Keep dry, wipe with a soft cloth, and avoid prolonged exposure to moisture.</li>
   </ul>
+
   <div class="two-buttons">
    <button class="btn" onclick="window.addProduct('${p.id}')">ADD TO CART</button>
    <button class="btn gold" onclick="window.buyProduct('${p.id}')">BUY NOW</button>
   </div>`;
+
  openModal("detailModal");
 }
+
 window.addProduct=addToCart;
 window.buyProduct=setCartForBuyNow;
+
 renderProducts();
 
+/* CART */
 function renderCart(){
  const target=$("#cartItems");
  if(!target)return;
+
  if(!cart.length){
   target.innerHTML="<p>Your cart is empty.</p>";
   $("#cartSummary").innerHTML="";
   return;
  }
+
  target.innerHTML=cart.map(item=>{
   const p=products.find(x=>x.id===item.id);
   if(!p)return "";
-  return `<div class="cart-row">
-   <img src="${p.img}" alt="${p.name}">
-   <div><b>${p.name}</b><div>${peso(p.price)}</div>
-    <div class="qty-controls">
-     <button data-minus="${p.id}">−</button><span>${item.qty}</span>
-     <button data-plus="${p.id}">+</button>
-     <button data-remove="${p.id}">Remove</button>
+
+  return `
+   <div class="cart-row">
+    <img src="${p.img}" alt="${p.name}">
+    <div>
+     <b>${p.name}</b>
+     <div>${peso(p.price)}</div>
+     <div class="qty-controls">
+      <button data-minus="${p.id}">−</button>
+      <span>${item.qty}</span>
+      <button data-plus="${p.id}">+</button>
+      <button data-remove="${p.id}">Remove</button>
+     </div>
     </div>
-   </div><strong>${peso(p.price*item.qty)}</strong>
-  </div>`;
+    <strong>${peso(p.price*item.qty)}</strong>
+   </div>`;
  }).join("");
+
  const subtotal=cart.reduce((sum,item)=>{
-  const p=products.find(x=>x.id===item.id);return sum+(p?p.price*item.qty:0);
+  const p=products.find(x=>x.id===item.id);
+  return sum+(p?p.price*item.qty:0);
  },0);
- $("#cartSummary").innerHTML=`<div class="total-line"><b>Subtotal</b><b>${peso(subtotal)}</b></div><button class="btn" id="checkoutButton">PROCEED TO CHECKOUT</button>`;
+
+ $("#cartSummary").innerHTML=`
+  <div class="total-line">
+   <b>Subtotal</b>
+   <b>${peso(subtotal)}</b>
+  </div>
+  <button class="btn" id="checkoutButton">PROCEED TO CHECKOUT</button>`;
+
  target.onclick=e=>{
   const minus=e.target.closest("[data-minus]")?.dataset.minus;
   const plus=e.target.closest("[data-plus]")?.dataset.plus;
   const remove=e.target.closest("[data-remove]")?.dataset.remove;
-  if(minus){const x=cart.find(i=>i.id===minus);x.qty--;if(x.qty<1)cart=cart.filter(i=>i.id!==minus);}
-  if(plus){cart.find(i=>i.id===plus).qty++;}
+
+  if(minus){
+   const x=cart.find(i=>i.id===minus);
+   x.qty--;
+   if(x.qty<1)cart=cart.filter(i=>i.id!==minus);
+  }
+
+  if(plus)cart.find(i=>i.id===plus).qty++;
   if(remove)cart=cart.filter(i=>i.id!==remove);
-  saveCart();renderCart();
+
+  saveCart();
+  renderCart();
  };
+
  $("#checkoutButton")?.addEventListener("click",()=>checkout());
 }
+
 renderCart();
 
+/* CHECKOUT */
 async function checkout(){
- if(!auth.currentUser){openModal("accountModal");return;}
+ if(!auth.currentUser){
+  openModal("accountModal");
+  return;
+ }
+
  const existing=$("#checkoutModal");
- if(existing){openModal("checkoutModal");return;}
+ if(existing){
+  openModal("checkoutModal");
+  return;
+ }
+
  document.body.insertAdjacentHTML("beforeend",`
  <div class="modal-backdrop show" id="checkoutModal">
   <div class="modal">
    <button class="modal-close" onclick="closeModal('checkoutModal')">×</button>
    <h2>Checkout</h2>
+
    <form id="checkoutForm" class="form-stack">
     <label>Full Name<input id="customerName" required value="${auth.currentUser.displayName||""}"></label>
     <label>Email<input id="customerEmail" type="email" required value="${auth.currentUser.email||""}"></label>
     <label>Phone Number<input id="customerPhone" required></label>
     <label>Complete Delivery Address<textarea id="customerAddress" required></textarea></label>
+
     <label>Payment Method
      <select id="paymentMethod" required>
-      <option value="">Choose payment</option><option>GCash</option><option>Maya</option><option>Cash on Delivery</option>
+      <option value="">Choose payment</option>
+      <option>GCash</option>
+      <option>Maya</option>
+      <option>Cash on Delivery</option>
      </select>
     </label>
+
     <label>Payment Reference (if applicable)<input id="paymentReference"></label>
     <label>Order Notes<textarea id="orderNotes"></textarea></label>
+
     <div class="notice" id="checkoutTotal"></div>
     <button class="btn gold" type="submit">PLACE ORDER</button>
    </form>
+
    <p id="checkoutMessage"></p>
   </div>
  </div>`);
+
  const userRef=doc(db,"customers",auth.currentUser.uid);
  let customerData={};
- try{const snap=await getDoc(userRef);if(snap.exists())customerData=snap.data();}catch{}
+
+ try{
+  const snap=await getDoc(userRef);
+  if(snap.exists())customerData=snap.data();
+ }catch{}
+
  if(customerData.phone)$("#customerPhone").value=customerData.phone;
- const subtotal=cart.reduce((s,i)=>s+products.find(p=>p.id===i.id).price*i.qty,0);
+
+ const subtotal=cart.reduce((s,i)=>{
+  const p=products.find(p=>p.id===i.id);
+  return s+(p?p.price*i.qty:0);
+ },0);
+
  const discountData=customerData.welcomeDiscount;
  const hasDiscount=discountData?.percent===12&&discountData?.status==="available";
  const discount=hasDiscount?subtotal*.12:0;
- $("#checkoutTotal").innerHTML=`Subtotal: ${peso(subtotal)}<br>Welcome discount: ${peso(discount)}<br><b>Estimated total: ${peso(subtotal-discount)}</b>`;
+
+ $("#checkoutTotal").innerHTML=`
+  Subtotal: ${peso(subtotal)}<br>
+  Welcome discount: ${peso(discount)}<br>
+  <b>Estimated total: ${peso(subtotal-discount)}</b>`;
+
  $("#checkoutForm").addEventListener("submit",async e=>{
   e.preventDefault();
   const message=$("#checkoutMessage");
+
   try{
    const items=cart.map(i=>{
     const p=products.find(x=>x.id===i.id);
-    return {productId:p.id,name:p.name,price:p.price,quantity:i.qty};
+    return {
+     productId:p.id,
+     name:p.name,
+     price:p.price,
+     quantity:i.qty
+    };
    });
+
    await addDoc(collection(db,"orders"),{
     userId:auth.currentUser.uid,
     customerName:$("#customerName").value,
@@ -305,20 +432,40 @@ async function checkout(){
     paymentMethod:$("#paymentMethod").value,
     paymentReference:$("#paymentReference").value,
     notes:$("#orderNotes").value,
-    items,subtotal,discount,estimatedTotal:subtotal-discount,
+    items,subtotal,discount,
+    estimatedTotal:subtotal-discount,
     orderStatus:"pending_confirmation",
     paymentStatus:"pending",
     createdAt:serverTimestamp()
    });
+
    if(hasDiscount){
     await updateDoc(userRef,{"welcomeDiscount.status":"redeemed"});
    }
-   cart=[];saveCart();
+
+   cart=[];
+   saveCart();
+
    message.textContent="Your order has been submitted. Thank you for shopping with Forma Doppia!";
    $("#checkoutForm").remove();
    renderCart();
-  }catch(err){message.textContent="Unable to submit order: "+err.message;}
+
+  }catch(err){
+   message.textContent="Unable to submit order: "+err.message;
+  }
  });
 }
 
 if(location.hash==="#cart")renderCart();
+
+/* OPEN ACCOUNT ACCESS WHEN REQUESTED FROM CLICKWRAP */
+const params = new URLSearchParams(location.search);
+
+if(params.get("account")==="1"){
+  openModal("accountModal");
+}
+
+/* GUEST MODE: allow browsing without opening account modal */
+if(params.get("guest")==="1"){
+  closeModal("accountModal");
+}
