@@ -1,415 +1,139 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#26382c">
-<meta name="description" content="Forma Doppia by JNHJ Furnishings Co. | Step Up Your Comfort.">
 <title>Forma Doppia | Home</title>
-<style>
-:root{--forest:#26382c;--deep:#19271e;--olive:#65765b;--sage:#aab59b;--cream:#f4f0e6;--paper:#fffdf7;--brown:#76563d;--gold:#c7a875;--ink:#263129;--muted:#687168;--line:#e5e0d4;--shadow:0 18px 55px #17251b20}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:88px}
-body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
-body.locked{overflow:hidden}
-button,input,select,textarea{font:inherit}
-button,a{-webkit-tap-highlight-color:transparent}
-a{color:inherit;text-decoration:none}
-button{cursor:pointer}
-.serif{font-family:Georgia,'Times New Roman',serif}
-.topbar{position:sticky;top:0;z-index:30;background:#26382cf5;color:#fff;backdrop-filter:blur(12px);box-shadow:0 4px 18px #0002}
-.nav{max-width:1200px;margin:auto;padding:12px 22px;display:flex;align-items:center;gap:24px}
-.brand{display:flex;align-items:center;gap:10px;margin-right:auto;min-width:180px}
-.brand img{width:43px;height:43px;object-fit:contain;border-radius:50%;background:#fff;padding:3px}
-.brand strong{font-family:Georgia,serif;font-size:19px;letter-spacing:.5px;line-height:1.1}
-.brand small{display:block;color:#d9ddcf;font-size:9px;letter-spacing:2px;text-transform:uppercase}
-.navlinks{display:flex;align-items:center;gap:23px;font-size:13px}
-.navlinks a{color:#f5f2e9;opacity:.9}
-.navlinks a:hover{color:var(--gold)}
-.nav-actions{display:flex;align-items:center;gap:9px}
-.nav-btn,.menu-btn{border:1px solid #ffffff55;background:transparent;color:white;border-radius:30px;padding:8px 13px;font-size:12px}
-.menu-btn{display:none}
-.hero{min-height:590px;position:relative;display:flex;align-items:center;background:linear-gradient(90deg,#17251edb 0%,#17251e9c 48%,#17251e20 100%),url('images/cover.png') center/cover no-repeat;color:white}
-.hero-inner{width:min(1200px,100%);margin:auto;padding:75px 28px}
-.eyebrow{letter-spacing:3px;text-transform:uppercase;font-size:11px;color:var(--gold);font-weight:bold}
-.hero h1{font:clamp(42px,7vw,76px)/1.05 Georgia,serif;max-width:650px;margin:17px 0}
-.hero p{max-width:530px;color:#f1eee5;font-size:16px}
-.btn{border:0;border-radius:3px;padding:13px 21px;background:var(--gold);color:#1d2b21;font-weight:bold;letter-spacing:.3px;display:inline-flex;align-items:center;justify-content:center;gap:8px}
-.btn:hover{filter:brightness(1.06)}
-.btn-outline{background:transparent;border:1px solid currentColor;color:inherit}
-.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:27px}
-.section{padding:78px 22px}
-.section-inner{max-width:1150px;margin:auto}
-.section-head{text-align:center;max-width:700px;margin:0 auto 38px}
-.section-head .eyebrow{color:var(--brown)}
-h2{font:clamp(30px,4vw,45px)/1.15 Georgia,serif;margin:9px 0 13px;color:var(--forest)}
-.section-head p{color:var(--muted);margin:0}
-.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.intro-image{min-height:390px;border-radius:4px;background:linear-gradient(#17251e22,#17251e22),url('images/cover.png') center/cover}
-.intro-copy p{color:var(--muted)}
-.quote{font:italic 22px/1.5 Georgia,serif;color:var(--brown);border-left:3px solid var(--gold);padding-left:18px;margin:24px 0}
-.features{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:28px}
-.feature{padding:18px;background:#fff9;border:1px solid var(--line)}
-.feature b{display:block;color:var(--forest);font:18px Georgia,serif}
-.feature span{font-size:12px;color:var(--muted)}
-.band{background:var(--forest);color:white;padding:52px 22px;text-align:center}
-.band h2{color:#fff}
-.band p{max-width:650px;margin:0 auto 22px;color:#e0e4d9}
-.contact{background:#eae6da}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
-.contact-box{background:white;padding:27px;border:1px solid var(--line)}
-.contact-box p{color:var(--muted);font-size:14px}
-.socials{display:flex;gap:10px;flex-wrap:wrap}
-.socials a{border:1px solid var(--line);padding:9px 12px;font-size:12px;color:var(--forest)}
-footer{background:var(--deep);color:#e9e8dd;padding:38px 22px}
-.footer-inner{max-width:1150px;margin:auto;display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}
-.footer-links{display:flex;gap:17px;flex-wrap:wrap;font-size:12px}
-.footer-note{font-size:11px;color:#b8c0b4}
-.clickwrap-layer{position:fixed;inset:0;z-index:300;background:#101a14ef;display:flex;align-items:center;justify-content:center;padding:14px;overflow:auto}
-.clickwrap-layer.hidden{display:none}
-.clickwrap-card{width:min(720px,100%);max-height:94vh;overflow:auto;background:var(--paper);box-shadow:var(--shadow);padding:clamp(20px,4vw,38px);border-radius:5px}
-.clickwrap-cover{min-height:150px;padding:25px;background:linear-gradient(90deg,#19271ee8,#19271e88),url('images/cover.png') center/cover;color:white;margin:-1px 0 22px}
-.clickwrap-cover h1{font:clamp(30px,5vw,44px)/1.1 Georgia,serif;margin:8px 0}
-.clickwrap-cover p{color:#eee8da}
-.click-policy-card{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:17px;margin:12px 0;background:#f2efe6;border:1px solid var(--line)}
-.click-policy-card h3{margin:0;color:var(--forest);font:21px Georgia,serif}
-.click-policy-card p{margin:4px 0 0;color:var(--muted);font-size:12px}
-.click-policy-reader{display:none}
-.click-policy-reader.active{display:block}
-.click-agreement-page.hidden{display:none}
-.policy-document{height:48vh;min-height:260px;overflow:auto;border:1px solid var(--line);background:#fff;padding:18px;margin:15px 0;scroll-behavior:smooth}
-.policy-document h3{font:20px Georgia,serif;color:var(--forest);margin:18px 0 6px}
-.policy-document p{font-size:13px;color:var(--muted);margin:0 0 12px}
-.agreement-check{display:flex;gap:10px;align-items:flex-start;padding:14px 0;font-size:13px}
-.agreement-check input{margin-top:5px}
-.agreement-check.disabled{opacity:.45}
-.agreement-check.disabled input{pointer-events:none}
-.choice-divider{text-align:center;color:var(--muted);font-size:12px;letter-spacing:2px;margin:13px 0}
-.continue-choices{display:none;margin-top:14px}
-.continue-choices.show{display:block}
-.continue-choices .btn{width:100%}
-.notice{padding:12px;background:#edf0e8;border-left:3px solid var(--olive);font-size:12px;color:var(--forest);margin:12px 0}
-@media(max-width:760px){
-.nav{padding:10px 15px;gap:10px}
-.navlinks{display:none;position:absolute;top:66px;left:0;right:0;background:var(--forest);padding:18px 22px;flex-direction:column;align-items:flex-start;gap:16px}
-.navlinks.show{display:flex}
-.menu-btn{display:block}
-.brand{min-width:0}
-.brand strong{font-size:16px}
-.hero{min-height:520px}
-.hero-inner{padding:65px 22px}
-.intro-grid,.contact-grid{grid-template-columns:1fr}
-.intro-image{min-height:260px}
-.features{grid-template-columns:1fr}
-.click-policy-card{align-items:flex-start}
-.click-policy-card .btn{padding:10px 14px}
-.policy-document{height:45vh}
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="topbar">
-<nav class="nav">
-<a class="brand" href="index.html">
-<img src="images/logo.png" alt="Forma Doppia logo">
-<span><strong>Forma Doppia</strong><small>Step Up Your Comfort</small></span>
-</a>
-<div class="navlinks" id="homeNav">
-<a href="index.html">Home</a>
-<a href="#about">Our Story</a>
-<a href="#contact">Contact</a>
-<a href="shop.html">Shop Now</a>
-</div>
-<div class="nav-actions">
-<a class="nav-btn" href="shop.html">Shop Now</a>
-<button class="menu-btn" id="homeMenuBtn" type="button">☰</button>
-</div>
-</nav>
-</header>
+<header id="siteHeader"></header>
 
 <main>
 <section class="hero">
-<div class="hero-inner">
-<div class="eyebrow">JNHJ Furnishings Co. presents</div>
-<h1 class="serif">A smarter form of comfort.</h1>
-<p>Welcome to Forma Doppia. Thoughtful design, modern style, and practical function come together to make everyday spaces feel more comfortable.</p>
-<div class="hero-cta">
-<a class="btn" href="shop.html">SHOP NOW</a>
-<a class="btn btn-outline" href="#about">DISCOVER OUR STORY</a>
-</div>
-</div>
+ <div class="hero-content">
+  <p class="eyebrow">JNHJ Furnishings Co.</p>
+  <h1>Step Up Your Comfort.</h1>
+  <p>Discover practical furniture designed to bring comfort, function, and style into your everyday space.</p>
+  <a href="shop.html" class="btn gold">SHOP NOW</a>
+ </div>
 </section>
 
-<section class="section" id="about">
-<div class="section-inner">
-<div class="section-head">
-<div class="eyebrow">About Forma Doppia</div>
-<h2>Designed for everyday living.</h2>
-<p>Simple design. Practical function. Comfort that fits your space.</p>
-</div>
-<div class="intro-grid">
-<div class="intro-image" role="img" aria-label="Forma Doppia furniture collection"></div>
-<div class="intro-copy">
-<div class="eyebrow">Our story</div>
-<h2>Two functions. One thoughtful form.</h2>
-<p>Forma Doppia brings together practical function and comfortable design. Inspired by the idea of combining two useful forms in one, our concept focuses on furniture that helps make everyday spaces more flexible and convenient.</p>
-<p>Presented by JNHJ Furnishings Co., Forma Doppia is built around a simple goal: to make useful design feel right at home.</p>
-<div class="quote">“Step Up Your Comfort.”</div>
-<div class="features">
-<div class="feature"><b>Practical Design</b><span>Made with everyday use in mind.</span></div>
-<div class="feature"><b>Thoughtful Style</b><span>Finishes that complement your space.</span></div>
-<div class="feature"><b>Double Function</b><span>More purpose in one smart form.</span></div>
-</div>
-</div>
-</div>
-</div>
+<section class="container">
+ <div class="section-title">
+  <p class="eyebrow">Welcome to Forma Doppia</p>
+  <h2>Comfort Meets Function</h2>
+  <p>Furniture that makes everyday living more practical.</p>
+ </div>
+ <div class="content-grid">
+  <img src="images/cover.png" alt="Forma Doppia furniture">
+  <div>
+   <h2 style="color:var(--green);font-family:Georgia,serif">A Smarter Way to Use Space</h2>
+   <p>Forma Doppia offers multifunctional furniture that combines practical use and simple design. Our featured convertible chair-ladder concept is made to provide two functions in one piece of furniture.</p>
+   <div class="two-buttons">
+    <a href="about.html" class="btn">OUR STORY</a>
+    <a href="shop.html" class="btn gold">EXPLORE PRODUCTS</a>
+   </div>
+  </div>
+ </div>
 </section>
 
-<section class="band">
-<div class="section-inner">
-<div class="eyebrow">Explore the collection</div>
-<h2>Find the right form for your space.</h2>
-<p>Discover the finishes and options available in the Forma Doppia collection.</p>
-<a class="btn" href="shop.html">VISIT SHOP NOW</a>
-</div>
-</section>
-
-<section class="section contact" id="contact">
-<div class="section-inner">
-<div class="section-head">
-<div class="eyebrow">Get in touch</div>
-<h2>We would love to hear from you.</h2>
-<p>For product questions, order concerns, and business inquiries, contact our team.</p>
-</div>
-<div class="contact-grid">
-<div class="contact-box">
-<h3>Customer Care</h3>
-<p><strong>Email:</strong> jnhjfurnishingscompany@gmail.com</p>
-<p><strong>Phone:</strong> 0910 822 2830</p>
-<p><strong>Business:</strong> JNHJ Furnishings Co.</p>
-</div>
-<div class="contact-box">
-<h3>Connect with us</h3>
-<div class="socials">
-<a href="https://www.facebook.com/profile.php?id=61574262187679" target="_blank" rel="noopener">Facebook</a>
-<a href="https://www.instagram.com/jnhjfurnishingsco" target="_blank" rel="noopener">Instagram</a>
-<a href="https://www.tiktok.com/@jnhj.furnishings" target="_blank" rel="noopener">TikTok</a>
-</div>
-<p>Follow our pages for updates and announcements.</p>
-</div>
-</div>
-</div>
+<section class="container" style="text-align:center">
+ <div class="panel">
+  <p class="eyebrow">Explore Forma Doppia</p>
+  <h2 style="color:var(--green);font-family:Georgia,serif">Find the right finish for your space.</h2>
+  <p>Choose from our available product finishes and options.</p>
+  <a href="shop.html" class="btn gold" style="margin-top:15px">SHOP NOW</a>
+ </div>
 </section>
 </main>
 
-<footer>
-<div class="footer-inner">
-<div><strong>Forma Doppia</strong><p class="footer-note">JNHJ Furnishings Co. project. © <span id="homeYear"></span> All rights reserved.</p></div>
-<div class="footer-links">
-<a href="index.html">Home</a>
-<a href="shop.html">Shop Now</a>
-<a href="#about">Our Story</a>
-<a href="#contact">Contact</a>
-</div>
-</div>
+<footer class="footer">
+ <p><b>FORMA DOPPIA</b></p>
+ <p>Step Up Your Comfort</p>
+ <p>JNHJ Furnishings Co.</p>
+ <p><a href="contact.html">Contact Us</a> | <a href="policies.html">Policies</a></p>
+ <p>© 2026 Forma Doppia. All rights reserved.</p>
 </footer>
 
-<!-- CLICKWRAP AGREEMENT -->
-<div class="clickwrap-layer" id="clickwrapLayer">
-<div class="clickwrap-card">
+<div class="clickwrap" id="clickwrapLayer">
+ <div class="clickwrap-box">
+  <h1>FORMA DOPPIA</h1>
+  <p style="text-align:center;margin:5px 0 15px">Welcome! Please review our website agreements before continuing.</p>
 
-<div class="click-agreement-page" id="agreementPage">
-<div class="clickwrap-cover">
-<div class="eyebrow">JNHJ Furnishings Co.</div>
-<h1>Welcome to<br>Forma Doppia.</h1>
-<p>Step Up Your Comfort</p>
-</div>
-<div class="eyebrow">Before you begin</div>
-<h2>A better experience starts with clarity.</h2>
-<p>Please read both documents. Tap READ, scroll to the very end, then return to this agreement.</p>
+  <div class="reader">
+   <b>Terms of Service</b>
+   <button type="button" id="termsRead">READ</button>
+   <div class="reader-content" id="termsContent">
+    <h3>Terms of Service</h3>
+    <p>By using the Forma Doppia website, you agree to use the website responsibly and provide accurate information when placing an order.</p>
+    <p><b>Website Use:</b> Product information, photos, and prices are provided for customer reference. We may update product details and availability when necessary.</p>
+    <p><b>Orders and Payment:</b> Orders are subject to confirmation. Available payment methods may include GCash, Maya, and Cash on Delivery, depending on availability.</p>
+    <p><b>Shipping and Delivery:</b> Delivery schedules, fees, and courier availability depend on the destination and selected shipping arrangement.</p>
+    <p><b>Returns and Exchanges:</b> Customers should contact us regarding damaged, incorrect, or defective orders. Requests will be reviewed according to our applicable policies.</p>
+    <p><b>Product Information:</b> Customers should review product descriptions and confirm important specifications before use or purchase.</p>
+    <p><b>Contact:</b> For questions about orders, please contact jnhjfurnishingscompany@gmail.com.</p>
+   </div>
+  </div>
 
-<div class="click-policy-card">
-<div><h3>Terms of Service</h3><p>Website terms, order guidelines, payment, delivery, and returns.</p></div>
-<button class="btn btn-dark" type="button" onclick="openAgreementPolicy('terms')">READ</button>
-</div>
+  <div class="reader">
+   <b>Privacy Policy</b>
+   <button type="button" id="privacyRead">READ</button>
+   <div class="reader-content" id="privacyContent">
+    <h3>Privacy Policy</h3>
+    <p>Forma Doppia respects the privacy of customers and handles personal information for legitimate website and order purposes.</p>
+    <p><b>Information Collected:</b> We may collect a customer's name, email address, phone number, delivery address, account details, and order information.</p>
+    <p><b>Use of Information:</b> Information may be used to manage accounts, process orders, coordinate delivery, respond to inquiries, and provide customer support.</p>
+    <p><b>Data Handling:</b> Customer information is handled through the website's connected services and is not intended for public display.</p>
+    <p><b>Security:</b> We take reasonable steps to protect submitted information. Customers should keep their account passwords confidential.</p>
+    <p><b>Contact:</b> For privacy-related questions, contact jnhjfurnishingscompany@gmail.com.</p>
+   </div>
+  </div>
 
-<div class="click-policy-card">
-<div><h3>Privacy Policy</h3><p>How customer and order information is collected and handled.</p></div>
-<button class="btn btn-dark" type="button" onclick="openAgreementPolicy('privacy')">READ</button>
-</div>
+  <label class="agreement-check">
+   <input type="checkbox" id="agreementCheck" disabled>
+   I have read and agree to the Terms of Service and Privacy Policy.
+  </label>
 
-<div class="notice" id="agreementHint">Read both policies to unlock the agreement checkbox.</div>
-<label class="agreement-check disabled" id="agreementLabel">
-<input type="checkbox" id="agreementCheck" disabled>
-<span>I have read and agree to the Terms of Service and Privacy Policy.</span>
-</label>
-
-<div class="continue-choices" id="continueChoices">
-<a class="btn" href="shop.html?account=1" onclick="return acceptAgreement()">Continue to Account access</a>
-<div class="choice-divider">————or————</div>
-<a class="btn btn-outline" href="shop.html?guest=1" onclick="return acceptAgreement()">Continue as guest</a>
-</div>
-</div>
-
-<div class="click-policy-reader" id="termsReader">
-<button class="btn btn-outline" type="button" onclick="backToAgreement('terms',false)">← BACK TO AGREEMENT</button>
-<h2>Terms of Service</h2>
-<p>Please read the complete policy below.</p>
-<div class="policy-document" id="termsDocument">
-<h3>Welcome and website use</h3>
-<p>Welcome to Forma Doppia, presented by JNHJ Furnishings Co. By accessing or using this website, you agree to follow these terms and our customer guidelines. This website provides product information and a demonstration ordering experience. An order request is not final until it has been reviewed and confirmed by our team.</p>
-<h3>Orders and payment</h3>
-<p>Customers must provide accurate contact, payment, and delivery information. Product availability, delivery fees, payment instructions, and final order details are subject to confirmation. Orders may be canceled before confirmation or processing. Cancellations may no longer be available once an order is finalized, prepared, or shipped.</p>
-<h3>Shipping and delivery</h3>
-<p>Our usual estimated shipping time is 2 to 3 days after dispatch, depending on destination and courier availability. Preparation time may be additional. Delivery schedules are estimates and may be affected by weather, holidays, transport conditions, and third-party courier operations. The actual schedule and fees will be confirmed with the customer.</p>
-<h3>Returns, exchanges, and refunds</h3>
-<p>Returns and exchanges may be requested within seven (7) days from delivery for defective, damaged, or incorrect items. Contact JNHJ Furnishings Co. first and provide your order number, a clear video showing the item and the reported defect or damage, and supporting photos when available. For shipping damage, an unboxing video is strongly recommended. Keep the original packaging and wait for our instructions before sending an item back. Refunds or replacements are subject to inspection, verification, and product availability. Change-of-mind returns are not covered by this limited policy.</p>
-<h3>Customer care and wholesale</h3>
-<p>We aim to provide quality products, reliable service, and transparent communication. Please contact us through the official channels listed on this website for inquiries or concerns. Retailers and businesses may contact us to discuss product specifications, pricing, and possible wholesale arrangements. Any partnership is subject to separate confirmation.</p>
-<h3>Product information</h3>
-<p>Product images and specifications are provided for product guidance. Minor variations in color may occur due to lighting and screen settings. Estimated specifications shown on product pages are indicative and should be confirmed with the seller before purchase.</p>
-<h3>Final acknowledgement</h3>
-<p>By checking the agreement box and continuing, you confirm that you have read and understood the Terms of Service and Privacy Policy. You may leave the website if you do not agree.</p>
-</div>
-<div class="notice" id="termsReadHint">Scroll to the bottom to enable the return button.</div>
-<button class="btn" id="termsBackButton" type="button" disabled onclick="backToAgreement('terms',true)">BACK TO AGREEMENT</button>
-</div>
-
-<div class="click-policy-reader" id="privacyReader">
-<button class="btn btn-outline" type="button" onclick="backToAgreement('privacy',false)">← BACK TO AGREEMENT</button>
-<h2>Privacy Policy</h2>
-<p>Please read the complete policy below.</p>
-<div class="policy-document" id="privacyDocument">
-<h3>Information we collect</h3>
-<p>JNHJ Furnishings Co. respects customer privacy. We may collect information such as name, email address, phone number, delivery address, order details, and payment reference information that customers submit. We use this information for account management, order processing, payment verification, customer support, and delivery coordination.</p>
-<h3>How information is handled</h3>
-<p>We do not ask customers to provide account passwords or one-time security codes to our staff. Payment QR images and references are used only to help identify a transaction. Do not submit sensitive card information. Access to customer information should be limited to authorized persons who need it to process an order or provide support.</p>
-<h3>Data security and retention</h3>
-<p>We use Firebase services for account authentication and order-related data in this website demonstration. No online service can guarantee absolute security. Information may be retained as reasonably needed for order records, customer support, and applicable legal or business requirements.</p>
-<h3>Your choices and contact</h3>
-<p>You may contact JNHJ Furnishings Co. to ask about the personal information you submitted or to request correction of inaccurate details. Contact: jnhjfurnishingscompany@gmail.com or 0910 822 2830.</p>
-</div>
-<div class="notice" id="privacyReadHint">Scroll to the bottom to enable the return button.</div>
-<button class="btn" id="privacyBackButton" type="button" disabled onclick="backToAgreement('privacy',true)">BACK TO AGREEMENT</button>
-</div>
-
-</div>
+  <div class="continue-area" id="continueChoices">
+   <a href="shop.html?account=1" class="btn">CONTINUE TO ACCOUNT ACCESS</a>
+   <a href="shop.html?guest=1" class="btn gold">CONTINUE AS GUEST</a>
+  </div>
+ </div>
 </div>
 
 <script>
-const $ = id => document.getElementById(id);
+const termsRead=document.getElementById("termsRead");
+const privacyRead=document.getElementById("privacyRead");
+const termsContent=document.getElementById("termsContent");
+const privacyContent=document.getElementById("privacyContent");
+const agreementCheck=document.getElementById("agreementCheck");
+const continueChoices=document.getElementById("continueChoices");
+let termsDone=false,privacyDone=false;
 
-$('homeYear').textContent = new Date().getFullYear();
-
-$('homeMenuBtn').onclick = () => {
-  $('homeNav').classList.toggle('show');
-};
-
-$('homeNav').querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    $('homeNav').classList.remove('show');
-  });
+termsRead.addEventListener("click",()=>{
+ termsContent.classList.toggle("open");
+ termsDone=true;
+ termsRead.textContent="READ";
+ updateAgreement();
 });
-
-const readState = {
-  terms: false,
-  privacy: false
-};
-
-function openAgreementPolicy(type) {
-  $('agreementPage').classList.add('hidden');
-  $('termsReader').classList.remove('active');
-  $('privacyReader').classList.remove('active');
-
-  const reader = $(type + 'Reader');
-  const doc = $(type + 'Document');
-
-  reader.classList.add('active');
-  doc.scrollTop = 0;
-
-  $(type + 'BackButton').disabled = true;
-  $(type + 'ReadHint').textContent =
-    'Scroll to the bottom of this policy to enable BACK TO AGREEMENT.';
-
-  requestAnimationFrame(() => checkPolicyEnd(type));
-}
-
-function checkPolicyEnd(type) {
-  const doc = $(type + 'Document');
-  const atBottom =
-    doc.scrollTop + doc.clientHeight >= doc.scrollHeight - 8;
-
-  if (atBottom) {
-    $(type + 'BackButton').disabled = false;
-    $(type + 'ReadHint').textContent =
-      'You have reached the end. You may now return to the agreement.';
-  }
-}
-
-function backToAgreement(type, completed) {
-  const doc = $(type + 'Document');
-  const atBottom =
-    doc.scrollTop + doc.clientHeight >= doc.scrollHeight - 8;
-
-  if (completed && !atBottom) {
-    alert('Please scroll to the bottom of the policy first.');
-    return;
-  }
-
-  if (completed) {
-    readState[type] = true;
-  }
-
-  $('termsReader').classList.remove('active');
-  $('privacyReader').classList.remove('active');
-  $('agreementPage').classList.remove('hidden');
-
-  updateAgreementStatus();
-}
-
-['terms', 'privacy'].forEach(type => {
-  const doc = $(type + 'Document');
-  doc.addEventListener('scroll', () => checkPolicyEnd(type));
+privacyRead.addEventListener("click",()=>{
+ privacyContent.classList.toggle("open");
+ privacyDone=true;
+ privacyRead.textContent="READ";
+ updateAgreement();
 });
-
-function updateAgreementStatus() {
-  const allRead = readState.terms && readState.privacy;
-
-  $('agreementCheck').disabled = !allRead;
-  $('agreementLabel').classList.toggle('disabled', !allRead);
-
-  $('agreementHint').textContent = allRead
-    ? 'Both policies have been read. You may now check the agreement box.'
-    : 'Read both policies and return to this page to unlock the agreement checkbox.';
-
-  if (!allRead) {
-    $('agreementCheck').checked = false;
-    $('continueChoices').classList.remove('show');
-  }
+function updateAgreement(){
+ agreementCheck.disabled=!(termsDone&&privacyDone);
+ if(termsDone&&privacyDone)agreementCheck.parentElement.style.opacity="1";
 }
-
-$('agreementCheck').addEventListener('change', event => {
-  $('continueChoices').classList.toggle('show', event.target.checked);
+agreementCheck.addEventListener("change",()=>{
+ continueChoices.classList.toggle("show",agreementCheck.checked);
 });
-
-function acceptAgreement() {
-  if (
-    !readState.terms ||
-    !readState.privacy ||
-    !$('agreementCheck').checked
-  ) {
-    alert('Please read both policies and check the agreement box first.');
-    return false;
-  }
-
-  localStorage.setItem('formaDoppiaAgreementAccepted', 'yes');
-  return true;
-}
-
-// Show the agreement on every fresh visit.
-$('clickwrapLayer').classList.remove('hidden');
-updateAgreementStatus();
 </script>
+
+<script type="module" src="app.js"></script>
 </body>
 </html>
