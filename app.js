@@ -19,18 +19,106 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
 const $ = (s) => document.querySelector(s);
+
 const peso = n => "₱" + Number(n).toLocaleString("en-PH", {
   maximumFractionDigits: 2
 });
 
+/* =================================
+   PRODUCT INFORMATION
+================================= */
+
 const products = [
-  {id:"p1",name:"Original Color",price:2000,img:"images/product-1.png",finish:"Original wood finish"},
-  {id:"p2",name:"Whitewash Wood",price:2300,img:"images/product-2.png",finish:"Whitewash finish"},
-  {id:"p3",name:"Walnut Finish",price:2300,img:"images/product-3.png",finish:"Walnut finish"},
-  {id:"p4",name:"Sage Green",price:2300,img:"images/product-4.png",finish:"Sage green finish"},
-  {id:"p5",name:"Matte Black",price:2300,img:"images/product-5.png",finish:"Matte black finish"},
-  {id:"p6",name:"With Cushion",price:2500,img:"images/product-6.png",finish:"Cushioned finish"}
+  {
+    id: "p1",
+    name: "Original Color",
+    price: 2000,
+    img: "images/product-1.png",
+    finish: "Original natural wood finish",
+    shortDescription: "A natural wood-look convertible chair-ladder with a simple and timeless appearance."
+  },
+  {
+    id: "p2",
+    name: "Whitewash Wood",
+    price: 2300,
+    img: "images/product-2.png",
+    finish: "Whitewash wood finish",
+    shortDescription: "A light whitewash finish that gives your furniture a clean and refreshing look."
+  },
+  {
+    id: "p3",
+    name: "Walnut Finish",
+    price: 2300,
+    img: "images/product-3.png",
+    finish: "Walnut brown finish",
+    shortDescription: "A warm walnut-inspired finish designed to complement classic and modern interiors."
+  },
+  {
+    id: "p4",
+    name: "Sage Green",
+    price: 2300,
+    img: "images/product-4.png",
+    finish: "Sage green finish",
+    shortDescription: "A soft sage green finish that adds a calm and natural touch to your space."
+  },
+  {
+    id: "p5",
+    name: "Matte Black",
+    price: 2300,
+    img: "images/product-5.png",
+    finish: "Matte black finish",
+    shortDescription: "A minimalist matte black finish for a clean and modern furniture style."
+  },
+  {
+    id: "p6",
+    name: "With Cushion",
+    price: 2500,
+    img: "images/product-6.png",
+    finish: "Cushioned seating finish",
+    shortDescription: "A convertible chair-ladder variation with an added cushion for a more comfortable seating experience."
+  }
 ];
+
+/* SAMPLE SPECIFICATIONS FOR SCHOOL PROJECT DEMONSTRATION */
+
+const productSpecifications = {
+  productType: "Convertible Chair-Ladder Furniture",
+  material: "Wooden frame with metal connecting hardware",
+  dimensions: "Chair mode: 45 × 45 × 60 cm; Ladder mode: 45 × 55 × 90 cm",
+  weight: "Approximately 6.5 kg",
+  loadCapacity: "70 kg",
+  inclusions: [
+    "1 Forma Doppia convertible chair-ladder",
+    "Product care and usage guide"
+  ],
+  features: [
+    "Dual-purpose chair and ladder design",
+    "Space-saving furniture concept",
+    "Convertible design for different household needs",
+    "Designed for practical indoor use"
+  ],
+  usage: [
+    "Place the furniture on a stable and level surface.",
+    "Check that the structure is properly positioned before use.",
+    "Use the chair configuration for seating.",
+    "Use the ladder configuration only when properly set up.",
+    "Avoid sudden movements and uneven weight distribution."
+  ],
+  care: [
+    "Wipe the surface using a clean, soft cloth.",
+    "Keep the furniture dry and away from excessive moisture.",
+    "Avoid harsh chemicals and abrasive cleaning materials.",
+    "Check connecting hardware regularly.",
+    "Store in a clean and dry location when not in use."
+  ],
+  safety: [
+    "Maximum sample load capacity: 70 kg.",
+    "Do not exceed the stated sample capacity.",
+    "Always use on a flat and stable surface.",
+    "Do not use if the furniture appears damaged or unstable.",
+    "Keep children supervised when the ladder configuration is used."
+  ]
+};
 
 let cart = [];
 
@@ -40,38 +128,38 @@ try {
   cart = [];
 }
 
-function saveCart(){
+function saveCart() {
   localStorage.setItem("fd_cart", JSON.stringify(cart));
   updateCartCount();
 }
 
-function updateCartCount(){
+function updateCartCount() {
   document.querySelectorAll(".cart-count").forEach(el => {
-    el.textContent = cart.reduce((n,x) => n + x.qty, 0);
+    el.textContent = cart.reduce((n, x) => n + x.qty, 0);
   });
 }
 
-function addToCart(id, qty = 1){
+function addToCart(id, qty = 1) {
   const found = cart.find(x => x.id === id);
 
-  if(found) found.qty += qty;
-  else cart.push({id,qty});
+  if (found) found.qty += qty;
+  else cart.push({ id, qty });
 
   saveCart();
   alert("Added to cart!");
 }
 
-function setCartForBuyNow(id){
-  cart = [{id,qty:1}];
+function setCartForBuyNow(id) {
+  cart = [{ id, qty: 1 }];
   saveCart();
   location.href = "cart.html";
 }
 
-function openModal(id){
+function openModal(id) {
   $("#" + id)?.classList.add("show");
 }
 
-function closeModal(id){
+function closeModal(id) {
   $("#" + id)?.classList.remove("show");
 }
 
@@ -81,9 +169,9 @@ window.closeModal = closeModal;
    NAVIGATION
 ================================= */
 
-function nav(){
+function nav() {
   const header = $("#siteHeader");
-  if(!header) return;
+  if (!header) return;
 
   header.innerHTML = `
     <div class="header-inner">
@@ -106,7 +194,6 @@ function nav(){
       </button>
 
       <nav class="nav-links" id="navLinks">
-
         <a href="home.html">Home</a>
         <a href="shop.html">Shop Now</a>
         <a href="about.html">About Us</a>
@@ -114,31 +201,23 @@ function nav(){
         <a href="policies.html">Policies</a>
         <a href="faqs.html">FAQs</a>
         <a href="contact.html">Contact</a>
-
         <button id="accountNav" type="button">Sign In</button>
-
         <a href="cart.html">
           Cart <span class="cart-count">0</span>
         </a>
-
       </nav>
+
     </div>
   `;
 
   const menuToggle = $("#menuToggle");
   const navLinks = $("#navLinks");
 
-  /* OPEN AND CLOSE MOBILE MENU */
   menuToggle?.addEventListener("click", () => {
     const isOpen = navLinks.classList.toggle("open");
-
-    menuToggle.setAttribute(
-      "aria-expanded",
-      String(isOpen)
-    );
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
   });
 
-  /* CLOSE MENU AFTER SELECTING A PAGE */
   navLinks?.querySelectorAll("a").forEach(link => {
     link.addEventListener("click", () => {
       navLinks.classList.remove("open");
@@ -146,20 +225,16 @@ function nav(){
     });
   });
 
-  /* ACCOUNT BUTTON */
   $("#accountNav")?.addEventListener("click", async () => {
-
     navLinks?.classList.remove("open");
     menuToggle?.setAttribute("aria-expanded", "false");
 
-    if(auth.currentUser){
-
-      if(confirm("Are you sure you want to sign out?")){
+    if (auth.currentUser) {
+      if (confirm("Are you sure you want to sign out?")) {
         await signOut(auth);
         alert("You have signed out.");
       }
-
-    }else{
+    } else {
       openModal("accountModal");
     }
   });
@@ -174,7 +249,7 @@ nav();
 onAuthStateChanged(auth, user => {
   const button = $("#accountNav");
 
-  if(button){
+  if (button) {
     button.textContent = user ? "Sign Out" : "Sign In";
   }
 });
@@ -183,9 +258,8 @@ onAuthStateChanged(auth, user => {
    ACCOUNT MODAL
 ================================= */
 
-function createAccountModal(){
-
-  if($("#accountModal")) return;
+function createAccountModal() {
+  if ($("#accountModal")) return;
 
   document.body.insertAdjacentHTML("beforeend", `
     <div class="modal-backdrop" id="accountModal">
@@ -201,7 +275,6 @@ function createAccountModal(){
         </div>
 
         <form id="loginForm" class="form-stack">
-
           <label>
             Email
             <input type="email" id="loginEmail" required>
@@ -213,7 +286,6 @@ function createAccountModal(){
           </label>
 
           <button class="btn" type="submit">SIGN IN</button>
-
         </form>
 
         <hr style="margin:18px 0">
@@ -221,7 +293,6 @@ function createAccountModal(){
         <h3>Create an Account</h3>
 
         <form id="registerForm" class="form-stack">
-
           <label>
             Full Name
             <input id="registerName" required>
@@ -246,7 +317,6 @@ function createAccountModal(){
           <button class="btn gold" type="submit">
             CREATE ACCOUNT
           </button>
-
         </form>
 
         <p style="font-size:12px;margin-top:12px">
@@ -294,8 +364,7 @@ function createAccountModal(){
 
     const msg = $("#authMessage");
 
-    try{
-
+    try {
       await signInWithEmailAndPassword(
         auth,
         $("#loginEmail").value,
@@ -307,7 +376,7 @@ function createAccountModal(){
       closeModal("accountModal");
       location.reload();
 
-    }catch(err){
+    } catch (err) {
       msg.textContent = err.message;
     }
   });
@@ -319,8 +388,7 @@ function createAccountModal(){
 
     const msg = $("#authMessage");
 
-    try{
-
+    try {
       const name = $("#registerName").value.trim();
       const email = $("#registerEmail").value.trim();
       const phone = $("#registerPhone").value.trim();
@@ -349,7 +417,7 @@ function createAccountModal(){
       closeModal("accountModal");
       openModal("welcomeModal");
 
-    }catch(err){
+    } catch (err) {
       msg.textContent = err.message;
     }
   });
@@ -361,13 +429,11 @@ createAccountModal();
    PRODUCTS
 ================================= */
 
-function renderProducts(){
-
+function renderProducts() {
   const grid = $("#productGrid");
-  if(!grid) return;
+  if (!grid) return;
 
   const draw = list => {
-
     grid.innerHTML = list.map(p => `
       <article class="product-card">
 
@@ -381,9 +447,13 @@ function renderProducts(){
 
           <div class="price">${peso(p.price)}</div>
 
+          <p style="font-size:13px;color:#777;margin:5px 0 12px">
+            ${p.shortDescription}
+          </p>
+
           <span class="detail-link"
             data-detail="${p.id}">
-            View Details
+            View Full Details
           </span>
 
           <div class="card-actions">
@@ -405,19 +475,16 @@ function renderProducts(){
   draw(products);
 
   grid.addEventListener("click", e => {
-
     const detail = e.target.closest("[data-detail]");
     const add = e.target.closest("[data-add]");
     const buy = e.target.closest("[data-buy]");
 
-    if(detail) showDetails(detail.dataset.detail);
-    if(add) addToCart(add.dataset.add);
-    if(buy) setCartForBuyNow(buy.dataset.buy);
-
+    if (detail) showDetails(detail.dataset.detail);
+    if (add) addToCart(add.dataset.add);
+    if (buy) setCartForBuyNow(buy.dataset.buy);
   });
 
   $("#productSearch")?.addEventListener("input", e => {
-
     const q = e.target.value.toLowerCase();
 
     draw(
@@ -425,58 +492,192 @@ function renderProducts(){
         p.name.toLowerCase().includes(q)
       )
     );
-
   });
 }
 
-function showDetails(id){
+/* =================================
+   COMPLETE PRODUCT DETAILS
+================================= */
 
+function showDetails(id) {
   const p = products.find(x => x.id === id);
-  if(!p) return;
+  if (!p) return;
+
+  const specs = productSpecifications;
+
+  const featuresHTML = specs.features.map(item =>
+    `<li>${item}</li>`
+  ).join("");
+
+  const inclusionsHTML = specs.inclusions.map(item =>
+    `<li>${item}</li>`
+  ).join("");
+
+  const usageHTML = specs.usage.map(item =>
+    `<li>${item}</li>`
+  ).join("");
+
+  const careHTML = specs.care.map(item =>
+    `<li>${item}</li>`
+  ).join("");
+
+  const safetyHTML = specs.safety.map(item =>
+    `<li>${item}</li>`
+  ).join("");
 
   $("#detailContent").innerHTML = `
 
     <img src="${p.img}"
       alt="${p.name}"
-      style="width:100%;max-height:260px;object-fit:contain">
+      style="width:100%;max-height:280px;object-fit:contain;margin-bottom:15px">
+
+    <p class="eyebrow">Forma Doppia Collection</p>
 
     <h2>${p.name}</h2>
 
     <div class="price">${peso(p.price)}</div>
 
-    <p>
-      Convertible chair-ladder furniture designed to provide
-      practical function and comfort for your space.
+    <p style="margin-bottom:18px">
+      ${p.shortDescription}
+      This variation combines a functional furniture concept
+      with a design intended to make everyday spaces more versatile.
     </p>
 
-    <ul class="info-list">
+    <div class="panel" style="margin-bottom:18px">
 
-      <li><b>Finish:</b> ${p.finish}</li>
+      <h3 style="color:var(--green);margin-bottom:10px">
+        Product Overview
+      </h3>
 
-      <li>
-        <b>Maximum load capacity:</b>
-        70 kg (as stated by the seller; follow the
-        product's safe-use instructions)
-      </li>
+      <p>
+        The Forma Doppia Convertible Chair-Ladder is a
+        dual-purpose furniture concept designed to function
+        as both a chair and a ladder. It offers a practical
+        furniture solution for spaces where functionality
+        and efficient use of space are important.
+      </p>
 
-      <li>
-        <b>Material:</b>
-        Please confirm the exact material with the seller
-        before purchase.
-      </li>
+    </div>
 
-      <li>
-        <b>Dimensions and product weight:</b>
-        Please contact us for the confirmed measurements.
-      </li>
+    <div class="policy-block">
 
-      <li>
-        <b>Care:</b>
-        Keep dry, wipe with a soft cloth, and avoid
-        prolonged exposure to moisture.
-      </li>
+      <h3>Key Features</h3>
 
-    </ul>
+      <ul class="info-list">
+        ${featuresHTML}
+      </ul>
+
+    </div>
+
+    <div class="policy-block">
+
+      <h3>Product Specifications</h3>
+
+      <p style="font-size:12px;color:var(--muted);margin-bottom:10px">
+        Sample Project Specifications
+      </p>
+
+      <ul class="info-list">
+
+        <li>
+          <b>Product Name:</b>
+          Forma Doppia ${p.name}
+        </li>
+
+        <li>
+          <b>Product Type:</b>
+          ${specs.productType}
+        </li>
+
+        <li>
+          <b>Finish:</b>
+          ${p.finish}
+        </li>
+
+        <li>
+          <b>Material:</b>
+          ${specs.material}
+        </li>
+
+        <li>
+          <b>Sample Dimensions:</b>
+          ${specs.dimensions}
+        </li>
+
+        <li>
+          <b>Sample Product Weight:</b>
+          ${specs.weight}
+        </li>
+
+        <li>
+          <b>Sample Maximum Load Capacity:</b>
+          ${specs.loadCapacity}
+        </li>
+
+        <li>
+          <b>Color / Variation:</b>
+          ${p.name}
+        </li>
+
+        ${p.id === "p6" ? `
+          <li>
+            <b>Additional Feature:</b>
+            Cushioned seating
+          </li>
+        ` : ""}
+
+      </ul>
+
+    </div>
+
+    <div class="policy-block">
+
+      <h3>What's Included</h3>
+
+      <ul class="info-list">
+        ${inclusionsHTML}
+        ${p.id === "p6" ? "<li>Seat cushion</li>" : ""}
+      </ul>
+
+    </div>
+
+    <div class="policy-block">
+
+      <h3>How to Use</h3>
+
+      <ul class="info-list">
+        ${usageHTML}
+      </ul>
+
+    </div>
+
+    <div class="policy-block">
+
+      <h3>Care and Maintenance</h3>
+
+      <ul class="info-list">
+        ${careHTML}
+      </ul>
+
+    </div>
+
+    <div class="policy-block">
+
+      <h3>Safety Reminders</h3>
+
+      <ul class="info-list">
+        ${safetyHTML}
+      </ul>
+
+    </div>
+
+    <div class="notice">
+      <b>Project Demonstration Notice:</b>
+      The dimensions, weight, material, and other specifications
+      displayed here are illustrative sample information created
+      for the Forma Doppia school project. They are not verified
+      measurements or certified product specifications.
+    </div>
 
     <div class="two-buttons">
 
@@ -491,6 +692,7 @@ function showDetails(id){
       </button>
 
     </div>
+
   `;
 
   openModal("detailModal");
@@ -505,23 +707,19 @@ renderProducts();
    CART
 ================================= */
 
-function renderCart(){
-
+function renderCart() {
   const target = $("#cartItems");
-  if(!target) return;
+  if (!target) return;
 
-  if(!cart.length){
-
+  if (!cart.length) {
     target.innerHTML = "<p>Your cart is empty.</p>";
     $("#cartSummary").innerHTML = "";
-
     return;
   }
 
   target.innerHTML = cart.map(item => {
-
     const p = products.find(x => x.id === item.id);
-    if(!p) return "";
+    if (!p) return "";
 
     return `
       <div class="cart-row">
@@ -529,38 +727,26 @@ function renderCart(){
         <img src="${p.img}" alt="${p.name}">
 
         <div>
-
           <b>${p.name}</b>
-
           <div>${peso(p.price)}</div>
 
           <div class="qty-controls">
-
             <button data-minus="${p.id}">−</button>
-
             <span>${item.qty}</span>
-
             <button data-plus="${p.id}">+</button>
-
             <button data-remove="${p.id}">Remove</button>
-
           </div>
-
         </div>
 
         <strong>${peso(p.price * item.qty)}</strong>
 
       </div>
     `;
-
   }).join("");
 
   const subtotal = cart.reduce((sum, item) => {
-
     const p = products.find(x => x.id === item.id);
-
     return sum + (p ? p.price * item.qty : 0);
-
   }, 0);
 
   $("#cartSummary").innerHTML = `
@@ -575,27 +761,24 @@ function renderCart(){
   `;
 
   target.onclick = e => {
-
     const minus = e.target.closest("[data-minus]")?.dataset.minus;
     const plus = e.target.closest("[data-plus]")?.dataset.plus;
     const remove = e.target.closest("[data-remove]")?.dataset.remove;
 
-    if(minus){
-
+    if (minus) {
       const x = cart.find(i => i.id === minus);
-
       x.qty--;
 
-      if(x.qty < 1){
+      if (x.qty < 1) {
         cart = cart.filter(i => i.id !== minus);
       }
     }
 
-    if(plus){
+    if (plus) {
       cart.find(i => i.id === plus).qty++;
     }
 
-    if(remove){
+    if (remove) {
       cart = cart.filter(i => i.id !== remove);
     }
 
@@ -612,16 +795,15 @@ renderCart();
    CHECKOUT
 ================================= */
 
-async function checkout(){
-
-  if(!auth.currentUser){
+async function checkout() {
+  if (!auth.currentUser) {
     openModal("accountModal");
     return;
   }
 
   const existing = $("#checkoutModal");
 
-  if(existing){
+  if (existing) {
     openModal("checkoutModal");
     return;
   }
@@ -662,7 +844,6 @@ async function checkout(){
 
           <label>
             Payment Method
-
             <select id="paymentMethod" required>
               <option value="">Choose payment</option>
               <option>GCash</option>
@@ -698,26 +879,21 @@ async function checkout(){
   const userRef = doc(db, "customers", auth.currentUser.uid);
   let customerData = {};
 
-  try{
-
+  try {
     const snap = await getDoc(userRef);
 
-    if(snap.exists()){
+    if (snap.exists()) {
       customerData = snap.data();
     }
+  } catch {}
 
-  }catch{}
-
-  if(customerData.phone){
+  if (customerData.phone) {
     $("#customerPhone").value = customerData.phone;
   }
 
   const subtotal = cart.reduce((s, i) => {
-
     const p = products.find(p => p.id === i.id);
-
     return s + (p ? p.price * i.qty : 0);
-
   }, 0);
 
   const discountData = customerData.welcomeDiscount;
@@ -735,15 +911,12 @@ async function checkout(){
   `;
 
   $("#checkoutForm").addEventListener("submit", async e => {
-
     e.preventDefault();
 
     const message = $("#checkoutMessage");
 
-    try{
-
+    try {
       const items = cart.map(i => {
-
         const p = products.find(x => x.id === i.id);
 
         return {
@@ -752,11 +925,9 @@ async function checkout(){
           price: p.price,
           quantity: i.qty
         };
-
       });
 
       await addDoc(collection(db, "orders"), {
-
         userId: auth.currentUser.uid,
         customerName: $("#customerName").value,
         email: $("#customerEmail").value,
@@ -774,15 +945,12 @@ async function checkout(){
         orderStatus: "pending_confirmation",
         paymentStatus: "pending",
         createdAt: serverTimestamp()
-
       });
 
-      if(hasDiscount){
-
+      if (hasDiscount) {
         await updateDoc(userRef, {
           "welcomeDiscount.status": "redeemed"
         });
-
       }
 
       cart = [];
@@ -795,18 +963,16 @@ async function checkout(){
 
       renderCart();
 
-    }catch(err){
-
+    } catch (err) {
       message.textContent =
         "Unable to submit order: " + err.message;
-
     }
   });
 }
 
 /* REFRESH CART IF NEEDED */
 
-if(location.hash === "#cart"){
+if (location.hash === "#cart") {
   renderCart();
 }
 
@@ -816,10 +982,10 @@ if(location.hash === "#cart"){
 
 const params = new URLSearchParams(location.search);
 
-if(params.get("account") === "1"){
+if (params.get("account") === "1") {
   openModal("accountModal");
 }
 
-if(params.get("guest") === "1"){
+if (params.get("guest") === "1") {
   closeModal("accountModal");
 }
