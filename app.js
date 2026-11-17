@@ -87,38 +87,16 @@ const productSpecifications = {
   dimensions: "Chair mode: 45 × 45 × 60 cm; Ladder mode: 45 × 55 × 90 cm",
   weight: "Approximately 6.5 kg",
   loadCapacity: "70 kg",
-  inclusions: [
-    "1 Forma Doppia convertible chair-ladder",
-    "Product care and usage guide"
-  ],
   features: [
     "Dual-purpose chair and ladder design",
     "Space-saving furniture concept",
-    "Convertible design for different household needs",
     "Designed for practical indoor use"
-  ],
-  usage: [
-    "Place the furniture on a stable and level surface.",
-    "Check that the structure is properly positioned before use.",
-    "Use the chair configuration for seating.",
-    "Use the ladder configuration only when properly set up.",
-    "Avoid sudden movements and uneven weight distribution."
-  ],
-  care: [
-    "Wipe the surface using a clean, soft cloth.",
-    "Keep the furniture dry and away from excessive moisture.",
-    "Avoid harsh chemicals and abrasive cleaning materials.",
-    "Check connecting hardware regularly.",
-    "Store in a clean and dry location when not in use."
-  ],
-  safety: [
-    "Maximum sample load capacity: 70 kg.",
-    "Do not exceed the stated sample capacity.",
-    "Always use on a flat and stable surface.",
-    "Do not use if the furniture appears damaged or unstable.",
-    "Keep children supervised when the ladder configuration is used."
   ]
 };
+
+/* =================================
+   CART DATA
+================================= */
 
 let cart = [];
 
@@ -201,7 +179,11 @@ function nav() {
         <a href="policies.html">Policies</a>
         <a href="faqs.html">FAQs</a>
         <a href="contact.html">Contact</a>
-        <button id="accountNav" type="button">Sign In</button>
+
+        <button id="accountNav" type="button">
+          Sign In
+        </button>
+
         <a href="cart.html">
           Cart <span class="cart-count">0</span>
         </a>
@@ -443,17 +425,13 @@ function renderProducts() {
 
         <div class="product-info">
 
-          <h3 data-detail="${p.id}">${p.name}</h3>
+          <h3>${p.name}</h3>
 
           <div class="price">${peso(p.price)}</div>
 
-          <p style="font-size:13px;color:#777;margin:5px 0 12px">
-            ${p.shortDescription}
-          </p>
-
           <span class="detail-link"
             data-detail="${p.id}">
-            View Full Details
+            View Description
           </span>
 
           <div class="card-actions">
@@ -496,7 +474,7 @@ function renderProducts() {
 }
 
 /* =================================
-   COMPLETE PRODUCT DETAILS
+   PRODUCT DESCRIPTION
 ================================= */
 
 function showDetails(id) {
@@ -504,26 +482,6 @@ function showDetails(id) {
   if (!p) return;
 
   const specs = productSpecifications;
-
-  const featuresHTML = specs.features.map(item =>
-    `<li>${item}</li>`
-  ).join("");
-
-  const inclusionsHTML = specs.inclusions.map(item =>
-    `<li>${item}</li>`
-  ).join("");
-
-  const usageHTML = specs.usage.map(item =>
-    `<li>${item}</li>`
-  ).join("");
-
-  const careHTML = specs.care.map(item =>
-    `<li>${item}</li>`
-  ).join("");
-
-  const safetyHTML = specs.safety.map(item =>
-    `<li>${item}</li>`
-  ).join("");
 
   $("#detailContent").innerHTML = `
 
@@ -537,52 +495,17 @@ function showDetails(id) {
 
     <div class="price">${peso(p.price)}</div>
 
-    <p style="margin-bottom:18px">
+    <p style="line-height:1.7;margin:15px 0 20px;color:var(--muted)">
       ${p.shortDescription}
-      This variation combines a functional furniture concept
-      with a design intended to make everyday spaces more versatile.
     </p>
 
     <div class="panel" style="margin-bottom:18px">
 
-      <h3 style="color:var(--green);margin-bottom:10px">
-        Product Overview
+      <h3 style="color:var(--green);margin-bottom:12px">
+        Product Details
       </h3>
 
-      <p>
-        The Forma Doppia Convertible Chair-Ladder is a
-        dual-purpose furniture concept designed to function
-        as both a chair and a ladder. It offers a practical
-        furniture solution for spaces where functionality
-        and efficient use of space are important.
-      </p>
-
-    </div>
-
-    <div class="policy-block">
-
-      <h3>Key Features</h3>
-
       <ul class="info-list">
-        ${featuresHTML}
-      </ul>
-
-    </div>
-
-    <div class="policy-block">
-
-      <h3>Product Specifications</h3>
-
-      <p style="font-size:12px;color:var(--muted);margin-bottom:10px">
-        Sample Project Specifications
-      </p>
-
-      <ul class="info-list">
-
-        <li>
-          <b>Product Name:</b>
-          Forma Doppia ${p.name}
-        </li>
 
         <li>
           <b>Product Type:</b>
@@ -600,12 +523,12 @@ function showDetails(id) {
         </li>
 
         <li>
-          <b>Sample Dimensions:</b>
+          <b>Dimensions:</b>
           ${specs.dimensions}
         </li>
 
         <li>
-          <b>Sample Product Weight:</b>
+          <b>Approximate Weight:</b>
           ${specs.weight}
         </li>
 
@@ -615,7 +538,7 @@ function showDetails(id) {
         </li>
 
         <li>
-          <b>Color / Variation:</b>
+          <b>Variation:</b>
           ${p.name}
         </li>
 
@@ -632,51 +555,20 @@ function showDetails(id) {
 
     <div class="policy-block">
 
-      <h3>What's Included</h3>
+      <h3>Key Features</h3>
 
       <ul class="info-list">
-        ${inclusionsHTML}
-        ${p.id === "p6" ? "<li>Seat cushion</li>" : ""}
-      </ul>
-
-    </div>
-
-    <div class="policy-block">
-
-      <h3>How to Use</h3>
-
-      <ul class="info-list">
-        ${usageHTML}
-      </ul>
-
-    </div>
-
-    <div class="policy-block">
-
-      <h3>Care and Maintenance</h3>
-
-      <ul class="info-list">
-        ${careHTML}
-      </ul>
-
-    </div>
-
-    <div class="policy-block">
-
-      <h3>Safety Reminders</h3>
-
-      <ul class="info-list">
-        ${safetyHTML}
+        ${specs.features.map(item => `<li>${item}</li>`).join("")}
       </ul>
 
     </div>
 
     <div class="notice">
       <b>Project Demonstration Notice:</b>
-      The dimensions, weight, material, and other specifications
-      displayed here are illustrative sample information created
-      for the Forma Doppia school project. They are not verified
-      measurements or certified product specifications.
+      The dimensions, weight, material, and load capacity
+      displayed here are illustrative sample information
+      for the Forma Doppia school project. These are not
+      verified measurements or certified product specifications.
     </div>
 
     <div class="two-buttons">
