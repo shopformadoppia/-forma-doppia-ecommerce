@@ -749,3 +749,99 @@ textarea {
   }
 
 }
+
+
+/* ==============================
+   SETTINGS PAGE THEME COLORS
+============================== */
+
+/* CLASSIC GREEN */
+html[data-theme="classic"] {
+ --green: #26382c;
+ --green2: #354b3b;
+ --brown: #795b40;
+ --cream: #f5f0e6;
+ --white: #fffdf8;
+ --gold: #c49a55;
+ --text: #292a25;
+ --muted: #77766d;
+}
+
+/* DARK GREEN */
+html[data-theme="dark"] {
+ --green: #17251c;
+ --green2: #263d2e;
+ --brown: #987653;
+ --cream: #26352b;
+ --white: #1d2b22;
+ --gold: #c49a55;
+ --text: #f5f0e6;
+ --muted: #c0c7bd;
+}
+
+/* SAGE GREEN */
+html[data-theme="sage"] {
+ --green: #526b50;
+ --green2: #80977b;
+ --brown: #8a755b;
+ --cream: #e7eee3;
+ --white: #f8faf5;
+ --gold: #b6a477;
+ --text: #29362a;
+ --muted: #71806f;
+}
+
+/* MIDNIGHT BLACK */
+html[data-theme="midnight"] {
+ --green: #252525;
+ --green2: #383838;
+ --brown: #a88a5d;
+ --cream: #303030;
+ --white: #222222;
+ --gold: #c49a55;
+ --text: #f5f0e6;
+ --muted: #b8b8b8;
+}
+
+/* DARK THEME BORDERS */
+html[data-theme="dark"] .settings-card,
+html[data-theme="midnight"] .settings-card,
+html[data-theme="dark"] .settings-sidebar,
+html[data-theme="midnight"] .settings-sidebar {
+ border-color: rgba(255,255,255,.12);
+}
+
+html[data-theme="dark"] .settings-row,
+html[data-theme="midnight"] .settings-row,
+html[data-theme="dark"] .settings-link-row,
+html[data-theme="midnight"] .settings-link-row,
+html[data-theme="dark"] .about-version,
+html[data-theme="midnight"] .about-version {
+ border-color: rgba(255,255,255,.12);
+}
+
+html[data-theme="dark"] .theme-option,
+html[data-theme="midnight"] .theme-option {
+ border-color: rgba(255,255,255,.15);
+}
+
+html[data-theme="dark"] .theme-option.selected,
+html[data-theme="midnight"] .theme-option.selected {
+ background: var(--cream);
+}
+
+html[data-theme="dark"] .settings-card input:not([type="checkbox"]),
+html[data-theme="dark"] .settings-card textarea,
+html[data-theme="dark"] .settings-card select,
+html[data-theme="midnight"] .settings-card input:not([type="checkbox"]),
+html[data-theme="midnight"] .settings-card textarea,
+html[data-theme="midnight"] .settings-card select {
+ border-color: rgba(255,255,255,.2);
+}
+
+html[data-theme="dark"] .settings-row strong,
+html[data-theme="midnight"] .settings-row strong,
+html[data-theme="dark"] .settings-link-row strong,
+html[data-theme="midnight"] .settings-link-row strong {
+ color: var(--text);
+}
